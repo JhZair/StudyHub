@@ -110,8 +110,8 @@ body.dark-theme {
 /* Ajuste de la sección de imagen */
 .image-section {
     flex: 1;
-    height: 75vh;  /* Altura ideal: 75% del viewport */
-    max-width: 550px; /* Reducido de 600px */
+    height: 50vh;  /* Altura ideal: 75% del viewport */
+    max-width: 600px; /* Reducido de 600px */
     overflow: hidden;
     background: #ffffff;
     display: flex;  /* Mantener solo este display */

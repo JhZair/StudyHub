@@ -5,11 +5,11 @@ const app = express();
 const port = 3000;
 
 // use .env file to hide xd
-const db = mysql.createdb({
+const db = mysql.createConnection({
   host: 'localhost',
   user: 'a',      
   password: 'a',  
-  database: 'express_db'   
+  database: 'studyhub'   
 });
 
 // Connect to MySQL
