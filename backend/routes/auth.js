@@ -1,35 +1,43 @@
 const express = require('express');
-const bcrypt = require('bcryptjs');
-const jwt = require('jsonwebtoken');
 const router = express.Router();
 
-// Login route
 router.post('/login', (req, res) => {
-    const { email, password } = req.body;
+  const { email, password } = req.body;
 
-    req.db.query('SELECT * FROM usuario WHERE email = ?', [email], async (err, results) => {
-        if (err) return res.status(500).json({ error: err });
+  if (!email || !password) {
+    return res.status(400).json({ error: 'Faltan campos' });
+  }
 
-        if (results.length === 0) {
-            return res.status(401).json({ message: 'Email not found' });
-        }
+  const sql = 'SELECT id_usuario, nombre, email FROM usuario WHERE email = ? AND password = ?';
 
-        const user = results[0];
+  req.db.query(sql, [email, password], (err, results) => {
+    if (err) {
+      console.error('Error al consultar:', err);
+      return res.status(500).json({ error: 'Error en el servidor' });
+    }
 
-        // Check if password matches
-        const passwordMatch = await bcrypt.compare(password, user.password);
+    if (results.length === 0) {
+      return res.status(401).json({ error: 'Credenciales inválidas' });
+    }
 
-        if (!passwordMatch) {
-            return res.status(401).json({ message: 'Incorrect password' });
-        }
+    // Guardar sesión
+    req.session.usuario = results[0];
+    res.json({ mensaje: 'Login exitoso', usuario: results[0] });
+  });
+});
 
-        // Create JWT token
-        const token = jwt.sign({ id_usuario: user.id_usuario, email: user.email }, 'your_secret_key', {
-            expiresIn: '2h' // Token expiration time
-        });
+router.get('/perfil', (req, res) => {
+  if (!req.session.usuario) {
+    return res.status(401).json({ error: 'No autenticado' });
+  }
 
-        res.json({ message: 'Login successful', token });
-    });
+  res.json({ usuario: req.session.usuario });
+});
+
+router.post('/logout', (req, res) => {
+  req.session.destroy(() => {
+    res.json({ mensaje: 'Sesión cerrada' });
+  });
 });
 
 module.exports = router;
