@@ -75,13 +75,9 @@ body {
 
 .image-section {
     flex: 1;
-<<<<<<< HEAD
-    max-width: 450px;
-=======
     height: 50vh;  /* Altura ideal: 75% del viewport */
     max-width: 600px; /* Reducido de 600px */
     overflow: hidden;
->>>>>>> f9dd3a8cc58c863df6f46dc798f777373085c574
     background: #ffffff;
     display: flex;
     flex-direction: column;
