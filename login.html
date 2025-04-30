@@ -1,80 +1,117 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Configuración básica del documento -->
     <meta charset="UTF-8">
-    <!-- Meta tag para hacer la página responsive -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>StudyHub - Log In</title>
-    <!-- Enlaces a archivos CSS externos -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <!-- Contenedor principal con efecto de luces -->
     <div class="container">
-        <!-- Sección del formulario -->
         <div class="form-section">
-            <!-- Encabezado con el título principal -->
             <header>
                 <h1>StudyHub</h1>
             </header>
-
             <main>
-                <!-- Subtítulo de bienvenida -->
                 <h2>Begin Your Adventure</h2>
-                <!-- Formulario de inicio de sesión -->
+                <div class="message"></div>
                 <form id="loginForm">
-                    <!-- Campo de usuario -->
                     <div class="input-group">
-                        <input type="text" id="username" placeholder="Username" required>
+                        <input type="text" id="username" placeholder="Username" aria-label="Username" required>
                     </div>
-                    
-                    <!-- Campo de contraseña -->
                     <div class="input-group">
                         <div class="password-container">
-                            <input type="password" id="password" placeholder="Password" required>
+                            <input type="password" id="password" placeholder="Password" aria-label="Password" required>
                             <i class="fas fa-eye toggle-password" data-target="password"></i>
                         </div>
                     </div>
-
-                    <!-- Opciones adicionales -->
                     <div class="options">
-                        <!-- Checkbox para recordar usuario -->
                         <label>
                             <input type="checkbox" id="remember"> Remember me
                         </label>
-                        <!-- Enlace para recuperar contraseña -->
                         <a href="#" class="forgot-password">Forgot Password?</a>
                     </div>
-
-                    <!-- Botón de inicio de sesión -->
                     <button type="submit" class="btn-login">Log In</button>
                 </form>
             </main>
         </div>
-        
-        <!-- Sección decorativa con cubo 3D -->
         <div class="image-section">
-            <!-- Contenedor del cubo -->
-            <div class="cube-container">
-                <!-- Cubo 3D con sus 6 caras -->
-                <div class="cube">
-                    <div class="face front"></div>  <!-- Cara frontal -->
-                    <div class="face back"></div>   <!-- Cara trasera -->
-                    <div class="face right"></div>  <!-- Cara derecha -->
-                    <div class="face left"></div>   <!-- Cara izquierda -->
-                    <div class="face top"></div>    <!-- Cara superior -->
-                    <div class="face bottom"></div> <!-- Cara inferior -->
+            <div class="my-loader">
+                <div class="rubiks-cube">
+                    <div class="face front">
+                        <div class="cube color-1"></div> <!-- Magenta neón inicial -->
+                        <div class="cube color-2"></div> <!-- Amarillo neón inicial -->
+                        <div class="cube color-3"></div> <!-- Verde neón inicial -->
+                        <div class="cube color-4"></div> <!-- Cian neón inicial -->
+                        <div class="cube color-5"></div> <!-- Gris metálico inicial -->
+                        <div class="cube color-2"></div>
+                        <div class="cube color-3"></div>
+                        <div class="cube color-4"></div>
+                        <div class="cube color-1"></div>
+                    </div>
+                    <div class="face back">
+                        <div class="cube color-3"></div>
+                        <div class="cube color-1"></div>
+                        <div class="cube color-2"></div>
+                        <div class="cube color-4"></div>
+                        <div class="cube color-5"></div>
+                        <div class="cube color-1"></div>
+                        <div class="cube color-2"></div>
+                        <div class="cube color-3"></div>
+                        <div class="cube color-4"></div>
+                    </div>
+                    <div class="face left">
+                        <div class="cube color-2"></div>
+                        <div class="cube color-3"></div>
+                        <div class="cube color-4"></div>
+                        <div class="cube color-1"></div>
+                        <div class="cube color-5"></div>
+                        <div class="cube color-3"></div>
+                        <div class="cube color-4"></div>
+                        <div class="cube color-2"></div>
+                        <div class="cube color-1"></div>
+                    </div>
+                    <div class="face right">
+                        <div class="cube color-3"></div>
+                        <div class="cube color-1"></div>
+                        <div class="cube color-2"></div>
+                        <div class="cube color-4"></div>
+                        <div class="cube color-5"></div>
+                        <div class="cube color-1"></div>
+                        <div class="cube color-2"></div>
+                        <div class="cube color-3"></div>
+                        <div class="cube color-4"></div>
+                    </div>
+                    <div class="face top">
+                        <div class="cube color-4"></div>
+                        <div class="cube color-2"></div>
+                        <div class="cube color-1"></div>
+                        <div class="cube color-3"></div>
+                        <div class="cube color-5"></div>
+                        <div class="cube color-2"></div>
+                        <div class="cube color-1"></div>
+                        <div class="cube color-3"></div>
+                        <div class="cube color-4"></div>
+                    </div>
+                    <div class="face bottom">
+                        <div class="cube color-5"></div>
+                        <div class="cube color-3"></div>
+                        <div class="cube color-4"></div>
+                        <div class="cube color-1"></div>
+                        <div class="cube color-2"></div>
+                        <div class="cube color-3"></div>
+                        <div class="cube color-4"></div>
+                        <div class="cube color-5"></div>
+                        <div class="cube color-1"></div>
+                    </div>
                 </div>
             </div>
-            <!-- Botón de navegación a registro -->
             <div class="image-buttons">
                 <a href="signup.html" class="img-btn">Sign Up</a>
             </div>
         </div>
     </div>
-    <!-- Enlace al archivo JavaScript -->
     <script src="script.js"></script>
 </body>
 </html>

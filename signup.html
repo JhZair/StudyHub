@@ -1,100 +1,133 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Configuración básica del documento -->
     <meta charset="UTF-8">
-    <!-- Meta tag para hacer la página responsive -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>StudyHub - Sign Up</title>
-    <!-- Enlaces a archivos CSS externos -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <!-- Contenedor principal con efecto de luces -->
     <div class="container">
-        <!-- Sección del formulario -->
         <div class="form-section">
-            <!-- Encabezado con el título principal -->
             <header>
                 <h1>StudyHub</h1>
             </header>
-
             <main>
-                <!-- Subtítulo de bienvenida -->
                 <h2>Begin Your Adventure</h2>
-
-                <!-- Botones de inicio de sesión con redes sociales -->
+                <div class="message"></div>
                 <div class="social-login">
-                    <!-- Botón de Google -->
-                    <button class="social-btn google">
+                    <button class="social-btn google" aria-label="Sign up with Google">
                         <i class="fab fa-google"></i>
-                        Google
                     </button>
-                    <!-- Botón de Twitter/X -->
-                    <button class="social-btn twitter">
+                    <button class="social-btn twitter" aria-label="Sign up with Twitter">
                         <i class="fab fa-twitter"></i>
-                        Twitter
                     </button>
-                    <!-- Botón de Apple -->
-                    <button class="social-btn apple">
+                    <button class="social-btn apple" aria-label="Sign up with Apple">
                         <i class="fab fa-apple"></i>
-                        Apple
                     </button>
                 </div>
-
-                <!-- Divisor con texto "or" -->
                 <div class="divider">
                     <span>or</span>
                 </div>
-
-                <!-- Formulario de registro -->
                 <form id="signupForm">
-                    <!-- Campo de nombre de usuario -->
                     <div class="input-group">
-                        <input type="text" id="username" placeholder="Username" required>
+                        <input type="text" id="username" placeholder="Username" aria-label="Username" required>
                     </div>
-
-                    <!-- Campo de correo electrónico -->
                     <div class="input-group">
-                        <input type="email" id="email" placeholder="Email" required>
+                        <input type="email" id="email" placeholder="Email" aria-label="Email" required>
                     </div>
-
-                    <!-- Campo de contraseña con ojo para mostrar/ocultar -->
                     <div class="input-group">
                         <div class="password-container">
-                            <input type="password" id="signup-password" placeholder="Password" required>
+                            <input type="password" id="signup-password" placeholder="Password" aria-label="Password" required>
                             <i class="fas fa-eye toggle-password" data-target="signup-password"></i>
                         </div>
                     </div>
-
-                    <!-- Botón de registro -->
+                    <div class="options">
+                        <label>
+                            <input type="checkbox" id="remember"> Remember me
+                        </label>
+                    </div>
                     <button type="submit" class="btn-start">Let's Start</button>
                 </form>
             </main>
         </div>
-        
-        <!-- Sección decorativa con cubo 3D -->
         <div class="image-section">
-            <!-- Contenedor del cubo -->
-            <div class="cube-container">
-                <!-- Cubo 3D con sus 6 caras -->
-                <div class="cube">
-                    <div class="face front"></div>  <!-- Cara frontal -->
-                    <div class="face back"></div>   <!-- Cara trasera -->
-                    <div class="face right"></div>  <!-- Cara derecha -->
-                    <div class="face left"></div>   <!-- Cara izquierda -->
-                    <div class="face top"></div>    <!-- Cara superior -->
-                    <div class="face bottom"></div> <!-- Cara inferior -->
+            <div class="my-loader">
+                <div class="rubiks-cube">
+                    <div class="face front">
+                        <div class="cube color-1"></div> <!-- Magenta neón inicial -->
+                        <div class="cube color-2"></div> <!-- Amarillo neón inicial -->
+                        <div class="cube color-3"></div> <!-- Verde neón inicial -->
+                        <div class="cube color-4"></div> <!-- Cian neón inicial -->
+                        <div class="cube color-5"></div> <!-- Gris metálico inicial -->
+                        <div class="cube color-2"></div>
+                        <div class="cube color-3"></div>
+                        <div class="cube color-4"></div>
+                        <div class="cube color-1"></div>
+                    </div>
+                    <div class="face back">
+                        <div class="cube color-3"></div>
+                        <div class="cube color-1"></div>
+                        <div class="cube color-2"></div>
+                        <div class="cube color-4"></div>
+                        <div class="cube color-5"></div>
+                        <div class="cube color-1"></div>
+                        <div class="cube color-2"></div>
+                        <div class="cube color-3"></div>
+                        <div class="cube color-4"></div>
+                    </div>
+                    <div class="face left">
+                        <div class="cube color-2"></div>
+                        <div class="cube color-3"></div>
+                        <div class="cube color-4"></div>
+                        <div class="cube color-1"></div>
+                        <div class="cube color-5"></div>
+                        <div class="cube color-3"></div>
+                        <div class="cube color-4"></div>
+                        <div class="cube color-2"></div>
+                        <div class="cube color-1"></div>
+                    </div>
+                    <div class="face right">
+                        <div class="cube color-3"></div>
+                        <div class="cube color-1"></div>
+                        <div class="cube color-2"></div>
+                        <div class="cube color-4"></div>
+                        <div class="cube color-5"></div>
+                        <div class="cube color-1"></div>
+                        <div class="cube color-2"></div>
+                        <div class="cube color-3"></div>
+                        <div class="cube color-4"></div>
+                    </div>
+                    <div class="face top">
+                        <div class="cube color-4"></div>
+                        <div class="cube color-2"></div>
+                        <div class="cube color-1"></div>
+                        <div class="cube color-3"></div>
+                        <div class="cube color-5"></div>
+                        <div class="cube color-2"></div>
+                        <div class="cube color-1"></div>
+                        <div class="cube color-3"></div>
+                        <div class="cube color-4"></div>
+                    </div>
+                    <div class="face bottom">
+                        <div class="cube color-5"></div>
+                        <div class="cube color-3"></div>
+                        <div class="cube color-4"></div>
+                        <div class="cube color-1"></div>
+                        <div class="cube color-2"></div>
+                        <div class="cube color-3"></div>
+                        <div class="cube color-4"></div>
+                        <div class="cube color-5"></div>
+                        <div class="cube color-1"></div>
+                    </div>
                 </div>
             </div>
-            <!-- Botón de navegación a login -->
             <div class="image-buttons">
                 <a href="login.html" class="img-btn">Log In</a>
             </div>
         </div>
     </div>
-    <!-- Enlace al archivo JavaScript -->
     <script src="script.js"></script>
 </body>
 </html>
