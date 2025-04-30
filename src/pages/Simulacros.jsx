@@ -17,7 +17,6 @@ export default function Simulacros() {
 
   return (
     <div className="min-h-screen bg-gray-100">
-      {/* Cabecera */}
       <header className="bg-slate-900 text-white p-4 flex items-center justify-between shadow-md">
         <Link to="/">
           <div className="text-2xl font-bold ml-2 cursor-pointer">
@@ -25,11 +24,12 @@ export default function Simulacros() {
           </div>
         </Link>
       </header>
-
-      {/* Contenido */}
-      <main className="max-w-5xl mx-auto py-12 px-4">
+      <main className="min-h-[calc(100vh-64px)] flex flex-col items-center justify-center px-4 py-12">
+        <div className="bg-blue-600 text-white text-center py-2 px-4 rounded mb-6">
+          <h2 className="text-xl font-semibold">Semestre III</h2>
+        </div>
         <h1 className="text-3xl font-bold mb-10 text-center">Selecciona un curso para comenzar</h1>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 gap-6">
+        <div className="grid w-full max-w-3xl grid-cols-1 sm:grid-cols-2 gap-6">
           {cursos.map((curso) => (
             <button
               key={curso.path}
