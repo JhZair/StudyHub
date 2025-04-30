@@ -14,9 +14,11 @@ export default function Home() {
               Empezar ahora
             </button>
           </a>
+          <a href="/Recursos.html">
           <button className="bg-transparent border border-white text-white px-6 py-3 rounded-xl font-medium hover:bg-white hover:text-slate-900 transition">
             Ver Recursos
           </button>
+          </a>
         </div>
         <div className="flex justify-center gap-4">
           <a href="/login.html">
