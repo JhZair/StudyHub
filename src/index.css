@@ -2,7 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-
 body {
-    font-family: 'Inter', sans-serif;
-  }
+  @apply bg-slate-900 text-slate-100 font-sans;
+}

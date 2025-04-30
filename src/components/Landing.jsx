@@ -12,7 +12,7 @@ function Landing() {
           Empezar a practicar
         </button>
         <button className="bg-transparent border-2 border-pink-400 hover:bg-pink-400 hover:text-white text-pink-400 font-bold py-3 px-6 rounded-full transition">
-          Ver Ranking
+          Ver Recursos
         </button>
       </div>
     </section>
