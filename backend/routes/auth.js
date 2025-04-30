@@ -1,35 +1,33 @@
 const express = require('express');
-const bcrypt = require('bcryptjs');
-const jwt = require('jsonwebtoken');
 const router = express.Router();
 
-// Login route
+// Login simple
 router.post('/login', (req, res) => {
-    const { email, password } = req.body;
+  const { usuario, password } = req.body;
 
-    req.db.query('SELECT * FROM usuario WHERE email = ?', [email], async (err, results) => {
-        if (err) return res.status(500).json({ error: err });
+  // Simular login (reemplazá con query real a MySQL si querés)
+  if (usuario === 'admin' && password === '1234') {
+    req.session.usuario = usuario;
+    res.send({ mensaje: 'Login exitoso' });
+  } else {
+    res.status(401).send({ error: 'Credenciales inválidas' });
+  }
+});
 
-        if (results.length === 0) {
-            return res.status(401).json({ message: 'Email not found' });
-        }
+// Ruta protegida
+router.get('/perfil', (req, res) => {
+  if (req.session.usuario) {
+    res.send({ usuario: req.session.usuario });
+  } else {
+    res.status(401).send({ error: 'No estás logueado' });
+  }
+});
 
-        const user = results[0];
-
-        // Check if password matches
-        const passwordMatch = await bcrypt.compare(password, user.password);
-
-        if (!passwordMatch) {
-            return res.status(401).json({ message: 'Incorrect password' });
-        }
-
-        // Create JWT token
-        const token = jwt.sign({ id_usuario: user.id_usuario, email: user.email }, 'your_secret_key', {
-            expiresIn: '2h' // Token expiration time
-        });
-
-        res.json({ message: 'Login successful', token });
-    });
+// Logout
+router.post('/logout', (req, res) => {
+  req.session.destroy(() => {
+    res.send({ mensaje: 'Sesión cerrada' });
+  });
 });
 
 module.exports = router;
