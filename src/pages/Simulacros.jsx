@@ -17,12 +17,15 @@ export default function Simulacros() {
 
   return (
     <div className="min-h-screen bg-gray-100">
-      <header className="bg-slate-900 text-white p-4 flex items-center justify-between shadow-md">
-        <Link to="/">
-          <div className="text-2xl font-bold ml-2 cursor-pointer">
+      <header className="bg-slate-900 p-7 flex items-center justify-between shadow-md">
+        <div className="flex items-center gap-10 ml-1">
+          <Link to="/" className="text-2xl font-bold cursor-pointer">
             <span className="bg-white text-slate-900 px-2 py-1 rounded">StudyHub</span>
-          </div>
-        </Link>
+          </Link>
+          <nav className="flex gap-4 text-white font-medium">
+            <a href="/Recursos.html" className="hover:underline">Recursos</a>
+          </nav>
+        </div>
       </header>
       <main className="min-h-[calc(100vh-64px)] flex flex-col items-center justify-center px-4 py-12">
         <div className="bg-blue-600 text-white text-center py-2 px-4 rounded mb-6">
