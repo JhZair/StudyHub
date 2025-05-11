@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StudyHub - Sign Up</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="form-section">
+            <header>
+                <h1>StudyHub</h1>
+            </header>
+
+            <main>
+                <h2>Begin Your Adventure</h2>
+                
+                <div class="social-login">
+                    <button id="google-sign-up" class="social-btn google">
+                        <i class="fab fa-google"></i>
+                        Sign in with Google
+                    </button>
+                    <button class="social-btn twitter">
+                        <i class="fab fa-twitter"></i>
+                        Twitter
+                    </button>
+                    <button class="social-btn apple">
+                        <i class="fab fa-apple"></i>
+                        Apple
+                    </button>
+                </div>
+                
+                <div class="divider">
+                    <span>or</span>
+                </div>
+
+                <form id="signupForm">
+                    <div class="input-group">
+                        <input type="text" id="username" placeholder="Username" required>
+                    </div>
+                    <div class="input-group">
+                        <input type="email" id="email" placeholder="Email" required>
+                    </div>
+                    <div class="input-group">
+                        <div class="password-container">
+                            <input type="password" id="signup-password" placeholder="Password" required>
+                            <i class="fas fa-eye toggle-password" data-target="signup-password"></i>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn-start">Let's Start</button>
+                </form>
+            </main>
+        </div>
+        
+        <div class="image-section">
+            <div class="cube-container">
+                <div class="cube">
+                    <div class="face front"></div>  
+                    <div class="face back"></div>   
+                    <div class="face right"></div>  
+                    <div class="face left"></div>   
+                    <div class="face top"></div>    
+                    <div class="face bottom"></div> 
+                </div>
+            </div>
+            <div class="image-buttons">
+                <a href="login.html" class="img-btn">Log In</a>
+            </div>
+        </div>
+    </div>
+    <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app.js"></script>
+    <script src="script.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-auth.js"></script>
+    <script>
+        // Configuración de Firebase
+        const firebaseConfig = {
+            apiKey: "AIzaSyCqlATvaYrY8WSJARkwveLEgeSu4sUJ1e4",
+            authDomain: "studyhub-b5d24.firebaseapp.com",
+            projectId: "studyhub-b5d24",
+            storageBucket: "studyhub-b5d24.firebasestorage.app",
+            messagingSenderId: "296129047493",
+            appId: "1:296129047493:web:36175edf2fae55d4fcf9ac",
+            measurementId: "G-445WKH9M4W"
+        };
+
+        // Inicializar Firebase
+        const app = firebase.initializeApp(firebaseConfig);
+        const auth = firebase.auth();
+
+        // Manejar inicio de sesión con Google
+        document.getElementById('google-sign-up').addEventListener('click', () => {
+            const provider = new firebase.auth.GoogleAuthProvider();
+
+            auth.signInWithPopup(provider)
+                .then((result) => {
+                    // Usuario autenticado
+                    const user = result.user;
+                    console.log('Usuario autenticado:', user);
+
+                    // Redirigir al usuario o mostrar un mensaje
+                    window.location.href = "dashboard.html"; // Cambia a la página que desees
+                })
+                .catch((error) => {
+                    console.error('Error al iniciar sesión con Google:', error);
+                });
+        });
+        
+    </script>
+</body>
+</html>

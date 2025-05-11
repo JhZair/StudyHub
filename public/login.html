@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>StudyHub - Login</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+    <div class="container">
+        <div class="form-section">
+            <header>
+                <h1>StudyHub</h1>
+            </header>
+            <main>
+                <h2>Welcome to StudyHub</h2>
+                
+                <!-- Login Form -->
+                <form id="loginForm">
+                    <div class="input-group">
+                        <input type="email" id="email" placeholder="Email" required />
+                    </div>
+                    <div class="input-group">
+                        <div class="password-container">
+                            <input type="password" id="login-password" placeholder="Password" required>
+                            <i class="fas fa-eye toggle-password" data-target="login-password"></i>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn-start">Log In</button>
+                </form>
+
+                <!-- Signup Form -->
+                <form id="signupForm" style="display: none;">
+                    <div class="input-group">
+                        <input type="email" id="signup-email" placeholder="Email" required />
+                    </div>
+                    <div class="input-group">
+                        <div class="password-container">
+                            <input type="password" id="signup-password" placeholder="Password" required>
+                            <i class="fas fa-eye toggle-password" data-target="signup-password"></i>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn-start">Sign Up</button>
+                </form>
+            </main>
+        </div>
+        
+        <!-- Cube Section -->
+        <div class="image-section">
+            <div class="cube-container">
+                <div class="cube">
+                    <div class="face front"></div>  
+                    <div class="face back"></div>   
+                    <div class="face right"></div>  
+                    <div class="face left"></div>   
+                    <div class="face top"></div>    
+                    <div class="face bottom"></div> 
+                </div>
+            </div>
+            <div class="image-buttons">
+                <a href="signup.html" class="img-btn">Sign Up</a>
+            </div>
+        </div>
+    </div>
+    <script> 
+        document.querySelectorAll('.toggle-password').forEach(button => {
+            button.addEventListener('click', function () {
+                const passwordInput = document.getElementById(this.dataset.target);
+                if (passwordInput) {
+                    if (passwordInput.type === 'password') {
+                        passwordInput.type = 'text';
+                        this.classList.remove('fa-eye');
+                        this.classList.add('fa-eye-slash');
+                    } else {
+                        passwordInput.type = 'password';
+                        this.classList.remove('fa-eye-slash');
+                        this.classList.add('fa-eye');
+                    }
+                }
+            });
+        }); 
+        
+        // JavaScript to toggle between login and signup forms
+        //document.getElementById('go-to-signup').addEventListener('click', () => {
+           // document.getElementById('loginForm').style.display = 'none';
+           // document.getElementById('signupForm').style.display = 'block';
+        //});
+    </script>
+</body>
+</html>

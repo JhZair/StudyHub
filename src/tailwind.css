@@ -1,0 +1,251 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-gray-100;
+  }
+
+  * {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+  }
+}
+
+@layer components {
+  /* Terminal styles */
+  .terminal {
+    background: #1a1a1a;
+    color: #fff;
+    padding: 1.5rem;
+    border-radius: 0.75rem;
+    width: 100%;
+    max-width: 400px;
+    font-family: 'Fira Code', monospace;
+    font-size: 0.875rem;
+    line-height: 1.5;
+  }
+
+  .terminal .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+  }
+
+  .terminal .buttons {
+    display: flex;
+    gap: 0.25rem;
+  }
+
+  .terminal .button {
+    width: 0.5rem;
+    height: 0.5rem;
+    border-radius: 50%;
+    background: #fff;
+    transition: transform 0.2s;
+  }
+
+  .terminal .button:hover {
+    transform: scale(1.2);
+  }
+
+  .terminal .red {
+    background: #ff4444;
+  }
+
+  .terminal .yellow {
+    background: #ffbb33;
+  }
+
+  .terminal .green {
+    background: #44ff44;
+  }
+
+  .terminal .title {
+    font-size: 0.75rem;
+    margin: 0;
+  }
+
+  .terminal .content {
+    overflow: hidden;
+  }
+
+  .terminal .line {
+    margin: 0.25rem 0;
+    text-align: center;
+  }
+
+  .terminal .command {
+    color: #44ff44;
+    display: inline-block;
+    width: 100%;
+    text-align: left;
+  }
+
+  .terminal .output {
+    color: #fff;
+  }
+
+  .terminal .cursor {
+    color: #44ff44;
+    animation: blink 1s infinite;
+  }
+
+  @keyframes blink {
+    0% { opacity: 1; }
+    50% { opacity: 0; }
+    100% { opacity: 1; }
+  }
+
+  /* Light border animation */
+  @keyframes light-border {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+
+  .light-border {
+    position: relative;
+    overflow: hidden;
+    border-radius: 1rem;
+    background: rgba(255, 255, 255, 0.95);
+    box-shadow: 0 0 10px rgba(0, 255, 0, 0.5), 0 0 20px rgba(0, 0, 255, 0.5);
+  }
+
+  .light-border::before {
+    content: '';
+    position: absolute;
+    top: -6px;
+    left: -6px;
+    right: -6px;
+    bottom: -6px;
+    background: linear-gradient(45deg, #00ff00, #0000ff, #00ff00, #0000ff);
+    background-size: 400% 400%;
+    animation: light-border 2s ease infinite;
+    z-index: -1;
+    border-radius: inherit;
+    opacity: 0.9;
+  }
+
+  .light-border::after {
+    content: '';
+    position: absolute;
+    top: -8px;
+    left: -8px;
+    right: -8px;
+    bottom: -8px;
+    background: linear-gradient(45deg, #00ff00, #0000ff, #00ff00, #0000ff);
+    background-size: 400% 400%;
+    animation: light-border 2s ease infinite;
+    z-index: -2;
+    opacity: 1;
+    border-radius: inherit;
+  }
+
+  /* General styles */
+  .container {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+  
+  .form-section {
+    @apply bg-white p-8 rounded-lg shadow-md;
+  }
+  
+  header {
+    @apply text-center mb-8;
+  }
+  
+  h1 {
+    @apply text-3xl font-bold text-gray-800;
+  }
+  
+  /* Planet system styles */
+  .planet-container {
+    width: 33%;
+    height: 100vh;
+    display: block;
+    position: relative;
+    top: 0;
+    left: 0;
+    transform: none;
+    background-color: #000;
+  }
+
+  /* Form toggle button styles */
+  .toggle-form-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 2px;
+    padding: 4px 8px;
+    border-radius: 4px;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    transition: all 0.3s ease;
+    cursor: pointer;
+  }
+
+  .toggle-form-button:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    transform: translateY(-1px);
+  }
+
+  .toggle-form-button i {
+    font-size: 14px;
+  }
+
+  /* Scroll button styles */
+  .scroll-button {
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    z-index: 1000;
+  }
+
+  .scroll-button:hover {
+    background-color: rgba(0, 0, 0, 0.4);
+    transform: scale(1.1);
+  }
+
+  .scroll-button svg {
+    width: 24px;
+    height: 24px;
+    stroke: #ffffff;
+  }
+  
+  .image-buttons {
+    @apply flex justify-center gap-4;
+  }
+  
+  .img-btn {
+    @apply bg-green-500 text-white px-4 py-2 rounded-md hover:bg-green-600 transition-colors;
+  }
+}
+
+@keyframes rotate {
+  from {
+    transform: rotateX(0deg) rotateY(0deg);
+  }
+  to {
+    transform: rotateX(360deg) rotateY(360deg);
+  }
+}
