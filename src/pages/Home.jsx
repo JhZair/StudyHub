@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import imagenHome from "/images/studyhub2.jpg";
+import imagenHome from "/images/studyhub3.5.JPG";
 
 export default function Home() {
   return (
@@ -41,7 +41,7 @@ export default function Home() {
             Sed cursus ante dapibus diam.
           </p>
         </div>
-          <div className="w-full max-w-2xl min-h-[430px] rounded-lg shadow bg-gray-600 flex items-center justify-center text-gray-400 p-4">
+          <div className="w-full max-w-xl min-h-[430px] rounded-lg shadow bg-gray-600 flex items-center justify-center text-gray-400 p-4">
             <img
               src={imagenHome}
               alt="Logo Studyhub"
