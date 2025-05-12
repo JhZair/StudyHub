@@ -1,117 +1,72 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>StudyHub - Log In</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link rel="stylesheet" href="styles.css">
+    <title>Iniciar Sesión StudyHub</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
     <div class="container">
-        <div class="form-section">
-            <header>
-                <h1>StudyHub</h1>
-            </header>
-            <main>
-                <h2>Begin Your Adventure</h2>
-                <div class="message"></div>
-                <form id="loginForm">
-                    <div class="input-group">
-                        <input type="text" id="username" placeholder="Username" aria-label="Username" required>
-                    </div>
-                    <div class="input-group">
-                        <div class="password-container">
-                            <input type="password" id="password" placeholder="Password" aria-label="Password" required>
-                            <i class="fas fa-eye toggle-password" data-target="password"></i>
-                        </div>
-                    </div>
-                    <div class="options">
-                        <label>
-                            <input type="checkbox" id="remember"> Remember me
-                        </label>
-                        <a href="#" class="forgot-password">Forgot Password?</a>
-                    </div>
-                    <button type="submit" class="btn-login">Log In</button>
-                </form>
-            </main>
-        </div>
-        <div class="image-section">
-            <div class="my-loader">
-                <div class="rubiks-cube">
-                    <div class="face front">
-                        <div class="cube color-1"></div> <!-- Magenta neón inicial -->
-                        <div class="cube color-2"></div> <!-- Amarillo neón inicial -->
-                        <div class="cube color-3"></div> <!-- Verde neón inicial -->
-                        <div class="cube color-4"></div> <!-- Cian neón inicial -->
-                        <div class="cube color-5"></div> <!-- Gris metálico inicial -->
-                        <div class="cube color-2"></div>
-                        <div class="cube color-3"></div>
-                        <div class="cube color-4"></div>
-                        <div class="cube color-1"></div>
-                    </div>
-                    <div class="face back">
-                        <div class="cube color-3"></div>
-                        <div class="cube color-1"></div>
-                        <div class="cube color-2"></div>
-                        <div class="cube color-4"></div>
-                        <div class="cube color-5"></div>
-                        <div class="cube color-1"></div>
-                        <div class="cube color-2"></div>
-                        <div class="cube color-3"></div>
-                        <div class="cube color-4"></div>
-                    </div>
-                    <div class="face left">
-                        <div class="cube color-2"></div>
-                        <div class="cube color-3"></div>
-                        <div class="cube color-4"></div>
-                        <div class="cube color-1"></div>
-                        <div class="cube color-5"></div>
-                        <div class="cube color-3"></div>
-                        <div class="cube color-4"></div>
-                        <div class="cube color-2"></div>
-                        <div class="cube color-1"></div>
-                    </div>
-                    <div class="face right">
-                        <div class="cube color-3"></div>
-                        <div class="cube color-1"></div>
-                        <div class="cube color-2"></div>
-                        <div class="cube color-4"></div>
-                        <div class="cube color-5"></div>
-                        <div class="cube color-1"></div>
-                        <div class="cube color-2"></div>
-                        <div class="cube color-3"></div>
-                        <div class="cube color-4"></div>
-                    </div>
-                    <div class="face top">
-                        <div class="cube color-4"></div>
-                        <div class="cube color-2"></div>
-                        <div class="cube color-1"></div>
-                        <div class="cube color-3"></div>
-                        <div class="cube color-5"></div>
-                        <div class="cube color-2"></div>
-                        <div class="cube color-1"></div>
-                        <div class="cube color-3"></div>
-                        <div class="cube color-4"></div>
-                    </div>
-                    <div class="face bottom">
-                        <div class="cube color-5"></div>
-                        <div class="cube color-3"></div>
-                        <div class="cube color-4"></div>
-                        <div class="cube color-1"></div>
-                        <div class="cube color-2"></div>
-                        <div class="cube color-3"></div>
-                        <div class="cube color-4"></div>
-                        <div class="cube color-5"></div>
-                        <div class="cube color-1"></div>
-                    </div>
+        <div class="form-container">
+            <div class="form-box">
+                <h1 class="welcome-title">Bienvenido a StudyHub</h1>
+                <a href="/" class="google-login-btn">
+                    <i class="fab fa-google"></i>
+                    Continuar con Google
+                </a>
+                <div class="divider">
+                    <span>o</span>
                 </div>
-            </div>
-            <div class="image-buttons">
-                <a href="signup.html" class="img-btn">Sign Up</a>
+                <div class="form-toggle">
+                    <button class="toggle-btn active">Iniciar Sesión</button>
+                    <a href="signup.html" class="toggle-btn">Registrarse</a>
+                </div>
+
+                <form id="login-form" class="form">
+                    <div class="input-group">
+                        <input type="email" placeholder="Correo electrónico" required>
+                    </div>
+                    <div class="input-group">
+                        <input type="password" placeholder="Contraseña" id="password" required>
+                        <span class="toggle-password" onclick="togglePassword('password')">
+                            <i class="fas fa-eye"></i>
+                        </span>
+                    </div>
+                    <div class="login-options">
+                        <label class="remember-me">
+                            <input type="checkbox" name="remember">
+                            <span class="checkmark"></span>
+                            Recordarme
+                        </label>
+                        <a href="#" class="forgot-password">¿Olvidaste tu contraseña?</a>
+                    </div>
+                    <button type="submit" class="submit-btn">Iniciar Sesión</button>
+                </form>
             </div>
         </div>
+        <div id="canvas-container"></div>
     </div>
-    <script src="script.js"></script>
+
+    <!-- Scripts de la aplicación -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.min.js"></script>
+    <script src="js/three-scene.js"></script>
+    <script src="js/auth.js"></script>
+    
+    <script>
+        // Esperar a que el DOM esté completamente cargado
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('DOM completamente cargado');
+            // Cargar el script de la escena 3D después de un pequeño retraso
+            setTimeout(function() {
+                const script = document.createElement('script');
+                script.src = 'js/three-scene.js';
+                document.body.appendChild(script);
+            }, 100);
+        });
+    </script>
 </body>
 </html>
