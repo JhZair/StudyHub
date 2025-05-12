@@ -21,39 +21,6 @@ let uploadedFiles = {
     }
 };
 
-// Cargar username desde localStorage al iniciar
-document.addEventListener("DOMContentLoaded", () => {
-    const savedUsername = localStorage.getItem("username");
-    if (savedUsername) {
-        document.getElementById("usernameDisplay").textContent = savedUsername;
-        document.getElementById("usernameInput").style.display = "none";
-        document.getElementById("saveUsernameBtn").textContent = "Cambiar Nombre";
-    }
-});
-
-function saveUsername() {
-    const usernameInput = document.getElementById("usernameInput");
-    const username = usernameInput.value.trim();
-    if (username) {
-        localStorage.setItem("username", username);
-        document.getElementById("usernameDisplay").textContent = username;
-        usernameInput.style.display = "none";
-        document.getElementById("saveUsernameBtn").textContent = "Cambiar Nombre";
-    } else {
-        alert("Por favor, ingresa un nombre de usuario.");
-    }
-}
-
-function toggleUsernameInput() {
-    const usernameInput = document.getElementById("usernameInput");
-    if (usernameInput.style.display === "none") {
-        usernameInput.style.display = "block";
-        usernameInput.focus();
-    } else {
-        usernameInput.style.display = "none";
-    }
-}
-
 function openResourceModal(courseTitle) {
     const modal = document.getElementById("resourceModal");
     const modalTitle = document.getElementById("resourceModalTitle");

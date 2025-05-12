@@ -1,0 +1,62 @@
+[
+  {
+    "id": 1,
+    "enunciado": "¿Cuál de los siguientes es un principio clave de la web semántica?",
+    "opciones": ["Uso exclusivo de HTML5", "Enlazar datos mediante RDF y URIs", "Uso de CSS para datos estructurados", "Dependencia de bases de datos relacionales"],
+    "respuestaCorrecta": "Enlazar datos mediante RDF y URIs"
+  },
+  {
+    "id": 2,
+    "enunciado": "En el contexto de RDF, ¿qué representa un triple?",
+    "opciones": ["Un enlace HTML", "Una relación sujeto-predicado-objeto", "Una consulta SQL", "Un esquema de base de datos"],
+    "respuestaCorrecta": "Una relación sujeto-predicado-objeto"
+  },
+  {
+    "id": 3,
+    "enunciado": "¿Qué esquema de URI se utiliza comúnmente para identificar recursos en la web?",
+    "opciones": ["FTP", "HTTP/HTTPS", "MAILTO", "TEL"],
+    "respuestaCorrecta": "HTTP/HTTPS"
+  },
+  {
+    "id": 4,
+    "enunciado": "En una base de datos relacional, ¿qué es una entidad?",
+    "opciones": ["Un campo de texto", "Un objeto con atributos que se almacena en una tabla", "Un índice de búsqueda", "Una consulta SQL"],
+    "respuestaCorrecta": "Un objeto con atributos que se almacena en una tabla"
+  },
+  {
+    "id": 5,
+    "enunciado": "¿Qué estándar de la web semántica permite definir vocabularios para describir datos?",
+    "opciones": ["HTML", "OWL", "CSS", "JSON"],
+    "respuestaCorrecta": "OWL"
+  },
+  {
+    "id": 6,
+    "enunciado": "¿Cuál es la función principal de una URL en el desarrollo web?",
+    "opciones": ["Definir estilos visuales", "Identificar y localizar recursos en la red", "Almacenar datos en el servidor", "Ejecutar scripts del lado del cliente"],
+    "respuestaCorrecta": "Identificar y localizar recursos en la red"
+  },
+  {
+    "id": 7,
+    "enunciado": "En el contexto de RDF, ¿qué es un recurso?",
+    "opciones": ["Una tabla de base de datos", "Cualquier cosa que pueda ser identificada por un URI", "Un archivo CSS", "Un script JavaScript"],
+    "respuestaCorrecta": "Cualquier cosa que pueda ser identificada por un URI"
+  },
+  {
+    "id": 8,
+    "enunciado": "¿Qué etiqueta HTML5 mejora la semántica al definir contenido principal de una página web?",
+    "opciones": ["<div>", "<section>", "<main>", "<span>"],
+    "respuestaCorrecta": "<main>"
+  },
+  {
+    "id": 9,
+    "enunciado": "En el diseño de bases de datos, ¿qué representa una clave primaria?",
+    "opciones": ["Un campo opcional", "Un identificador único para cada registro", "Un índice secundario", "Un campo de texto largo"],
+    "respuestaCorrecta": "Un identificador único para cada registro"
+  },
+  {
+    "id": 10,
+    "enunciado": "¿Qué tecnología permite consultar datos en la web semántica usando un lenguaje similar a SQL?",
+    "opciones": ["SPARQL", "XPath", "JSON-LD", "XSLT"],
+    "respuestaCorrecta": "SPARQL"
+  }
+]

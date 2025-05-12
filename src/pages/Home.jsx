@@ -5,7 +5,6 @@ import imagenHome from "/images/studyhub3.5.JPG";
 export default function Home() {
   return (
     <div className="min-h-screen bg-gray-100 text-white">
-      {/* Header similar al de Simulacros */}
       <header className="bg-slate-900 p-6 flex items-center justify-between shadow-md">
         <div className="flex items-center gap-10 ml-2">
           <Link to="/" className="text-2xl font-bold cursor-pointer">
@@ -27,18 +26,11 @@ export default function Home() {
         </div>
       </header>
 
-      {/* Contenido central: texto + espacio para imagen */}
       <main className="flex flex-col items-center justify-center px-44 py-20 sm:flex-row sm:justify-around gap-5">
-        <div className="bg-gray-700 p-6 rounded-lg max-w-md text-center">
-          <h2 className="text-2xl font-semibold mb-4">Bienvenido a StudyHub</h2>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero.
-            Sed cursus ante dapibus diam.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero.
-            Sed cursus ante dapibus diam.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero.
-            Sed cursus ante dapibus diam.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero.
-            Sed cursus ante dapibus diam.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero.
-            Sed cursus ante dapibus diam.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero.
-            Sed cursus ante dapibus diam.
+        <div className="bg-gray-700 p-16 rounded-lg max-w-md text-center">
+          <h2 className="text-4xl font-semibold mb-4">Bienvenido a StudyHub</h2>
+          <p className="text-ls">
+          Inspiramos a estudiantes a dominar sus exámenes con un repositorio colaborativo que ofrece recursos prácticos, una comunidad vibrante, y herramientas innovadoras como búsqueda inteligente, simulaciones interactivas y organización eficiente para aprender y prepararse con precisión.
           </p>
         </div>
           <div className="w-full max-w-xl min-h-[430px] rounded-lg shadow bg-gray-600 flex items-center justify-center text-gray-400 p-4">

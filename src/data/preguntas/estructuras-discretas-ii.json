@@ -1,0 +1,62 @@
+[
+  {
+    "id": 1,
+    "enunciado": "¿Cuántas formas hay de seleccionar 3 bolas de un conjunto de 5 bolas rojas y 3 bolas azules si al menos una debe ser roja?",
+    "opciones": ["50", "56", "60", "64"],
+    "respuestaCorrecta": "56"
+  },
+  {
+    "id": 2,
+    "enunciado": "La función generatriz de la secuencia {1, 2, 3, 4, ...} es:",
+    "opciones": ["1/(1-x)", "x/(1-x)^2", "1/(1-x)^2", "x/(1-x)"],
+    "respuestaCorrecta": "x/(1-x)^2"
+  },
+  {
+    "id": 3,
+    "enunciado": "En un grafo completo K₅, ¿cuál es el número total de aristas?",
+    "opciones": ["5", "10", "15", "20"],
+    "respuestaCorrecta": "10"
+  },
+  {
+    "id": 4,
+    "enunciado": "¿Cuántos árboles etiquetados con 4 vértices existen según la fórmula de Cayley?",
+    "opciones": ["4", "8", "16", "24"],
+    "respuestaCorrecta": "16"
+  },
+  {
+    "id": 5,
+    "enunciado": "En el problema de flujo máximo, el teorema de Ford-Fulkerson garantiza encontrar el flujo máximo si:",
+    "opciones": ["El grafo es no dirigido", "Las capacidades son enteras", "No hay ciclos", "Existe un camino de aumento"],
+    "respuestaCorrecta": "Existe un camino de aumento"
+  },
+  {
+    "id": 6,
+    "enunciado": "¿Cuál es el coeficiente de x³ en la expansión de (1 + x)⁵ usando el teorema del binomio?",
+    "opciones": ["5", "10", "20", "30"],
+    "respuestaCorrecta": "10"
+  },
+  {
+    "id": 7,
+    "enunciado": "Un grafo con 6 vértices y 9 aristas, ¿puede ser un árbol?",
+    "opciones": ["Sí, siempre", "No, tiene demasiadas aristas", "Sí, si es conexo", "No, debe tener 6 aristas"],
+    "respuestaCorrecta": "No, tiene demasiadas aristas"
+  },
+  {
+    "id": 8,
+    "enunciado": "¿Cuántas permutaciones de las letras de la palabra 'DISCRETO' existen si las vocales deben estar juntas?",
+    "opciones": ["720", "1440", "2880", "5040"],
+    "respuestaCorrecta": "1440"
+  },
+  {
+    "id": 9,
+    "enunciado": "En un grafo bipartito completo K₃,₄, ¿cuál es el número de aristas?",
+    "opciones": ["7", "10", "12", "14"],
+    "respuestaCorrecta": "12"
+  },
+  {
+    "id": 10,
+    "enunciado": "La función generatriz para el número de formas de dar cambio de n centavos usando monedas de 1, 5 y 10 centavos es:",
+    "opciones": ["1/(1-x)(1-x^5)(1-x^10)", "1/(1-x)(1-x^5)", "1/(1-x^5)(1-x^10)", "1/(1-x)"],
+    "respuestaCorrecta": "1/(1-x)(1-x^5)(1-x^10)"
+  }
+]

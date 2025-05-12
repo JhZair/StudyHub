@@ -1,0 +1,112 @@
+[
+  {
+    "id": 1,
+    "enunciado": "¿Cuál de los siguientes es un beneficio de participar en actividades extracurriculares universitarias?",
+    "opciones": [
+      "Disminución del rendimiento académico",
+      "Mayor aislamiento social",
+      "Desarrollo de habilidades blandas",
+      "Menos oportunidades de networking"
+    ],
+    "respuestaCorrecta": "Desarrollo de habilidades blandas"
+  },
+  {
+    "id": 2,
+    "enunciado": "¿Qué técnica de estudio es más efectiva según investigaciones recientes?",
+    "opciones": [
+      "Releer el material varias veces",
+      "Subrayar textos completos",
+      "Práctica de recuperación (hacer pruebas)",
+      "Estudiar muchas horas seguidas"
+    ],
+    "respuestaCorrecta": "Práctica de recuperación (hacer pruebas)"
+  },
+  {
+    "id": 3,
+    "enunciado": "¿Cuál es la mejor estrategia para manejar el estrés universitario?",
+    "opciones": [
+      "Dejar todo para última hora",
+      "Dormir menos para estudiar más",
+      "Establecer un horario equilibrado",
+      "Evitar pedir ayuda"
+    ],
+    "respuestaCorrecta": "Establecer un horario equilibrado"
+  },
+  {
+    "id": 4,
+    "enunciado": "¿Qué caracteriza al pensamiento crítico universitario?",
+    "opciones": [
+      "Aceptar toda información sin cuestionar",
+      "Memorizar datos sin analizarlos",
+      "Evaluar argumentos de manera objetiva",
+      "Seguir siempre la opinión mayoritaria"
+    ],
+    "respuestaCorrecta": "Evaluar argumentos de manera objetiva"
+  },
+  {
+    "id": 5,
+    "enunciado": "¿Qué es el plagio académico?",
+    "opciones": [
+      "Citar correctamente las fuentes",
+      "Usar ideas ajenas sin dar crédito",
+      "Parafrasear con tus propias palabras",
+      "Hacer referencias bibliográficas"
+    ],
+    "respuestaCorrecta": "Usar ideas ajenas sin dar crédito"
+  },
+  {
+    "id": 6,
+    "enunciado": "¿Qué es un sílabo universitario?",
+    "opciones": [
+      "Un resumen del curso",
+      "Un contrato académico entre profesor y estudiantes",
+      "Un libro de texto",
+      "Un examen parcial"
+    ],
+    "respuestaCorrecta": "Un contrato académico entre profesor y estudiantes"
+  },
+  {
+    "id": 7,
+    "enunciado": "¿Cuál es la mejor estrategia para tomar apuntes en clase?",
+    "opciones": [
+      "Escribir todo lo que dice el profesor",
+      "Usar solo grabaciones de audio",
+      "Tomar notas con tus propias palabras",
+      "No tomar apuntes"
+    ],
+    "respuestaCorrecta": "Tomar notas con tus propias palabras"
+  },
+  {
+    "id": 8,
+    "enunciado": "¿Qué es la procrastinación?",
+    "opciones": [
+      "Un método de estudio",
+      "Planificación efectiva del tiempo",
+      "Postergar tareas importantes",
+      "Una técnica de relajación"
+    ],
+    "respuestaCorrecta": "Postergar tareas importantes"
+  },
+  {
+    "id": 9,
+    "enunciado": "¿Qué es el aprendizaje activo?",
+    "opciones": [
+      "Aprender solo teoría",
+      "Participación activa en el proceso de aprendizaje",
+      "Memorización sin comprensión",
+      "Estudiar sin hacer preguntas"
+    ],
+    "respuestaCorrecta": "Participación activa en el proceso de aprendizaje"
+  },
+  {
+    "id": 10,
+    "enunciado": "¿Por qué es importante la retroalimentación en el aprendizaje universitario?",
+    "opciones": [
+      "Porque permite mejorar el rendimiento",
+      "Porque es un requisito administrativo",
+      "Porque ocupa tiempo de clase",
+      "Porque siempre es positiva"
+    ],
+    "respuestaCorrecta": "Porque permite mejorar el rendimiento"
+  }
+]

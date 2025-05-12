@@ -1,0 +1,82 @@
+[
+  {
+    "id": 1,
+    "enunciado": "¿Cuál de las siguientes es una proposición lógica válida?",
+    "opciones": [
+      "¿Qué hora es?",
+      "x + 2 = 5",
+      "El cielo es azul",
+      "Por favor, siéntate"
+    ],
+    "respuestaCorrecta": "El cielo es azul"
+  },
+  {
+    "id": 2,
+    "enunciado": "¿Cuál es la negación lógica de 'Si llueve, entonces me mojo'?",
+    "opciones": [
+      "Llueve y no me mojo",
+      "No llueve o me mojo",
+      "Si no llueve, no me mojo",
+      "Llueve o no me mojo"
+    ],
+    "respuestaCorrecta": "Llueve y no me mojo"
+  },
+  {
+    "id": 3,
+    "enunciado": "¿Cuál es el valor de verdad de (p ∧ q) ∨ (¬p ∧ q) si p es verdadero y q es falso?",
+    "opciones": ["Verdadero", "Falso", "No se puede determinar", "Ninguna de las anteriores"],
+    "respuestaCorrecta": "Falso"
+  },
+  {
+    "id": 4,
+    "enunciado": "¿Cuál es el número mínimo de colores necesarios para colorear cualquier mapa plano?",
+    "opciones": ["2", "3", "4", "5"],
+    "respuestaCorrecta": "4"
+  },
+  {
+    "id": 5,
+    "enunciado": "¿Cuál es el resultado de aplicar la operación XOR a los números binarios 1010 y 1100?",
+    "opciones": ["0110", "1110", "1010", "0101"],
+    "respuestaCorrecta": "0110"
+  },
+  {
+    "id": 6,
+    "enunciado": "¿Cuál de las siguientes relaciones es reflexiva, simétrica y transitiva?",
+    "opciones": [
+      "Relación 'mayor que' en los números reales",
+      "Relación 'divide a' en los números enteros",
+      "Relación de igualdad",
+      "Relación 'es padre de'"
+    ],
+    "respuestaCorrecta": "Relación de igualdad"
+  },
+  {
+    "id": 7,
+    "enunciado": "¿Cuál es el número de aristas en un grafo completo con 5 vértices?",
+    "opciones": ["5", "10", "15", "20"],
+    "respuestaCorrecta": "10"
+  },
+  {
+    "id": 8,
+    "enunciado": "¿Cuál es el resultado de la suma binaria 1011 + 1101?",
+    "opciones": ["10100", "11000", "11100", "10000"],
+    "respuestaCorrecta": "11000"
+  },
+  {
+    "id": 9,
+    "enunciado": "¿Cuál de los siguientes grafos no es plano?",
+    "opciones": [
+      "Grafo completo K₄",
+      "Grafo bipartito completo K₂,₃",
+      "Grafo completo K₅",
+      "Grafo de rueda W₄"
+    ],
+    "respuestaCorrecta": "Grafo completo K₅"
+  },
+  {
+    "id": 10,
+    "enunciado": "¿Cuál es el número de permutaciones posibles de las letras en la palabra 'LOGICA'?",
+    "opciones": ["120", "360", "720", "5040"],
+    "respuestaCorrecta": "720"
+  }
+]

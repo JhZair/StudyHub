@@ -2,13 +2,14 @@ import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 
 const cursosPorSemestre = {
-  I: ["Curso 1.1", "Curso 1.2", "Curso 1.3", "Curso 1.4", "Curso 1.5", "Curso 1.6"],
-  II: ["Curso 2.1", "Curso 2.2", "Curso 2.3", "Curso 2.4", "Curso 2.5", "Curso 2.6"],
-  III: ["Cálculo","Ciencia de la computación II","Álgebra abstracta","Desarrollo basado en plataformas","Arqutectura de computadores","Antropología filosófica y teológica"],
+  I:["Matematica I","Introduccion a la Vida Universitaria","Comunicacion","Estructuras Discretas I","Programacion de VideoJuegos","Metodologia del Estudio"],
+  II:["Matematica II","Estructuras Discretas II","I a Ciencias de la Computacion","Ciencia de la Computacion I","Introduccion a la Filosofia","Persona Matrimonio y Familia"],
+  III: ["Cálculo I","Ciencia de la computación II","Álgebra abstracta","Desarrollo basado en plataformas"],
 };
 
 export default function Simulacros() {
   const [semestresAbiertos, setSemestresAbiertos] = useState({});
+  const navigate = useNavigate();
 
   const toggleSemestre = (semestre) => {
     setSemestresAbiertos((prev) => ({
@@ -16,6 +17,14 @@ export default function Simulacros() {
       [semestre]: !prev[semestre],
     }));
   };
+
+  const slugify = (str) =>
+  str
+    .normalize("NFD") // elimina tildes
+    .replace(/[\u0300-\u036f]/g, "")
+    .toLowerCase()
+    .replace(/\s+/g, "-")
+    .replace(/[^a-z0-9-]/g, "");
 
   return (
     <div className="min-h-screen bg-gray-300">
@@ -47,7 +56,8 @@ export default function Simulacros() {
                   {cursosPorSemestre[semestre].map((curso, idx) => (
                     <div
                       key={idx}
-                      className="bg-slate-800 text-white py-4 text-center rounded shadow"
+                      onClick={() => navigate(`/simulacros/${slugify(curso)}`)}
+                      className="cursor-pointer bg-slate-800 text-white py-4 text-center rounded shadow hover:bg-slate-700 transition"
                     >
                       {curso}
                     </div>

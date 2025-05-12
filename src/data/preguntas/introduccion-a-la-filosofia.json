@@ -1,0 +1,112 @@
+[
+  {
+    "id": 1,
+    "enunciado": "¿Qué es la filosofía?",
+    "opciones": [
+      "Un conjunto de creencias religiosas",
+      "Un estudio crítico de preguntas fundamentales",
+      "Una ciencia exacta",
+      "Una forma de arte"
+    ],
+    "respuestaCorrecta": "Un estudio crítico de preguntas fundamentales"
+  },
+  {
+    "id": 2,
+    "enunciado": "¿Quién es considerado el padre de la filosofía occidental?",
+    "opciones": [
+      "Aristóteles",
+      "Sócrates",
+      "Platón",
+      "Tales de Mileto"
+    ],
+    "respuestaCorrecta": "Tales de Mileto"
+  },
+  {
+    "id": 3,
+    "enunciado": "¿Qué es la metafísica?",
+    "opciones": [
+      "Estudio de lo sobrenatural",
+      "Rama de la filosofía que estudia la realidad",
+      "Ciencia de los números",
+      "Teoría del conocimiento"
+    ],
+    "respuestaCorrecta": "Rama de la filosofía que estudia la realidad"
+  },
+  {
+    "id": 4,
+    "enunciado": "¿Qué es la ética en filosofía?",
+    "opciones": [
+      "Estudio de la moral y el comportamiento humano",
+      "Teoría política",
+      "Filosofía del lenguaje",
+      "Estética"
+    ],
+    "respuestaCorrecta": "Estudio de la moral y el comportamiento humano"
+  },
+  {
+    "id": 5,
+    "enunciado": "¿Qué es el método socrático?",
+    "opciones": [
+      "Un sistema de lógica formal",
+      "Un diálogo que busca la verdad mediante preguntas",
+      "Un tratado político",
+      "Una teoría del conocimiento"
+    ],
+    "respuestaCorrecta": "Un diálogo que busca la verdad mediante preguntas"
+  },
+  {
+    "id": 6,
+    "enunciado": "¿Qué es la epistemología?",
+    "opciones": [
+      "Estudio de la belleza",
+      "Teoría del conocimiento",
+      "Filosofía política",
+      "Ética aplicada"
+    ],
+    "respuestaCorrecta": "Teoría del conocimiento"
+  },
+  {
+    "id": 7,
+    "enunciado": "¿Qué es el dualismo cartesiano?",
+    "opciones": [
+      "Separación entre mente y cuerpo",
+      "Teoría política",
+      "Sistema ético",
+      "Método científico"
+    ],
+    "respuestaCorrecta": "Separación entre mente y cuerpo"
+  },
+  {
+    "id": 8,
+    "enunciado": "¿Qué es el imperativo categórico de Kant?",
+    "opciones": [
+      "Un principio moral universal",
+      "Una ley científica",
+      "Un método de enseñanza",
+      "Una teoría política"
+    ],
+    "respuestaCorrecta": "Un principio moral universal"
+  },
+  {
+    "id": 9,
+    "enunciado": "¿Qué es el nihilismo?",
+    "opciones": [
+      "Creencia en la ausencia de significado o valor",
+      "Sistema político",
+      "Teoría del conocimiento",
+      "Corriente artística"
+    ],
+    "respuestaCorrecta": "Creencia en la ausencia de significado o valor"
+  },
+  {
+    "id": 10,
+    "enunciado": "¿Qué es la mayéutica socrática?",
+    "opciones": [
+      "Método de enseñanza mediante preguntas",
+      "Teoría política",
+      "Sistema ético",
+      "Método científico"
+    ],
+    "respuestaCorrecta": "Método de enseñanza mediante preguntas"
+  }
+]
