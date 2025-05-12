@@ -1,0 +1,112 @@
+[
+  {
+    "id": 1,
+    "enunciado": "¿Cuál de los siguientes elementos NO forma parte del proceso de comunicación según el modelo de Shannon y Weaver?",
+    "opciones": [
+      "Emisor",
+      "Mensaje",
+      "Canal",
+      "Intención"
+    ],
+    "respuestaCorrecta": "Intención"
+  },
+  {
+    "id": 2,
+    "enunciado": "¿Qué tipo de comunicación se refiere al uso de gestos, posturas y expresiones faciales?",
+    "opciones": [
+      "Comunicación verbal",
+      "Comunicación no verbal",
+      "Comunicación escrita",
+      "Comunicación digital"
+    ],
+    "respuestaCorrecta": "Comunicación no verbal"
+  },
+  {
+    "id": 3,
+    "enunciado": "¿Qué es la asertividad en la comunicación?",
+    "opciones": [
+      "Ser agresivo al expresarse",
+      "Expresar pensamientos y sentimientos de manera clara y respetuosa",
+      "Estar de acuerdo con todo lo que dicen los demás",
+      "Evitar el conflicto a toda costa"
+    ],
+    "respuestaCorrecta": "Expresar pensamientos y sentimientos de manera clara y respetuosa"
+  },
+  {
+    "id": 4,
+    "enunciado": "¿Cuál es la función principal de la comunicación persuasiva?",
+    "opciones": [
+      "Informar objetivamente",
+      "Influir en las actitudes o comportamientos",
+      "Entretener al público",
+      "Documentar hechos"
+    ],
+    "respuestaCorrecta": "Influir en las actitudes o comportamientos"
+  },
+  {
+    "id": 5,
+    "enunciado": "¿Qué es la escucha activa?",
+    "opciones": [
+      "Oír sin prestar atención",
+      "Escuchar para responder en lugar de entender",
+      "Prestar atención total al mensaje del emisor",
+      "Interrumpir constantemente al hablante"
+    ],
+    "respuestaCorrecta": "Prestar atención total al mensaje del emisor"
+  },
+  {
+    "id": 6,
+    "enunciado": "¿Qué elemento de la comunicación se refiere a la respuesta del receptor al mensaje?",
+    "opciones": [
+      "Retroalimentación",
+      "Código",
+      "Canal",
+      "Contexto"
+    ],
+    "respuestaCorrecta": "Retroalimentación"
+  },
+  {
+    "id": 7,
+    "enunciado": "¿Qué tipo de barrera de la comunicación se refiere a diferencias culturales o de idioma?",
+    "opciones": [
+      "Barrera semántica",
+      "Barrera física",
+      "Barrera psicológica",
+      "Barrera fisiológica"
+    ],
+    "respuestaCorrecta": "Barrera semántica"
+  },
+  {
+    "id": 8,
+    "enunciado": "¿Qué caracteriza a la comunicación asertiva?",
+    "opciones": [
+      "Ser agresivo y dominante",
+      "Ser pasivo y sumiso",
+      "Expresarse con claridad respetando a los demás",
+      "Evitar expresar la propia opinión"
+    ],
+    "respuestaCorrecta": "Expresarse con claridad respetando a los demás"
+  },
+  {
+    "id": 9,
+    "enunciado": "¿Qué es la comunicación no verbal paralingüística?",
+    "opciones": [
+      "El uso de gestos y movimientos",
+      "Elementos vocales como el tono y volumen",
+      "La comunicación escrita",
+      "El lenguaje corporal"
+    ],
+    "respuestaCorrecta": "Elementos vocales como el tono y volumen"
+  },
+  {
+    "id": 10,
+    "enunciado": "¿Qué es la comunicación asincrónica?",
+    "opciones": [
+      "Comunicación en tiempo real",
+      "Comunicación con retraso en la respuesta",
+      "Comunicación cara a cara",
+      "Comunicación telefónica"
+    ],
+    "respuestaCorrecta": "Comunicación con retraso en la respuesta"
+  }
+]

@@ -1,0 +1,112 @@
+[
+  {
+    "id": 1,
+    "enunciado": "¿Cuál de los siguientes NO es un motor de videojuegos comúnmente utilizado?",
+    "opciones": [
+      "Unreal Engine",
+      "Unity",
+      "GameMaker Studio",
+      "Visual Studio"
+    ],
+    "respuestaCorrecta": "Visual Studio"
+  },
+  {
+    "id": 2,
+    "enunciado": "¿Qué patrón de diseño se utiliza comúnmente para gestionar las diferentes pantallas de un videojuego?",
+    "opciones": [
+      "Singleton",
+      "State",
+      "Observer",
+      "Factory"
+    ],
+    "respuestaCorrecta": "State"
+  },
+  {
+    "id": 3,
+    "enunciado": "¿Qué es un 'game loop'?",
+    "opciones": [
+      "Un bucle que se repite mientras el juego está en ejecución",
+      "Un tipo de animación",
+      "Un patrón de diseño para niveles",
+      "Un error de programación común"
+    ],
+    "respuestaCorrecta": "Un bucle que se repite mientras el juego está en ejecución"
+  },
+  {
+    "id": 4,
+    "enunciado": "¿Cuál de los siguientes NO es un método común de detección de colisiones?",
+    "opciones": [
+      "Bounding Box",
+      "Bounding Circle",
+      "Separating Axis Theorem (SAT)",
+      "Binary Space Partitioning (BSP)"
+    ],
+    "respuestaCorrecta": "Binary Space Partitioning (BSP)"
+  },
+  {
+    "id": 5,
+    "enunciado": "¿Qué significa FPS en el contexto de videojuegos?",
+    "opciones": [
+      "First Person Shooter",
+      "Frames Per Second",
+      "Final Player Score",
+      "Free Play System"
+    ],
+    "respuestaCorrecta": "Frames Per Second"
+  },
+  {
+    "id": 6,
+    "enunciado": "¿Qué es un 'sprite' en programación de videojuegos?",
+    "opciones": [
+      "Un tipo de dato para números enteros",
+      "Una imagen 2D que forma parte de una escena",
+      "Un efecto de partículas",
+      "Un tipo de colisión"
+    ],
+    "respuestaCorrecta": "Una imagen 2D que forma parte de una escena"
+  },
+  {
+    "id": 7,
+    "enunciado": "¿Qué técnica se utiliza para simular gravedad en un juego de plataformas 2D?",
+    "opciones": [
+      "Aplicar una aceleración constante hacia abajo",
+      "Reducir la velocidad horizontal del personaje",
+      "Invertir los controles",
+      "Aumentar la fricción"
+    ],
+    "respuestaCorrecta": "Aplicar una aceleración constante hacia abajo"
+  },
+  {
+    "id": 8,
+    "enunciado": "¿Qué es un 'shader' en gráficos por computadora?",
+    "opciones": [
+      "Un tipo de textura",
+      "Un programa que se ejecuta en la GPU",
+      "Un objeto 3D",
+      "Un formato de archivo de imagen"
+    ],
+    "respuestaCorrecta": "Un programa que se ejecuta en la GPU"
+  },
+  {
+    "id": 9,
+    "enunciado": "¿Qué estructura de datos es más eficiente para almacenar una cuadrícula de un juego de ajedrez?",
+    "opciones": [
+      "Lista enlazada",
+      "Matriz bidimensional",
+      "Árbol binario",
+      "Grafo"
+    ],
+    "respuestaCorrecta": "Matriz bidimensional"
+  },
+  {
+    "id": 10,
+    "enunciado": "¿Qué técnica se utiliza para suavizar los bordes pixelados en gráficos 3D?",
+    "opciones": [
+      "Mipmapping",
+      "Antialiasing",
+      "Z-buffering",
+      "Ray tracing"
+    ],
+    "respuestaCorrecta": "Antialiasing"
+  }
+]

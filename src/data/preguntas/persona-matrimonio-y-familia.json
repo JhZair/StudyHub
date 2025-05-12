@@ -1,0 +1,112 @@
+[
+  {
+    "id": 1,
+    "enunciado": "¿Qué es la antropología filosófica?",
+    "opciones": [
+      "Estudio de culturas antiguas",
+      "Estudio filosófico del ser humano",
+      "Ciencia forense",
+      "Psicología clínica"
+    ],
+    "respuestaCorrecta": "Estudio filosófico del ser humano"
+  },
+  {
+    "id": 2,
+    "enunciado": "¿Qué es el matrimonio desde la perspectiva antropológica?",
+    "opciones": [
+      "Un contrato legal",
+      "Una unión estable entre personas",
+      "Una institución social con reconocimiento cultural",
+      "Un simple acuerdo entre dos personas"
+    ],
+    "respuestaCorrecta": "Una institución social con reconocimiento cultural"
+  },
+  {
+    "id": 3,
+    "enunciado": "¿Qué es la familia nuclear?",
+    "opciones": [
+      "Familia extensa",
+      "Padres e hijos viviendo juntos",
+      "Familia política",
+      "Familia sin hijos"
+    ],
+    "respuestaCorrecta": "Padres e hijos viviendo juntos"
+  },
+  {
+    "id": 4,
+    "enunciado": "¿Qué es la filiación?",
+    "opciones": [
+      "Relación jurídica entre padres e hijos",
+      "Un tipo de matrimonio",
+      "Una doctrina religiosa",
+      "Un sistema económico"
+    ],
+    "respuestaCorrecta": "Relación jurídica entre padres e hijos"
+  },
+  {
+    "id": 5,
+    "enunciado": "¿Qué es la familia extensa?",
+    "opciones": [
+      "Solo padres e hijos",
+      "Varias generaciones viviendo juntas",
+      "Familia sin hijos",
+      "Familia con un solo padre"
+    ],
+    "respuestaCorrecta": "Varias generaciones viviendo juntas"
+  },
+  {
+    "id": 6,
+    "enunciado": "¿Qué es el parentesco?",
+    "opciones": [
+      "Relación biológica exclusivamente",
+      "Vínculo legal entre personas",
+      "Relación socialmente reconocida",
+      "Amistad cercana"
+    ],
+    "respuestaCorrecta": "Relación socialmente reconocida"
+  },
+  {
+    "id": 7,
+    "enunciado": "¿Qué es la endogamia?",
+    "opciones": [
+      "Matrimonio fuera del grupo social",
+      "Matrimonio dentro del mismo grupo",
+      "Divorcio",
+      "Matrimonio civil"
+    ],
+    "respuestaCorrecta": "Matrimonio dentro del mismo grupo"
+  },
+  {
+    "id": 8,
+    "enunciado": "¿Qué es la exogamia?",
+    "opciones": [
+      "Matrimonio dentro del mismo grupo",
+      "Matrimonio fuera del grupo social",
+      "Poligamia",
+      "Monogamia"
+    ],
+    "respuestaCorrecta": "Matrimonio fuera del grupo social"
+  },
+  {
+    "id": 9,
+    "enunciado": "¿Qué es la poligamia?",
+    "opciones": [
+      "Matrimonio con una sola persona",
+      "Matrimonio con múltiples cónyuges",
+      "Matrimonio temporal",
+      "Matrimonio sin hijos"
+    ],
+    "respuestaCorrecta": "Matrimonio con múltiples cónyuges"
+  },
+  {
+    "id": 10,
+    "enunciado": "¿Qué es la monogamia?",
+    "opciones": [
+      "Matrimonio con una sola persona",
+      "Matrimonio con múltiples cónyuges",
+      "Matrimonio temporal",
+      "Matrimonio sin compromiso"
+    ],
+    "respuestaCorrecta": "Matrimonio con una sola persona"
+  }
+]

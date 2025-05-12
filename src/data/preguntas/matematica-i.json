@@ -1,0 +1,82 @@
+[
+  {
+    "id": 1,
+    "enunciado": "¿Cuál es el valor de la siguiente expresión: lim(x→0) (sin(x)/x)?",
+    "opciones": ["0", "1", "∞", "No existe"],
+    "respuestaCorrecta": "1"
+  },
+  {
+    "id": 2,
+    "enunciado": "¿Cuál es la derivada de f(x) = e^(2x) + 3x^2?",
+    "opciones": [
+      "2e^(2x) + 6x",
+      "e^(2x) + 6x",
+      "2e^(2x) + 3x",
+      "e^(2x) + 3x^2"
+    ],
+    "respuestaCorrecta": "2e^(2x) + 6x"
+  },
+  {
+    "id": 3,
+    "enunciado": "¿Cuál es la solución de la ecuación log₂(x) + log₂(x-2) = 3?",
+    "opciones": ["2", "4", "6", "8"],
+    "respuestaCorrecta": "4"
+  },
+  {
+    "id": 4,
+    "enunciado": "¿Cuál es el valor de la integral ∫(2x + 3) dx de 0 a 2?",
+    "opciones": ["4", "6", "8", "10"],
+    "respuestaCorrecta": "10"
+  },
+  {
+    "id": 5,
+    "enunciado": "¿Cuál es la ecuación de la recta tangente a la curva y = x² en el punto (2,4)?",
+    "opciones": [
+      "y = 4x - 4",
+      "y = 4x + 4",
+      "y = 2x + 4",
+      "y = 2x - 4"
+    ],
+    "respuestaCorrecta": "y = 4x - 4"
+  },
+  {
+    "id": 6,
+    "enunciado": "¿Cuál es el valor de la suma de los primeros 10 términos de la progresión aritmética: 3, 7, 11, 15,...?",
+    "opciones": ["210", "220", "230", "240"],
+    "respuestaCorrecta": "210"
+  },
+  {
+    "id": 7,
+    "enunciado": "¿Cuál es la solución del sistema de ecuaciones lineales: 2x + 3y = 7; 4x - y = 5?",
+    "opciones": [
+      "x=1, y=2",
+      "x=2, y=1",
+      "x=1, y=1",
+      "x=2, y=2"
+    ],
+    "respuestaCorrecta": "x=1, y=2"
+  },
+  {
+    "id": 8,
+    "enunciado": "¿Cuál es el valor de la siguiente expresión: (1 + i)², donde i es la unidad imaginaria?",
+    "opciones": ["0", "2i", "-2i", "1 + 2i"],
+    "respuestaCorrecta": "2i"
+  },
+  {
+    "id": 9,
+    "enunciado": "¿Qué tipo de cónica representa la ecuación: x²/9 + y²/4 = 1?",
+    "opciones": [
+      "Circunferencia",
+      "Elipse",
+      "Hipérbola",
+      "Parábola"
+    ],
+    "respuestaCorrecta": "Elipse"
+  },
+  {
+    "id": 10,
+    "enunciado": "¿Cuál es el valor de la siguiente expresión trigonométrica: sen(π/2) + cos(π)?",
+    "opciones": ["0", "1", "2", "-1"],
+    "respuestaCorrecta": "0"
+  }
+]

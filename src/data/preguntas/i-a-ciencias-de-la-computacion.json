@@ -1,0 +1,112 @@
+[
+  {
+    "id": 1,
+    "enunciado": "¿Qué es un algoritmo en ciencias de la computación?",
+    "opciones": [
+      "Un lenguaje de programación",
+      "Un conjunto de instrucciones paso a paso para resolver un problema",
+      "Un tipo de dato abstracto",
+      "Un dispositivo de hardware"
+    ],
+    "respuestaCorrecta": "Un conjunto de instrucciones paso a paso para resolver un problema"
+  },
+  {
+    "id": 2,
+    "enunciado": "¿Qué es la complejidad algorítmica?",
+    "opciones": [
+      "La longitud del código fuente de un programa",
+      "La cantidad de memoria que usa un algoritmo",
+      "Una medida de los recursos computacionales que necesita un algoritmo",
+      "El número de líneas de código de un programa"
+    ],
+    "respuestaCorrecta": "Una medida de los recursos computacionales que necesita un algoritmo"
+  },
+  {
+    "id": 3,
+    "enunciado": "¿Qué es la máquina de Turing?",
+    "opciones": [
+      "Un ordenador cuántico",
+      "Un modelo matemático de computación",
+      "Un lenguaje de programación antiguo",
+      "Un tipo de base de datos"
+    ],
+    "respuestaCorrecta": "Un modelo matemático de computación"
+  },
+  {
+    "id": 4,
+    "enunciado": "¿Qué es un lenguaje formal en teoría de la computación?",
+    "opciones": [
+      "Un lenguaje de programación específico",
+      "Un conjunto de cadenas de símbolos con reglas de formación",
+      "Un lenguaje hablado con reglas gramaticales estrictas",
+      "Un lenguaje de máquina"
+    ],
+    "respuestaCorrecta": "Un conjunto de cadenas de símbolos con reglas de formación"
+  },
+  {
+    "id": 5,
+    "enunciado": "¿Qué es un autómata finito?",
+    "opciones": [
+      "Un robot con inteligencia artificial",
+      "Un modelo computacional abstracto con estados finitos",
+      "Un ordenador cuántico",
+      "Un algoritmo de búsqueda"
+    ],
+    "respuestaCorrecta": "Un modelo computacional abstracto con estados finitos"
+  },
+  {
+    "id": 6,
+    "enunciado": "¿Qué es la tesis de Church-Turing?",
+    "opciones": [
+      "Una conjetura sobre números primos",
+      "Una hipótesis sobre la capacidad de cómputo de las máquinas de Turing",
+      "Un teorema de complejidad computacional",
+      "Un algoritmo de ordenación"
+    ],
+    "respuestaCorrecta": "Una hipótesis sobre la capacidad de cómputo de las máquinas de Turing"
+  },
+  {
+    "id": 7,
+    "enunciado": "¿Qué es un problema indecidible?",
+    "opciones": [
+      "Un problema sin solución",
+      "Un problema cuya solución se desconoce",
+      "Un problema para el cual no existe un algoritmo que pueda resolver todas sus instancias",
+      "Un problema con solución no entera"
+    ],
+    "respuestaCorrecta": "Un problema para el cual no existe un algoritmo que pueda resolver todas sus instancias"
+  },
+  {
+    "id": 8,
+    "enunciado": "¿Qué es la complejidad espacial de un algoritmo?",
+    "opciones": [
+      "La cantidad de memoria que utiliza el algoritmo",
+      "El tiempo que tarda en ejecutarse",
+      "El número de procesadores que utiliza",
+      "La longitud del código fuente"
+    ],
+    "respuestaCorrecta": "La cantidad de memoria que utiliza el algoritmo"
+  },
+  {
+    "id": 9,
+    "enunciado": "¿Qué es un lenguaje regular?",
+    "opciones": [
+      "Un lenguaje que puede ser reconocido por un autómata finito",
+      "Un lenguaje de programación estándar",
+      "Un lenguaje sin excepciones gramaticales",
+      "Un lenguaje con sintaxis simple"
+    ],
+    "respuestaCorrecta": "Un lenguaje que puede ser reconocido por un autómata finito"
+  },
+  {
+    "id": 10,
+    "enunciado": "¿Qué es la jerarquía de Chomsky?",
+    "opciones": [
+      "Un sistema de clasificación de lenguajes formales",
+      "Un método de análisis sintáctico",
+      "Un algoritmo de compresión de datos",
+      "Una técnica de programación estructurada"
+    ],
+    "respuestaCorrecta": "Un sistema de clasificación de lenguajes formales"
+  }
+]

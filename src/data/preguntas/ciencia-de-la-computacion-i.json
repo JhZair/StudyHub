@@ -1,0 +1,112 @@
+[
+  {
+    "id": 1,
+    "enunciado": "¿Qué es un paradigma de programación?",
+    "opciones": [
+      "Un lenguaje de programación específico",
+      "Un estilo o forma de programar",
+      "Un editor de código",
+      "Un patrón de diseño"
+    ],
+    "respuestaCorrecta": "Un estilo o forma de programar"
+  },
+  {
+    "id": 2,
+    "enunciado": "¿Qué caracteriza a la programación orientada a objetos?",
+    "opciones": [
+      "Uso exclusivo de funciones puras",
+      "Organización del código en objetos que contienen datos y comportamiento",
+      "Ejecución secuencial de instrucciones",
+      "Uso de estructuras de control anidadas"
+    ],
+    "respuestaCorrecta": "Organización del código en objetos que contienen datos y comportamiento"
+  },
+  {
+    "id": 3,
+    "enunciado": "¿Qué es la recursión en programación?",
+    "opciones": [
+      "Una función que se llama a sí misma",
+      "Un bucle infinito",
+      "Una estructura de datos",
+      "Un tipo de variable"
+    ],
+    "respuestaCorrecta": "Una función que se llama a sí misma"
+  },
+  {
+    "id": 4,
+    "enunciado": "¿Qué es la complejidad temporal de un algoritmo?",
+    "opciones": [
+      "El tiempo que tarda en ejecutarse",
+      "La cantidad de memoria que utiliza",
+      "El número de instrucciones que contiene",
+      "La dificultad de entender el código"
+    ],
+    "respuestaCorrecta": "El tiempo que tarda en ejecutarse"
+  },
+  {
+    "id": 5,
+    "enunciado": "¿Qué es un tipo de dato abstracto (TDA)?",
+    "opciones": [
+      "Un tipo de dato primitivo del lenguaje",
+      "Un modelo matemático de un tipo de datos",
+      "Una variable sin tipo definido",
+      "Un tipo de dato numérico"
+    ],
+    "respuestaCorrecta": "Un modelo matemático de un tipo de datos"
+  },
+  {
+    "id": 6,
+    "enunciado": "¿Qué es la programación funcional?",
+    "opciones": [
+      "Un paradigma que usa funciones matemáticas puras",
+      "Un lenguaje específico de programación",
+      "Programación con objetos",
+      "Programación de bajo nivel"
+    ],
+    "respuestaCorrecta": "Un paradigma que usa funciones matemáticas puras"
+  },
+  {
+    "id": 7,
+    "enunciado": "¿Qué es un árbol binario de búsqueda?",
+    "opciones": [
+      "Una estructura de datos no lineal",
+      "Un algoritmo de ordenación",
+      "Un tipo de base de datos",
+      "Un patrón de diseño"
+    ],
+    "respuestaCorrecta": "Una estructura de datos no lineal"
+  },
+  {
+    "id": 8,
+    "enunciado": "¿Qué es la programación dinámica?",
+    "opciones": [
+      "Un método para resolver problemas complejos dividiéndolos en subproblemas más simples",
+      "Un lenguaje de programación",
+      "Programación con variables dinámicas",
+      "Un tipo de estructura de datos"
+    ],
+    "respuestaCorrecta": "Un método para resolver problemas complejos dividiéndolos en subproblemas más simples"
+  },
+  {
+    "id": 9,
+    "enunciado": "¿Qué es un grafo en ciencias de la computación?",
+    "opciones": [
+      "Una representación visual de datos",
+      "Una estructura de datos que consta de nodos y aristas",
+      "Un tipo de variable",
+      "Un algoritmo de búsqueda"
+    ],
+    "respuestaCorrecta": "Una estructura de datos que consta de nodos y aristas"
+  },
+  {
+    "id": 10,
+    "enunciado": "¿Qué es la notación Big-O?",
+    "opciones": [
+      "Un lenguaje de programación",
+      "Una forma de describir el rendimiento de un algoritmo",
+      "Un tipo de dato",
+      "Un patrón de diseño"
+    ],
+    "respuestaCorrecta": "Una forma de describir el rendimiento de un algoritmo"
+  }
+]

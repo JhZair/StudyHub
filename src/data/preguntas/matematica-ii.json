@@ -1,0 +1,107 @@
+[
+  {
+    "id": 1,
+    "enunciado": "¿Cuál es la derivada parcial de f(x,y) = 3x²y + 2xy³ con respecto a x?",
+    "opciones": [
+      "6xy + 2y³",
+      "3x² + 6xy²",
+      "6xy + 6xy²",
+      "3x²y + 6xy²"
+    ],
+    "respuestaCorrecta": "6xy + 2y³"
+  },
+  {
+    "id": 2,
+    "enunciado": "¿Qué representa el teorema de Green en el plano?",
+    "opciones": [
+      "Relaciona una integral de línea con una integral doble",
+      "Calcula el área bajo una curva",
+      "Encuentra máximos y mínimos de funciones",
+      "Resuelve ecuaciones diferenciales"
+    ],
+    "respuestaCorrecta": "Relaciona una integral de línea con una integral doble"
+  },
+  {
+    "id": 3,
+    "enunciado": "¿Cuál es el valor de la integral doble ∫∫(x + y) dA sobre el rectángulo [0,1]×[0,2]?",
+    "opciones": ["1", "2", "3", "4"],
+    "respuestaCorrecta": "3"
+  },
+  {
+    "id": 4,
+    "enunciado": "¿Qué tipo de punto crítico tiene la función f(x,y) = x² + y² en (0,0)?",
+    "opciones": [
+      "Mínimo local",
+      "Máximo local",
+      "Punto de silla",
+      "Punto de inflexión"
+    ],
+    "respuestaCorrecta": "Mínimo local"
+  },
+  {
+    "id": 5,
+    "enunciado": "¿Cuál es el gradiente de la función f(x,y,z) = x²y + yz²?",
+    "opciones": [
+      "(2xy, x² + z², 2yz)",
+      "(2xy, x², z²)",
+      "(2x, 1, 2z)",
+      "(y, x + z², y)"
+    ],
+    "respuestaCorrecta": "(2xy, x² + z², 2yz)"
+  },
+  {
+    "id": 6,
+    "enunciado": "¿Qué representa el jacobiano de una transformación?",
+    "opciones": [
+      "La matriz de segundas derivadas",
+      "El determinante de la matriz de primeras derivadas parciales",
+      "La traza de la matriz hessiana",
+      "El gradiente de una función"
+    ],
+    "respuestaCorrecta": "El determinante de la matriz de primeras derivadas parciales"
+  },
+  {
+    "id": 7,
+    "enunciado": "¿Cuál es la ecuación del plano tangente a la superficie z = x² + y² en el punto (1,1,2)?",
+    "opciones": [
+      "z = 2x + 2y - 2",
+      "z = x + y",
+      "z = 2x + 2y - 1",
+      "z = x² + y²"
+    ],
+    "respuestaCorrecta": "z = 2x + 2y - 2"
+  },
+  {
+    "id": 8,
+    "enunciado": "¿Qué mide la integral de línea de un campo vectorial a lo largo de una curva?",
+    "opciones": [
+      "El área bajo la curva",
+      "El trabajo realizado por el campo a lo largo de la curva",
+      "La longitud de la curva",
+      "La curvatura de la curva"
+    ],
+    "respuestaCorrecta": "El trabajo realizado por el campo a lo largo de la curva"
+  },
+  {
+    "id": 9,
+    "enunciado": "¿Qué establece el teorema de la divergencia?",
+    "opciones": [
+      "Relaciona una integral de volumen con una integral de superficie",
+      "Relaciona derivadas parciales con derivadas totales",
+      "Calcula el rotacional de un campo vectorial",
+      "Encuentra valores propios de una matriz"
+    ],
+    "respuestaCorrecta": "Relaciona una integral de volumen con una integral de superficie"
+  },
+  {
+    "id": 10,
+    "enunciado": "¿Cuál es el límite de la función f(x,y) = (x²y)/(x⁴ + y²) cuando (x,y) → (0,0)?",
+    "opciones": [
+      "0",
+      "1",
+      "No existe",
+      "∞"
+    ],
+    "respuestaCorrecta": "No existe"
+  }
+]

@@ -1,0 +1,62 @@
+[
+  {
+    "id": 1,
+    "enunciado": "En un grupo G, si (ab)² = a²b² para todo a, b ∈ G, ¿qué propiedad cumple G?",
+    "opciones": ["Es abeliano", "Es cíclico", "Es no abeliano", "No necesariamente abeliano"],
+    "respuestaCorrecta": "Es abeliano"
+  },
+  {
+    "id": 2,
+    "enunciado": "¿Cuál es el orden del grupo simétrico S₃?",
+    "opciones": ["3", "6", "9", "12"],
+    "respuestaCorrecta": "6"
+  },
+  {
+    "id": 3,
+    "enunciado": "Dado un anillo R con unidad, si a ∈ R tiene inverso multiplicativo, entonces a es:",
+    "opciones": ["Un divisor de cero", "Una unidad", "Un elemento nulo", "Un ideal"],
+    "respuestaCorrecta": "Una unidad"
+  },
+  {
+    "id": 4,
+    "enunciado": "En el grupo cíclico Z₆, ¿cuál es el orden del elemento 2?",
+    "opciones": ["2", "3", "6", "1"],
+    "respuestaCorrecta": "3"
+  },
+  {
+    "id": 5,
+    "enunciado": "Si H es un subgrupo de G y [G:H] = 2, entonces H es:",
+    "opciones": ["Cíclico", "Normal", "Abeliano", "No normal"],
+    "respuestaCorrecta": "Normal"
+  },
+  {
+    "id": 6,
+    "enunciado": "En un campo K, el polinomio x² - 2 sobre Q (racionales) es:",
+    "opciones": ["Irreducible", "Reducible", "Unidad", "Monico"],
+    "respuestaCorrecta": "Irreducible"
+  },
+  {
+    "id": 7,
+    "enunciado": "El núcleo de un homomorfismo de grupos φ: G → G' es:",
+    "opciones": ["Un subgrupo normal de G", "Un subgrupo de G'", "Un ideal de G", "Un subgrupo cíclico"],
+    "respuestaCorrecta": "Un subgrupo normal de G"
+  },
+  {
+    "id": 8,
+    "enunciado": "Si G es un grupo de orden 15, ¿cuál es la estructura de G según el teorema de clasificación de grupos finitos?",
+    "opciones": ["Cíclico", "No cíclico", "Abeliano no cíclico", "No abeliano"],
+    "respuestaCorrecta": "Cíclico"
+  },
+  {
+    "id": 9,
+    "enunciado": "En el anillo Z[x], el ideal generado por 2 y x es:",
+    "opciones": ["Principal", "Máximo", "Primo pero no máximo", "No primo"],
+    "respuestaCorrecta": "No primo"
+  },
+  {
+    "id": 10,
+    "enunciado": "Dado un grupo G y un elemento a ∈ G de orden 4, el orden de a² es:",
+    "opciones": ["1", "2", "4", "8"],
+    "respuestaCorrecta": "2"
+  }
+]

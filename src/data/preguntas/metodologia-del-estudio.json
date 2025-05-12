@@ -1,0 +1,112 @@
+[
+  {
+    "id": 1,
+    "enunciado": "¿Qué es el método de estudio SQ3R?",
+    "opciones": [
+      "Un sistema de lectura rápida",
+      "Un método de toma de apuntes",
+      "Una técnica de lectura comprensiva (Survey, Question, Read, Recite, Review)",
+      "Un tipo de mapa conceptual"
+    ],
+    "respuestaCorrecta": "Una técnica de lectura comprensiva (Survey, Question, Read, Recite, Review)"
+  },
+  {
+    "id": 2,
+    "enunciado": "¿Cuál es la mejor manera de organizar el tiempo de estudio según la técnica Pomodoro?",
+    "opciones": [
+      "Estudiar 50 minutos y descansar 10",
+      "Estudiar 25 minutos y descansar 5",
+      "Estudiar 2 horas seguidas sin descanso",
+      "Estudiar hasta agotarse"
+    ],
+    "respuestaCorrecta": "Estudiar 25 minutos y descansar 5"
+  },
+  {
+    "id": 3,
+    "enunciado": "¿Qué es un mapa conceptual?",
+    "opciones": [
+      "Un resumen lineal de un texto",
+      "Una representación gráfica de conceptos relacionados",
+      "Una lista de definiciones",
+      "Un esquema numérico"
+    ],
+    "respuestaCorrecta": "Una representación gráfica de conceptos relacionados"
+  },
+  {
+    "id": 4,
+    "enunciado": "¿Qué técnica de estudio consiste en explicar el material en voz alta como si se estuviera enseñando a alguien más?",
+    "opciones": [
+      "Método Feynman",
+      "Técnica Pomodoro",
+      "Método Cornell",
+      "Mnemotecnia"
+    ],
+    "respuestaCorrecta": "Método Feynman"
+  },
+  {
+    "id": 5,
+    "enunciado": "¿Cuál es el objetivo principal de la lectura crítica?",
+    "opciones": [
+      "Leer lo más rápido posible",
+      "Memorizar todo el contenido",
+      "Analizar y evaluar el texto de manera reflexiva",
+      "Buscar solo las ideas principales"
+    ],
+    "respuestaCorrecta": "Analizar y evaluar el texto de manera reflexiva"
+  },
+  {
+    "id": 6,
+    "enunciado": "¿Qué es el subrayado selectivo?",
+    "opciones": [
+      "Subrayar todo el texto",
+      "Resaltar solo las palabras desconocidas",
+      "Marcar las ideas principales y secundarias más importantes",
+      "Usar muchos colores diferentes"
+    ],
+    "respuestaCorrecta": "Marcar las ideas principales y secundarias más importantes"
+  },
+  {
+    "id": 7,
+    "enunciado": "¿Qué ventaja tiene el estudio distribuido frente al estudio masivo?",
+    "opciones": [
+      "Requiere menos tiempo total",
+      "Mejora la retención a largo plazo",
+      "Permite estudiar más temas a la vez",
+      "Es más fácil de planificar"
+    ],
+    "respuestaCorrecta": "Mejora la retención a largo plazo"
+  },
+  {
+    "id": 8,
+    "enunciado": "¿Qué es la curva del olvido de Ebbinghaus?",
+    "opciones": [
+      "La velocidad a la que se olvida la información con el tiempo",
+      "Un método para memorizar números",
+      "Una técnica de lectura rápida",
+      "Un tipo de esquema de estudio"
+    ],
+    "respuestaCorrecta": "La velocidad a la que se olvida la información con el tiempo"
+  },
+  {
+    "id": 9,
+    "enunciado": "¿Qué es el aprendizaje espaciado?",
+    "opciones": [
+      "Estudiar todo el material en una sola sesión",
+      "Distribuir las sesiones de estudio en el tiempo",
+      "Estudiar en diferentes lugares",
+      "Usar espacios en blanco en los apuntes"
+    ],
+    "respuestaCorrecta": "Distribuir las sesiones de estudio en el tiempo"
+  },
+  {
+    "id": 10,
+    "enunciado": "¿Qué es la metacognición en el aprendizaje?",
+    "opciones": [
+      "Memorizar información",
+      "Pensar sobre el propio proceso de aprendizaje",
+      "Tomar apuntes detallados",
+      "Leer rápidamente"
+    ],
+    "respuestaCorrecta": "Pensar sobre el propio proceso de aprendizaje"
+  }
+]

@@ -1,0 +1,62 @@
+[
+  {
+    "id": 1,
+    "enunciado": "Dada la función f(x) = x³ - 3x + 1, ¿cuál es el valor de la derivada en x = 2?",
+    "opciones": ["6", "9", "12", "15"],
+    "respuestaCorrecta": "9"
+  },
+  {
+    "id": 2,
+    "enunciado": "¿Cuál es el límite de (sin(x)/x) cuando x tiende a 0?",
+    "opciones": ["0", "1", "∞", "No existe"],
+    "respuestaCorrecta": "1"
+  },
+  {
+    "id": 3,
+    "enunciado": "La función f(x) = ln(x² + 1) tiene una derivada igual a:",
+    "opciones": ["1/(x² + 1)", "2x/(x² + 1)", "1/x", "2x"],
+    "respuestaCorrecta": "2x/(x² + 1)"
+  },
+  {
+    "id": 4,
+    "enunciado": "¿Cuál es la ecuación de la recta tangente a la curva y = x² - 2x + 1 en el punto donde x = 1?",
+    "opciones": ["y = 2x - 1", "y = x", "y = 2x", "y = x - 1"],
+    "respuestaCorrecta": "y = 2x - 1"
+  },
+  {
+    "id": 5,
+    "enunciado": "Si f(x) = e^(2x), ¿cuál es la derivada de orden 2, f''(x)?",
+    "opciones": ["e^(2x)", "2e^(2x)", "4e^(2x)", "e^x"],
+    "respuestaCorrecta": "4e^(2x)"
+  },
+  {
+    "id": 6,
+    "enunciado": "El límite de (1 - cos(x))/x² cuando x tiende a 0 es:",
+    "opciones": ["0", "1/2", "1", "No existe"],
+    "respuestaCorrecta": "1/2"
+  },
+  {
+    "id": 7,
+    "enunciado": "¿Cuál es el valor de la integral definida de 1 a 2 de la función f(x) = x² + 1?",
+    "opciones": ["4", "5", "6", "7"],
+    "respuestaCorrecta": "6"
+  },
+  {
+    "id": 8,
+    "enunciado": "Si f(x) = x * e^x, ¿cuál es su derivada f'(x)?",
+    "opciones": ["e^x", "x * e^x", "e^x + x * e^x", "x * e^(x-1)"],
+    "respuestaCorrecta": "e^x + x * e^x"
+  },
+  {
+    "id": 9,
+    "enunciado": "¿Cuál es el punto crítico de la función f(x) = x³ - 6x² + 9x + 1?",
+    "opciones": ["x = 1", "x = 3", "x = 1 y x = 3", "x = 0"],
+    "respuestaCorrecta": "x = 1 y x = 3"
+  },
+  {
+    "id": 10,
+    "enunciado": "La integral indefinida de f(x) = 2x + 3 es:",
+    "opciones": ["x² + 3x + C", "2x² + 3x + C", "x² + 3 + C", "2x + 3x + C"],
+    "respuestaCorrecta": "x² + 3x + C"
+  }
+]

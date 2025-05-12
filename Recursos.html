@@ -7,22 +7,20 @@
     <link rel="stylesheet" href="stylesRescurso.css">
 </head>
 <body class="fade-in">
-    <header>
-        <div class="logo">StudyHub</div>
-        <nav>
-            <ul>
-                <li><a href="#">Exámenes</a></li>
-                <li><a href="#">Ranking</a></li>
-                <li><a href="#">username</a></li>
-            </ul>
-        </nav>
+    <header class="bg-slate-900 p-6 flex items-center justify-between shadow-md">
+        <div class="flex items-center gap-10 ml-2">
+            <a href="/" class="logo">StudyHub</a>
+        </div>
+        <div class="flex gap-4 mr-2">
+            <a href="/simulacros" class="nav-link">Simulacros</a>
+        </div>
     </header>
 
     <main>
         <section class="resources">
             <h2>RECURSOS</h2>
             <p class="tagline">Explora cursos y exámenes resueltos para potenciar tu aprendizaje</p>
-            <div class="category">
+            <div class="category" id="ciencias">
                 <div class="category-header">
                     <span class="category-icon">🔬</span>
                     <h3>CIENCIAS</h3>
@@ -85,7 +83,7 @@
             </div>
             <div class="category-divider"></div>
 
-            <div class="category">
+            <div class="category" id="computacion">
                 <div class="category-header">
                     <span class="category-icon">💻</span>
                     <h3>COMPUTACIÓN</h3>
@@ -139,7 +137,7 @@
             </div>
             <div class="category-divider"></div>
 
-            <div class="category">
+            <div class="category" id="humanidades">
                 <div class="category-header">
                     <span class="category-icon">📚</span>
                     <h3>HUMANIDADES</h3>
@@ -185,7 +183,7 @@
                 </div>
             </div>
 
-            <button class="add-resource">AGREGAR RECURSO (+)</button>
+            <button class="add-resource" onclick="openAddResourceModal()">AGREGAR RECURSO (+)</button>
         </section>
 
         <div id="resourceModal" class="modal">
@@ -195,6 +193,12 @@
                 <p>Detalles del curso: Este es un curso completo con exámenes resueltos y material de apoyo.</p>
                 <p>Duración: 4 semanas</p>
                 <p>Nivel: Intermedio</p>
+                <div class="file-upload">
+                    <label for="resourceFiles">Subir archivos para el curso:</label>
+                    <input type="file" id="resourceFiles" multiple>
+                    <button onclick="uploadResourceFiles()">Subir</button>
+                    <ul id="resourceFileList"></ul>
+                </div>
             </div>
         </div>
 
@@ -202,14 +206,39 @@
             <div class="modal-content">
                 <span class="close" onclick="closeExamModal()">×</span>
                 <h3 id="examModalTitle"></h3>
+                <div class="file-upload">
+                    <label for="examFiles">Subir archivos para el examen:</label>
+                    <input type="file" id="examFiles" multiple>
+                    <button onclick="uploadExamFiles()">Subir</button>
+                    <ul id="examFileList"></ul>
+                </div>
+            </div>
+        </div>
+
+        <div id="addResourceModal" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="closeAddResourceModal()">×</span>
+                <h3>Agregar Nuevo Recurso</h3>
+                <div class="add-resource-form">
+                    <label for="categorySelect">Categoría:</label>
+                    <select id="categorySelect">
+                        <option value="ciencias">Ciencias</option>
+                        <option value="computacion">Computación</option>
+                        <option value="humanidades">Humanidades</option>
+                    </select>
+                    <label for="resourceName">Nombre del Curso:</label>
+                    <input type="text" id="resourceName" placeholder="Ej. Curso de Física">
+                    <label for="newResourceFiles">Subir archivos para el curso:</label>
+                    <input type="file" id="newResourceFiles" multiple>
+                    <button onclick="saveNewResource()">Guardar</button>
+                </div>
             </div>
         </div>
     </main>
 
     <footer>
         <div class="footer-section">
-            <div class="image-ref">IMAGEN REFERENCIAL</div>
-            <div class="info">ACERCA DE | AGREGAR INFORMACIÓN | CONTACTO</div>
+            <div class="info">ACERCA DE | CONTACTO</div>
         </div>
     </footer>
 
