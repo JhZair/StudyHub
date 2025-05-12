@@ -1,19 +1,25 @@
 let uploadedFiles = {
-    resources: {
-        "Curso de Estadistica": [
-            { name: "Notas_Estadistica.pdf", type: "application/pdf", file: new Blob(["Contenido de ejemplo"], { type: "application/pdf" }) },
-            { name: "Grafico_Estadistica.png", type: "image/png", file: new Blob(["Contenido de imagen"], { type: "image/png" }) }
-        ],
-        "Curso de Programación": [
-            { name: "Ejemplo_Codigo.cpp", type: "text/plain", file: new Blob(["#include <iostream>"], { type: "text/plain" }) }
-        ],
-        "Curso de Filosofía": [
-            { name: "Ensayo_Filosofia.pdf", type: "application/pdf", file: new Blob(["Ensayo de ejemplo"], { type: "application/pdf" }) }
-        ]
-    },
     exams: {
         "Examen Resuelto - Curso de Estadistica": [
-            { name: "Examen_Estadistica_2023.pdf", type: "application/pdf", file: new Blob(["Examen de ejemplo"], { type: "application/pdf" }) }
+            { 
+                name: "Primer examen resuelto de Estadística.pdf", 
+                type: "application/pdf", 
+                url: "https://dcb.ingenieria.unam.mx/wp-content/themes/tempera-child/CoordinacionesAcademicas/CA/PyE/Examenes/2016-1/PYE1E161.pdf",
+            }
+        ],
+        "Examen Resuelto - Curso de Mat.Computacional": [
+            { 
+                name: "Primer examen resuelto de Mat. Computacional.pdf", 
+                type: "application/pdf", 
+                url: "https://repositoriotec.tec.ac.cr/bitstream/handle/2238/11527/Ejercicios_Resueltos_de_Álgebra_Lineal_para_Computación.pdf?sequence=1&isAllowed=y" 
+            }
+        ],
+        "Examen Resuelto - Curso de A.Numerico": [
+            { 
+                name: "Primer examen resuelto de A. Numérico.pdf", 
+                type: "application/pdf", 
+                url: "https://www.dspace.espol.edu.ec/xmlui/bitstream/handle/123456789/33083/20142SICM001585_1.PDF?sequence=1&isAllowed=y" 
+            }
         ],
         "Examen Resuelto - Curso de Programación": [
             { name: "Solucion_Programacion.pdf", type: "application/pdf", file: new Blob(["Solución de ejemplo"], { type: "application/pdf" }) }
@@ -152,7 +158,7 @@ function displayUploadedFiles(title, type, listId) {
             const li = document.createElement("li");
             const fileLink = document.createElement("a");
             fileLink.textContent = file.name;
-            fileLink.href = "#";
+            fileLink.href = file.url || "#";
             fileLink.onclick = (e) => {
                 e.preventDefault();
                 openInNewWindow(file);
@@ -173,20 +179,37 @@ function displayUploadedFiles(title, type, listId) {
 }
 
 function downloadFile(file) {
-    const url = URL.createObjectURL(file.file);
-    const a = document.createElement("a");
-    a.href = url;
-    a.download = file.name;
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
-    URL.revokeObjectURL(url);
+    if (file.url) {
+        // Si el archivo tiene una URL externa, redirige a la URL
+        const a = document.createElement("a");
+        a.href = file.url;
+        a.download = file.name;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+    } else {
+        // Si el archivo es un Blob, genera un enlace local
+        const url = URL.createObjectURL(file.file);
+        const a = document.createElement("a");
+        a.href = url;
+        a.download = file.name;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+    }
 }
 
 function openInNewWindow(file) {
-    const url = URL.createObjectURL(file.file);
-    window.open(url, "_blank");
-    // No revocamos la URL inmediatamente para permitir que la nueva ventana la use
+    if (file.url) {
+        // Si el archivo tiene una URL externa, ábrela directamente
+        window.open(file.url, "_blank");
+    } else {
+        // Si el archivo es un Blob, genera un enlace local
+        const url = URL.createObjectURL(file.file);
+        window.open(url, "_blank");
+        // No revocamos la URL inmediatamente para permitir que la nueva ventana la use
+    }
 }
 
 function adjustModalPosition(modal) {
