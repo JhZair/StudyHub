@@ -42,7 +42,7 @@ export default function Examen() {
           </Link>
           <nav className="flex gap-4 text-white font-medium">
             <Link to="/simulacros" className="hover:underline">Simulacros</Link>
-            <a href="/public/Recursos.html" className="hover:underline">Recursos</a>
+            <a href="/Recursos.html" className="hover:underline">Recursos</a>
           </nav>
         </div>
       </header>

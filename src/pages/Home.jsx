@@ -12,15 +12,15 @@ export default function Home() {
           </Link>
           <nav className="flex gap-4 text-white font-medium">
             <Link to="/simulacros" className="hover:underline">Simulacros</Link>
-            <a href="/public/Recursos.html" className="hover:underline">Recursos</a>
+            <a href="/Recursos.html" className="hover:underline">Recursos</a>
           </nav>
         </div>
 
         <div className="flex gap-4 mr-2">
-          <a href="/public/login.html">
+          <a href="/login.html">
             <button className="bg-white text-slate-900 px-4 py-2 rounded font-medium hover:bg-gray-200 transition">Login</button>
           </a>
-          <a href="/public/signup.html">
+          <a href="/signup.html">
             <button className="bg-white text-slate-900 px-4 py-2 rounded font-medium hover:bg-gray-200 transition">Sign Up</button>
           </a>
         </div>
