@@ -48,6 +48,32 @@ header {
     transform: scale(1.05);
 }
 
+.user-section {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.user-section input {
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.user-section button {
+    background-color: #2a3435;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.user-section button:hover {
+    background-color: #3c4b4d;
+}
+
 nav ul {
     list-style: none;
     display: flex;
@@ -313,7 +339,7 @@ footer::before {
     z-index: 1;
 }
 
-.image-ref, .info {
+.info {
     padding: 5px;
     transition: color 0.3s ease;
 }
@@ -351,7 +377,7 @@ footer::before {
     position: relative;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
     transform: scale(0.9);
-    transition: transform 0.3s ease;
+    transition: transform 0.3s ease, margin-top 0.3s ease;
 }
 
 .modal.show .modal-content {
@@ -373,6 +399,107 @@ footer::before {
 .close:focus {
     color: black;
     transform: rotate(90deg);
+}
+
+.add-resource-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.add-resource-form label {
+    font-weight: bold;
+}
+
+.add-resource-form select,
+.add-resource-form input[type="text"],
+.add-resource-form input[type="file"] {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+.add-resource-form button {
+    background-color: #1c2526;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.add-resource-form button:hover {
+    background-color: #2a3435;
+}
+
+.file-upload {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.file-upload label {
+    font-weight: bold;
+}
+
+.file-upload input[type="file"] {
+    padding: 8px 0;
+}
+
+.file-upload button {
+    background-color: #1c2526;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: fit-content;
+}
+
+.file-upload button:hover {
+    background-color: #2a3435;
+}
+
+.file-upload ul {
+    list-style: none;
+    padding: 0;
+    margin: 10px 0 0 0;
+}
+
+.file-upload ul li {
+    padding: 5px 0;
+    border-bottom: 1px solid #eee;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.file-upload ul li a {
+    color: #1c2526;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.file-upload ul li a:hover {
+    text-decoration: underline;
+}
+
+.file-upload ul li button {
+    background-color: #1c2526;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 12px;
+}
+
+.file-upload ul li button:hover {
+    background-color: #2a3435;
 }
 
 .fade-in .resource-tree {
