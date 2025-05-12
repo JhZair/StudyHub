@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StudyHub</title>
+    <link rel="stylesheet" href="stylesRescursoNew.css">
+</head>
+<body class="fade-in">
+    <header>
+        <div class="logo">StudyHub</div>
+        <div class="user-section">
+            <input type="text" id="usernameInput" placeholder="Ingresa tu nombre" style="display: none;">
+            <button onclick="saveUsername()" id="saveUsernameBtn">Guardar Nombre</button>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#">Exámenes</a></li>
+                <li><a href="#">Ranking</a></li>
+                <li><a href="#" id="usernameDisplay">username</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="resources">
+            <h2>RECURSOS</h2>
+            <p class="tagline">Explora cursos y exámenes resueltos para potenciar tu aprendizaje</p>
+            <div class="category" id="ciencias">
+                <div class="category-header">
+                    <span class="category-icon">🔬</span>
+                    <h3>CIENCIAS</h3>
+                </div>
+                <div class="resource-row">
+                    <div class="resource-tree">
+                        <div class="resource-node">
+                            <div class="resource-circle" onclick="openResourceModal('Curso de Estadistica')"></div>
+                            <div class="resource-label">Estadistica</div>
+                        </div>
+                        <div class="exam" onclick="openExamModal('Examen Resuelto - Curso de Estadistica')">Examen Resuelto</div>
+                    </div>
+                    <div class="resource-tree">
+                        <div class="resource-node">
+                            <div class="resource-circle" onclick="openResourceModal('Curso de 1Mat.Computacional')"></div>
+                            <div class="resource-label">Mat.Computacion</div>
+                        </div>
+                        <div class="exam" onclick="openExamModal('Examen Resuelto - Curso de Mat.Computacional')">Examen Resuelto</div>
+                    </div>
+                    <div class="resource-tree">
+                        <div class="resource-node">
+                            <div class="resource-circle" onclick="openResourceModal('Curso de QA.Numerico')"></div>
+                            <div class="resource-label"> A.Numerico</div>
+                        </div>
+                        <div class="exam" onclick="openExamModal('Examen Resuelto - Curso de A.Numerico')">Examen Resuelto</div>
+                    </div>
+                </div>
+                <div class="resource-row">
+                    <div class="resource-tree">
+                        <div class="resource-node">
+                            <div class="resource-circle" onclick="openResourceModal('Curso de Matemáticas')"></div>
+                            <div class="resource-label">Matemáticas</div>
+                        </div>
+                        <div class="exam" onclick="openExamModal('Examen Resuelto - Curso de Matemáticas')">Examen Resuelto</div>
+                    </div>
+                    <div class="resource-tree">
+                        <div class="resource-node">
+                            <div class="resource-circle" onclick="openResourceModal('Curso de Calculo')"></div>
+                            <div class="resource-label">Calculo</div>
+                        </div>
+                        <div class="exam" onclick="openExamModal('Examen Resuelto - Curso de Calculo')">Examen Resuelto</div>
+                    </div>
+                    <div class="resource-tree">
+                        <div class="resource-node">
+                            <div class="resource-circle" onclick="openResourceModal('Curso de F.Computacional')"></div>
+                            <div class="resource-label"> F.computacional</div>
+                        </div>
+                        <div class="exam" onclick="openExamModal('Examen Resuelto - Curso de F.Computacional')">Examen Resuelto</div>
+                    </div>
+                </div>
+                <div class="resource-row">
+                    <div class="resource-tree">
+                        <div class="resource-node">
+                            <div class="resource-circle" onclick="openResourceModal('Curso de Discretas')"></div>
+                            <div class="resource-label">M.Discretas</div>
+                        </div>
+                        <div class="exam" onclick="openExamModal('Examen Resuelto - Curso de Discretas')">Examen Resuelto</div>
+                    </div>
+                </div>
+            </div>
+            <div class="category-divider"></div>
+
+            <div class="category" id="computacion">
+                <div class="category-header">
+                    <span class="category-icon">💻</span>
+                    <h3>COMPUTACIÓN</h3>
+                </div>
+                <div class="resource-row">
+                    <div class="resource-tree">
+                        <div class="resource-node">
+                            <div class="resource-circle" onclick="openResourceModal('Curso de Programación')"></div>
+                            <div class="resource-label">Programación(c++)</div>
+                        </div>
+                        <div class="exam" onclick="openExamModal('Examen Resuelto - Curso de Programación')">Examen Resuelto</div>
+                    </div>
+                    <div class="resource-tree">
+                        <div class="resource-node">
+                            <div class="resource-circle" onclick="openResourceModal('Curso de Algoritmos')"></div>
+                            <div class="resource-label">Algoritmos</div>
+                        </div>
+                        <div class="exam" onclick="openExamModal('Examen Resuelto - Curso de Algoritmos')">Examen Resuelto</div>
+                    </div>
+                    <div class="resource-tree">
+                        <div class="resource-node">
+                            <div class="resource-circle" onclick="openResourceModal('Curso de Redes')"></div>
+                            <div class="resource-label">Redes</div>
+                        </div>
+                        <div class="exam" onclick="openExamModal('Examen Resuelto - Curso de Redes')">Examen Resuelto</div>
+                    </div>
+                </div>
+                <div class="resource-row">
+                    <div class="resource-tree">
+                        <div class="resource-node">
+                            <div class="resource-circle" onclick="openResourceModal('Curso de Bases de Datos')"></div>
+                            <div class="resource-label">Bases de Datos</div>
+                        </div>
+                        <div class="exam" onclick="openExamModal('Examen Resuelto - Curso de Bases de Datos')">Examen Resuelto</div>
+                    </div>
+                    <div class="resource-tree">
+                        <div class="resource-node">
+                            <div class="resource-circle" onclick="openResourceModal('Curso de Inteligencia Artificial')"></div>
+                            <div class="resource-label">Inteligencia Artificial</div>
+                        </div>
+                        <div class="exam" onclick="openExamModal('Examen Resuelto - Curso de Inteligencia Artificial')">Examen Resuelto</div>
+                    </div>
+                    <div class="resource-tree">
+                        <div class="resource-node">
+                            <div class="resource-circle" onclick="openResourceModal('Curso de Ciberseguridad')"></div>
+                            <div class="resource-label">Ciberseguridad</div>
+                        </div>
+                        <div class="exam" onclick="openExamModal('Examen Resuelto - Curso de Ciberseguridad')">Examen Resuelto</div>
+                    </div>
+                </div>
+            </div>
+            <div class="category-divider"></div>
+
+            <div class="category" id="humanidades">
+                <div class="category-header">
+                    <span class="category-icon">📚</span>
+                    <h3>HUMANIDADES</h3>
+                </div>
+                <div class="resource-row">
+                    <div class="resource-tree">
+                        <div class="resource-node">
+                            <div class="resource-circle" onclick="openResourceModal('Curso de Teologia')"></div>
+                            <div class="resource-label">Teologia</div>
+                        </div>
+                        <div class="exam" onclick="openExamModal('Examen Resuelto - Curso de Teologia')">Examen Resuelto</div>
+                    </div>
+                    <div class="resource-tree">
+                        <div class="resource-node">
+                            <div class="resource-circle" onclick="openResourceModal('Curso de Moral')"></div>
+                            <div class="resource-label">Moral</div>
+                        </div>
+                        <div class="exam" onclick="openExamModal('Examen Resuelto - Curso de Moral')">Examen Resuelto</div>
+                    </div>
+                    <div class="resource-tree">
+                        <div class="resource-node">
+                            <div class="resource-circle" onclick="openResourceModal('Curso de Filosofía')"></div>
+                            <div class="resource-label">Filosofía</div>
+                        </div>
+                        <div class="exam" onclick="openExamModal('Examen Resuelto - Curso de Filosofía')">Examen Resuelto</div>
+                    </div>
+                </div>
+                <div class="resource-row">
+                    <div class="resource-tree">
+                        <div class="resource-node">
+                            <div class="resource-circle" onclick="openResourceModal('Curso de Etica')"></div>
+                            <div class="resource-label">Etica</div>
+                        </div>
+                        <div class="exam" onclick="openExamModal('Examen Resuelto - Curso de Etica')">Examen Resuelto</div>
+                    </div>
+                    <div class="resource-tree">
+                        <div class="resource-node">
+                            <div class="resource-circle" onclick="openResourceModal('Curso de Antropología')"></div>
+                            <div class="resource-label">Antropología</div>
+                        </div>
+                        <div class="exam" onclick="openExamModal('Examen Resuelto - Curso de Antropología')">Examen Resuelto</div>
+                    </div>
+                </div>
+            </div>
+
+            <button class="add-resource" onclick="openAddResourceModal()">AGREGAR RECURSO (+)</button>
+        </section>
+
+        <div id="resourceModal" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="closeResourceModal()">×</span>
+                <h3 id="resourceModalTitle"></h3>
+                <p>Detalles del curso: Este es un curso completo con exámenes resueltos y material de apoyo.</p>
+                <p>Duración: 4 semanas</p>
+                <p>Nivel: Intermedio</p>
+                <div class="file-upload">
+                    <label for="resourceFiles">Subir archivos para el curso:</label>
+                    <input type="file" id="resourceFiles" multiple>
+                    <button onclick="uploadResourceFiles()">Subir</button>
+                    <ul id="resourceFileList"></ul>
+                </div>
+            </div>
+        </div>
+
+        <div id="examModal" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="closeExamModal()">×</span>
+                <h3 id="examModalTitle"></h3>
+                <div class="file-upload">
+                    <label for="examFiles">Subir archivos para el examen:</label>
+                    <input type="file" id="examFiles" multiple>
+                    <button onclick="uploadExamFiles()">Subir</button>
+                    <ul id="examFileList"></ul>
+                </div>
+            </div>
+        </div>
+
+        <div id="addResourceModal" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="closeAddResourceModal()">×</span>
+                <h3>Agregar Nuevo Recurso</h3>
+                <div class="add-resource-form">
+                    <label for="categorySelect">Categoría:</label>
+                    <select id="categorySelect">
+                        <option value="ciencias">Ciencias</option>
+                        <option value="computacion">Computación</option>
+                        <option value="humanidades">Humanidades</option>
+                    </select>
+                    <label for="resourceName">Nombre del Curso:</label>
+                    <input type="text" id="resourceName" placeholder="Ej. Curso de Física">
+                    <label for="newResourceFiles">Subir archivos para el curso:</label>
+                    <input type="file" id="newResourceFiles" multiple>
+                    <button onclick="saveNewResource()">Guardar</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-section">
+            <div class="info">ACERCA DE | CONTACTO</div>
+        </div>
+    </footer>
+
+    <script src="scriptRescursosNew.js"></script>
+</body>
+</html>
