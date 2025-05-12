@@ -7,19 +7,13 @@
     <link rel="stylesheet" href="stylesRescurso.css">
 </head>
 <body class="fade-in">
-    <header>
-        <div class="logo">StudyHub</div>
-        <div class="user-section">
-            <input type="text" id="usernameInput" placeholder="Ingresa tu nombre" style="display: none;">
-            <button onclick="saveUsername()" id="saveUsernameBtn">Guardar Nombre</button>
+    <header class="bg-slate-900 p-6 flex items-center justify-between shadow-md">
+        <div class="flex items-center gap-10 ml-2">
+            <a href="/" class="logo">StudyHub</a>
         </div>
-        <nav>
-            <ul>
-                <li><a href="#">Exámenes</a></li>
-                <li><a href="#">Ranking</a></li>
-                <li><a href="#" id="usernameDisplay">username</a></li>
-            </ul>
-        </nav>
+        <div class="flex gap-4 mr-2">
+            <a href="/simulacros" class="text-white font-medium hover:underline">Simulacros</a>
+        </div>
     </header>
 
     <main>
