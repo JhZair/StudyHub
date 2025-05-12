@@ -34,7 +34,7 @@ export default function Simulacros() {
             <span className="bg-white text-slate-900 px-2 py-1 rounded">StudyHub</span>
           </Link>
           <nav className="flex gap-4 text-white font-medium">
-            <a href="/Recursos.html" className="hover:underline">Recursos</a>
+            <a href="/public/Recursos.html" className="hover:underline">Recursos</a>
           </nav>
         </div>
       </header>
