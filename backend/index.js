@@ -2,7 +2,7 @@ const express = require('express');
 const mysql = require('mysql2');
 const session = require('express-session');
 
-const app = express(); // 🔧 Esto iba antes de usar app.use
+const app = express(); 
 
 // Middlewares necesarios
 app.use(express.json());
@@ -14,14 +14,12 @@ app.use(session({
   saveUninitialized: false,
 }));
 
-const port = 3000;
-
 // Conexión a MySQL
 const db = mysql.createConnection({
-  host: 'localhost',
-  user: 'a',      
-  password: 'a',  
-  database: 'studyhub'   
+  host: process.env.DB_HOST,
+  user: process.env.DB_USERNAME,      
+  password: process.env.DB_PASSWORD, 
+  database: process.env.DB_NAME  
 });
 
 db.connect((err) => {
@@ -46,6 +44,8 @@ app.use('/api/simulacros', require('./routes/simulacros'));
 app.use('/api/ranking', require('./routes/ranking'));
 app.use('/api/auth', require('./routes/auth'));
 
-app.listen(port, () => {
-  console.log(`Servidor iniciado en el puerto ${port}`);
+const PORT = process.env.PORT || 3000;
+
+app.listen(PORT, () => {
+  console.log(`Servidor iniciado en el puerto ${PORT}`);
 });

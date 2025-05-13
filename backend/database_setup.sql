@@ -1,19 +1,9 @@
--- =============================================
--- PASO 1: Limpieza inicial (eliminar objetos existentes)
--- =============================================
-
--- Eliminar tablas en orden de dependencia (primero las que tienen FK)
 DROP TABLE IF EXISTS ranking;
 DROP TABLE IF EXISTS simulacros_examenes;
 DROP TABLE IF EXISTS recursos;
 DROP TABLE IF EXISTS curso;
 DROP TABLE IF EXISTS usuario;
 
--- =============================================
--- PASO 2: Creación de tablas mejoradas
--- =============================================
-
--- Tabla CURSO
 CREATE TABLE curso (
     id_curso INT AUTO_INCREMENT PRIMARY KEY,
     nombre VARCHAR(100) NOT NULL,
@@ -21,7 +11,6 @@ CREATE TABLE curso (
     UNIQUE (nombre)
 );
 
--- Tabla USUARIO
 CREATE TABLE usuario (
     id_usuario INT AUTO_INCREMENT PRIMARY KEY,
     nombre VARCHAR(100) NOT NULL,
@@ -31,7 +20,6 @@ CREATE TABLE usuario (
     universidad VARCHAR(100)
 );
 
--- Tabla RECURSOS
 CREATE TABLE recursos (
     id_recurso INT AUTO_INCREMENT PRIMARY KEY,
     titulo VARCHAR(200) NOT NULL,
@@ -45,10 +33,9 @@ CREATE TABLE recursos (
     FOREIGN KEY (id_usuario) REFERENCES usuario(id_usuario) ON DELETE CASCADE
 );
 
--- Tabla SIMULACROS_EXAMENES
 CREATE TABLE simulacros_examenes (
     id_examen INT AUTO_INCREMENT PRIMARY KEY,
-    duracion INT NOT NULL, -- en minutos
+    duracion INT NOT NULL, 
     preguntas INT NOT NULL,
     puntaje INT,
     fecha_realizacion DATETIME DEFAULT CURRENT_TIMESTAMP,
@@ -58,7 +45,6 @@ CREATE TABLE simulacros_examenes (
     FOREIGN KEY (id_usuario) REFERENCES usuario(id_usuario) ON DELETE CASCADE
 );
 
--- Tabla RANKING
 CREATE TABLE ranking (
     id_ranking INT AUTO_INCREMENT PRIMARY KEY,
     id_usuario INT NOT NULL,
@@ -68,15 +54,14 @@ CREATE TABLE ranking (
     UNIQUE (id_usuario)
 );
 
--- =============================================
--- PASO 3: Insertar datos de ejemplo
--- =============================================
-
 -- Insertar cursos
 INSERT INTO curso (nombre, area) VALUES 
     ('Matemáticas I', 'Ciencias Básicas'),
     ('Física General', 'Ciencias Básicas'),
-    ('Programación I', 'Ingeniería');
+    ('Programación I', 'Ingeniería'),
+    ('Arquitectura del computador', 'Ciencia de la Computacion'),
+    ('Teoria de la computacion', 'Ciencia de la Computacion'),
+    ('Calculo 1', 'Ciencias Basicas');
 
 -- Insertar usuarios
 INSERT INTO usuario (nombre, email, fecha_registro, ultimo_acceso, universidad) VALUES 
@@ -87,7 +72,13 @@ INSERT INTO usuario (nombre, email, fecha_registro, ultimo_acceso, universidad) 
 -- Insertar recursos
 INSERT INTO recursos (titulo, descripcion, tipo, archivo, id_curso, id_usuario) VALUES 
     ('Apuntes de Matemáticas', 'Conceptos básicos de álgebra lineal', 'APUNTE', 'matematicas.pdf', 1, 1),
-    ('Examen Final 2022', 'Examen de física con soluciones', 'EXAMEN', 'fisica_examen.pdf', 2, 2);
+    ('Examen Final 2022', 'Examen de física con soluciones', 'EXAMEN', 'fisica_examen.pdf', 2, 2),
+    ('Examen Final 2022', 'Examen de física con soluciones', 'EXAMEN', 'fisica_examen.pdf', 2, 2),
+    ('Parcial 2021','Parcial Arquitectura Computador Virtual','EXAMEN','https://drive.google.com/drive/u/1/folders/1Mr0ooLTbsy5ViVikZ2yjkPid6TocDQla',4,1),
+    ('Examen final', 'Examen final TC', 'EXAMEN', 'https://drive.google.com/drive/u/1/folders/1Mr0ooLTbsy5ViVikZ2yjkPid6TocDQla',5,2),
+    ('Calculo Final', 'Calculo final', 'EXAMEN', 'https://drive.google.com/drive/u/1/folders/1Mr0ooLTbsy5ViVikZ2yjkPid6TocDQla',6,1),
+    ('Practica calificada', 'Practica 7', 'PDF', 'https://drive.google.com/drive/u/1/folders/1Mr0ooLTbsy5ViVikZ2yjkPid6TocDQla',6,1);
+
 
 -- Insertar simulacros
 INSERT INTO simulacros_examenes (duracion, preguntas, puntaje, fecha_realizacion, id_curso, id_usuario) VALUES 
@@ -100,3 +91,5 @@ INSERT INTO ranking (id_usuario, nivel) VALUES
     (1, 'Oro'),
     (2, 'Platino'),
     (3, 'Plata');
+
+ALTER TABLE usuario ADD password VARCHAR(100) NOT NULL DEFAULT '1234';
