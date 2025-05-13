@@ -1,8 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import imagenHome from "/images/studyhub3.5.JPG";
+import Auth from "../components/Auth";
+import { useAuth } from "../context/AuthContext";
 
 export default function Home() {
+  const { currentUser } = useAuth();
+
   return (
     <div className="min-h-screen bg-gray-100 text-white flex flex-col">
       {/* Header */}
@@ -18,12 +22,7 @@ export default function Home() {
             </nav>
           </div>
           <div className="flex gap-3 justify-center sm:justify-end mr-2">
-            <a href="/login.html">
-              <button className="bg-white text-slate-900 px-4 py-2 rounded font-medium hover:bg-gray-200 transition">Login</button>
-            </a>
-            <a href="/signup.html">
-              <button className="bg-white text-slate-900 px-4 py-2 rounded font-medium hover:bg-gray-200 transition">Sign Up</button>
-            </a>
+            <Auth />
           </div>
         </div>
       </header>

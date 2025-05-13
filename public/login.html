@@ -13,10 +13,10 @@
         <div class="form-container">
             <div class="form-box">
                 <h1 class="welcome-title">Bienvenido a StudyHub</h1>
-                <a href="/" class="google-login-btn">
+                <button type="button" class="google-login-btn" id="google-login-btn">
                     <i class="fab fa-google"></i>
                     Continuar con Google
-                </a>
+                </button>
                 <div class="divider">
                     <span>o</span>
                 </div>
@@ -50,23 +50,18 @@
         <div id="canvas-container"></div>
     </div>
 
-    <!-- Scripts de la aplicación -->
+    <!-- Scripts de Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+    
+    <!-- Scripts de Three.js -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.min.js"></script>
-    <script src="js/three-scene.js"></script>
-    <script src="js/auth.js"></script>
     
-    <script>
-        // Esperar a que el DOM esté completamente cargado
-        document.addEventListener('DOMContentLoaded', function() {
-            console.log('DOM completamente cargado');
-            // Cargar el script de la escena 3D después de un pequeño retraso
-            setTimeout(function() {
-                const script = document.createElement('script');
-                script.src = 'js/three-scene.js';
-                document.body.appendChild(script);
-            }, 100);
-        });
-    </script>
+    <!-- Script de la escena 3D -->
+    <script src="js/three-scene.js"></script>
+    
+    <!-- Script de autenticación -->
+    <script src="js/auth.js"></script>
 </body>
 </html>
