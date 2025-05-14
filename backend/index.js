@@ -1,9 +1,28 @@
 const express = require('express');
 const mysql = require('mysql2');
 const session = require('express-session');
+const cors = require('cors'); 
 require('dotenv').config();
 
 const app = express(); 
+
+const allowedOrigins = [
+  'http://localhost:5173', 
+  'https://studyhubfrontend-5pmm.onrender.com'
+];
+
+app.use(cors({
+  origin: (origin, callback) => {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, origin || '*'); 
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
+  credentials: true 
+}));
 
 // Middlewares necesarios
 app.use(express.json());
