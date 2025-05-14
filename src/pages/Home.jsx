@@ -18,6 +18,7 @@ export default function Home() {
             </Link>
             <nav className="flex gap-4 text-white font-medium">
               <Link to="/simulacros" className="hover:underline">Simulacros</Link>
+              <Link to="/recursos" className="hover:underline">RecursosLeo</Link>
               <a href="/Recursos.html" className="hover:underline">Recursos</a>
             </nav>
           </div>
