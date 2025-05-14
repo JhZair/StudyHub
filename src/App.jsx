@@ -6,6 +6,7 @@ import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import Simulacros from "./pages/Simulacros";
 import Examen from "./pages/Examen";
+import Profile from "./pages/Profile";
 
 export default function App() {
   return (
@@ -37,6 +38,12 @@ export default function App() {
                 <Examen />
             } 
           />
+          <Route 
+          path="/perfil" 
+          element={
+              <Profile />
+          } 
+        />
         </Routes>
       </Router>
     </AuthProvider>

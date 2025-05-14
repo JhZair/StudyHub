@@ -27,10 +27,21 @@ const Login = () => {
         body: JSON.stringify({ email, password }),
       });
       const data = await res.json();
-      console.log(data); // 👉 mira qué contiene
+      console.log(data); // 👈 aquí debería tener nombre, correo y universidad
 
       if (res.ok) {
-        login(data);
+        const userData = data.usuario;
+        
+        const user = {
+          id_usuario: userData.id_usuario,
+          nombre: userData.nombre || 'Usuario sin nombre',
+          correo: userData.email || email,
+          universidad: userData.universidad || 'No especifica',
+          fecha_registro: userData.fecha_registro || 'No especifica',
+          ultimo_acceso: userData.ultimo_acceso|| 'No especifica'
+        };
+
+        login(user);
         navigate('/simulacros');
       } else {
         setError(data.error || 'Error al iniciar sesión');

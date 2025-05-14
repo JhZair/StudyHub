@@ -23,12 +23,12 @@ export default function Home() {
           <div className="flex gap-3 justify-center sm:justify-end mr-2">
             {currentUser ? (
               <div className="flex gap-2">
-                <button
-                  className="bg-white text-slate-900 px-3 py-2 rounded font-medium hover:bg-gray-300"
-                  onClick={() => alert(`Hola, ${currentUser.nombre}`)}
+                <Link
+                  to="/perfil"
+                  className="bg-white text-slate-900 px-3 py-2 rounded font-medium hover:bg-gray-300 flex items-center"
                 >
                   {currentUser.nombre}
-                </button>
+                </Link>
                 <button
                   className="bg-red-600 text-white px-3 py-2 rounded font-medium hover:bg-red-700"
                   onClick={logout}
