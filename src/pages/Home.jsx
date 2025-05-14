@@ -5,11 +5,10 @@ import Auth from "../components/Auth";
 import { useAuth } from "../context/AuthContext";
 
 export default function Home() {
-  const { currentUser } = useAuth();
+  const { currentUser, logout } = useAuth();
 
   return (
     <div className="min-h-screen bg-gray-100 text-white flex flex-col">
-      {/* Header */}
       <header className="bg-slate-900 p-6 shadow-md">
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
           <div className="flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-10 ml-2">
@@ -22,12 +21,28 @@ export default function Home() {
             </nav>
           </div>
           <div className="flex gap-3 justify-center sm:justify-end mr-2">
-            <Auth />
+            {currentUser ? (
+              <div className="flex gap-2">
+                <button
+                  className="bg-white text-slate-900 px-3 py-2 rounded font-medium hover:bg-gray-300"
+                  onClick={() => alert(`Hola, ${currentUser.nombre}`)}
+                >
+                  {currentUser.nombre}
+                </button>
+                <button
+                  className="bg-red-600 text-white px-3 py-2 rounded font-medium hover:bg-red-700"
+                  onClick={logout}
+                >
+                  Cerrar sesión
+                </button>
+              </div>
+            ) : (
+              <Auth />
+            )}
           </div>
         </div>
       </header>
 
-      {/* Main content centrado verticalmente */}
       <main className="flex-1 flex flex-col-reverse sm:flex-row items-center justify-center px-4 sm:px-10 lg:px-24 py-10 gap-10">
         <div className="bg-gray-700 p-8 sm:p-12 rounded-lg max-w-md text-center">
           <h2 className="text-3xl sm:text-4xl font-semibold mb-4">Bienvenido a StudyHub</h2>

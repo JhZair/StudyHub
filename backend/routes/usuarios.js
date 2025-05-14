@@ -1,6 +1,5 @@
 const express = require('express');
 const router = express.Router();
-const bcrypt = require('bcryptjs');
 
 // Obtener todos los usuarios
 router.get('/', (req, res) => {
@@ -10,17 +9,22 @@ router.get('/', (req, res) => {
     });
 });
 
-router.post('/', async (req, res) => {
+router.post('/', (req, res) => {
     const { nombre, email, universidad, password } = req.body;
 
-    const hashedPassword = await bcrypt.hash(password, 10);
-
-    req.db.query('INSERT INTO usuario (nombre, email, universidad, password) VALUES (?, ?, ?, ?)', 
-    [nombre, email, universidad, hashedPassword], 
-    (err, result) => {
-        if (err) return res.status(500).json({ error: err });
-        res.status(201).json({ id: result.insertId, nombre, email, universidad });
-    });
+    req.db.query(
+        'INSERT INTO usuario (nombre, email, universidad, password) VALUES (?, ?, ?, ?)',
+        [nombre, email, universidad, password],
+        (err, result) => {
+            if (err) {
+                if (err.code === 'ER_DUP_ENTRY') {
+                    return res.status(400).json({ error: 'Ya existe una cuenta con ese correo electrónico' });
+                }
+                return res.status(500).json({ error: 'Error al registrar usuario' });
+            }
+            res.status(201).json({ id: result.insertId, nombre, email, universidad });
+        }
+    );
 });
 
 
