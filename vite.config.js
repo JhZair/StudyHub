@@ -12,14 +12,4 @@ export default defineConfig({
       }
     }
   },
-  // Configuración para copiar archivos HTML estáticos a la carpeta de salida
-  build: {
-    rollupOptions: {
-      input: {
-        main: './index.html',
-        login: '/login',
-        signup: '/signup',
-      },
-    },
-  },
 });
