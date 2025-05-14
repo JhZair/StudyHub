@@ -5,6 +5,7 @@ import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import Simulacros from "./pages/Simulacros";
 import Examen from "./pages/Examen";
+import Profile from "./components/Profile";
 
 export default function App() {
   return (
@@ -33,6 +34,12 @@ export default function App() {
           path="/simulacros/:cursoSlug" 
           element={
               <Examen />
+          } 
+        />
+        <Route 
+          path="/perfil" 
+          element={
+              <Profile />
           } 
         />
       </Routes>
