@@ -2,6 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
-  @apply bg-slate-900 text-slate-100 font-sans;
+html, body {
+  @apply bg-white text-gray-800 font-sans;
+  height: auto;
+  overflow-y: auto;
 }

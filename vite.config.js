@@ -4,9 +4,13 @@ import react from '@vitejs/plugin-react';
 export default defineConfig({
   plugins: [react()],
   server: {
-    // Configuración para servir archivos estáticos desde la carpeta public
-    // y permitir el enrutamiento de SPA para rutas no encontradas
-    historyApiFallback: true,
+    proxy: {
+      '/api': {
+        target: 'http://localhost:3000',
+        changeOrigin: true,
+        secure: false
+      }
+    }
   },
   // Configuración para copiar archivos HTML estáticos a la carpeta de salida
   build: {

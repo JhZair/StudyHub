@@ -8,7 +8,7 @@ router.post('/login', (req, res) => {
     return res.status(400).json({ error: 'Faltan campos' });
   }
 
-  const sql = 'SELECT id_usuario, nombre, email FROM usuario WHERE email = ? AND password = ?';
+  const sql = 'SELECT id_usuario, nombre, email, fecha_registro, ultimo_acceso, universidad FROM usuario WHERE email = ? AND password = ?';
 
   req.db.query(sql, [email, password], (err, results) => {
     if (err) {
