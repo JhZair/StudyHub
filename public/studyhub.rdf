@@ -4,7 +4,8 @@
     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
     xmlns:sh="https://studyhubfrontend-5pmm.onrender.com/studyhub#"
     xmlns:dc="http://purl.org/dc/elements/1.1/"
-    xmlns:foaf="http://xmlns.com/foaf/0.1/">
+    xmlns:foaf="http://xmlns.com/foaf/0.1/"
+    xmlns:owl="http://www.w3.org/2002/07/owl#">
     
     <!-- Descripción principal del sitio -->
     <rdf:Description rdf:about="https://studyhubfrontend-5pmm.onrender.com">
@@ -22,9 +23,10 @@
     
     <!-- Documento PDF de recursos -->
     <rdf:Description rdf:about="https://studyhubfrontend-5pmm.onrender.com/Resources/IntroAlgoritmos.pdf">
-        <rdf:type rdf:resource="https://studyhubfrontend-5pmm.onrender.com/studyhub#PDFDocument"/>
+        <rdf:type rdf:resource="http://studyhubfrontend-5pmm.onrender.com/studyhub#PDFDocument"/>
         <dc:title xml:lang="es">Introducción a los Algoritmos</dc:title>
         <sh:isFormat>application/pdf</sh:isFormat>
+        <dc:subject rdf:resource="https://studyhubfrontend-5pmm.onrender.com/studyhub/topics/Algoritmos"/>
     </rdf:Description>
 
     <!-- Plataforma de Simulacros -->
@@ -43,8 +45,10 @@
 
     <!-- Tema de Algoritmos -->
     <rdf:Description rdf:about="https://studyhubfrontend-5pmm.onrender.com/studyhub/topics/Algoritmos">
-        <rdf:type rdf:resource="https://studyhubfrontend-5pmm.onrender.com/studyhub#ComputerScienceTopic"/>
+        <rdf:type rdf:resource="http://studyhubfrontend-5pmm.onrender.com/studyhub#ComputerScienceTopic"/>
         <rdfs:label xml:lang="es">Algoritmos</rdfs:label>
+        
+        <owl:sameAs rdf:resource="http://dbpedia.org/resource/Algorithm"/>
     </rdf:Description>
 
     <!-- Ejemplo de perfil de usuario -->
