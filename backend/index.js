@@ -3,6 +3,7 @@ const mysql = require('mysql2');
 const session = require('express-session');
 const cors = require('cors'); 
 require('dotenv').config();
+const path = require('path');
 
 const app = express(); 
 
@@ -68,4 +69,26 @@ const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, () => {
   console.log(`Servidor iniciado en el puerto ${PORT}`);
+});
+
+// app.get('static/metadata.rdf', (req, res) => {
+//   res.sendFile(path.join(__dirname, 'static/metadata.rdf'), {
+//     headers: {
+//       'Content-Type': 'application/rdf+xml' // Tipo MIME para RDF/XML
+//     }
+//   });
+// });
+
+//Ruta GET personalizada para servir maetadata.rdf
+app.get('/rdf', (req, res) => {
+  const filePath = path.join(__dirname, 'static', 'metadata.rdf');
+  res.sendFile(filePath, {
+    headers: {
+      'Content-Type': 'application/rdf+xml'
+    }
+  });
+});
+
+app.listen(3000, () => {
+  console.log('Servidor corriendo en http://localhost:3000');
 });

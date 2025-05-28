@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+  xmlns:sh="https://studyhubfrontend-5pmm.onrender.com/studyhub#"
+  xmlns:dc="http://purl.org/dc/elements/1.1/"
+  xmlns:foaf="http://xmlns.com/foaf/0.1/"
+  xmlns:owl="http://www.w3.org/2002/07/owl#">
+
+  <rdf:Description rdf:about="https://studyhubfrontend-5pmm.onrender.com/recursos/Calculo.pdf">
+    <rdf:type rdf:resource="http://studyhubfrontend-5pmm.onrender.com/studyhub#PDFDocument"/>
+    <dc:title xml:lang="es">Recurso de Cálculo</dc:title>
+    <sh:isFormat>application/pdf</sh:isFormat>
+    <dc:subject rdf:resource="https://studyhubfrontend-5pmm.onrender.com/studyhub/topics/Calculo"/>
+  </rdf:Description>
+
+  <rdf:Description rdf:about="https://studyhubfrontend-5pmm.onrender.com/simulacros">
+    <rdf:type rdf:resource="http://studyhubfrontend-5pmm.onrender.com/studyhub#ExamPlatform"/>
+    <rdfs:label xml:lang="es">Plataforma de Simulacros de Examen</rdfs:label>
+    <sh:offersExam rdf:resource="https://studyhubfrontend-5pmm.onrender.com/simulacros/calculo_i"/>
+  </rdf:Description>
+
+  <rdf:Description rdf:about="https://studyhubfrontend-5pmm.onrender.com/simulacros/calculo_i">
+    <rdf:type rdf:resource="http://studyhubfrontend-5pmm.onrender.com/studyhub#SimulatedExam"/>
+    <dc:title xml:lang="es">Examen de Cálculo I</dc:title>
+    <sh:coversTopic rdf:resource="https://studyhubfrontend-5pmm.onrender.com/studyhub/topics/Calculo"/>
+  </rdf:Description>
+
+  <rdf:Description rdf:about="https://studyhubfrontend-5pmm.onrender.com/studyhub/topics/Calculo">
+    <rdf:type rdf:resource="http://studyhubfrontend-5pmm.onrender.com/studyhub#ComputerScienceTopic"/>
+    <rdfs:label xml:lang="es">Cálculo</rdfs:label>
+    <owl:sameAs rdf:resource="http://dbpedia.org/resource/Calculus"/>
+  </rdf:Description>
+
+  <rdf:Description rdf:about="https://studyhubfrontend-5pmm.onrender.com/perfil/usuarioEjemplo123">
+    <rdf:type rdf:resource="http://xmlns.com/foaf/0.1/Person"/>
+    <foaf:name>Juan Pérez</foaf:name>
+  </rdf:Description>
+
+</rdf:RDF>
