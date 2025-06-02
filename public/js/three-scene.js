@@ -300,7 +300,7 @@ console.log('1. Cargando three-scene.js...');
         scene.add(constellations);
         
         // Crear esfera principal
-        const sphereGeometry = new THREE.SphereGeometry(3, 64, 64);
+        const sphereGeometry = new THREE.SphereGeometry(2, 64, 64);
         const sphereMaterial = new THREE.MeshPhongMaterial({
             color: 0x4169e1,
             shininess: 100,
