@@ -51,7 +51,7 @@ useEffect(() => {
 
              {loading && (
                <div className="text-center text-gray-600">
-                 <p>Loading resources... This may take up to 30 seconds.</p>
+                 <p>Cargando recursos, con fe no tarda mas de 30 segundos</p>
                  <div className="mt-2">
                    <svg className="animate-spin h-8 w-8 text-slate-900 mx-auto" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                      <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
@@ -69,7 +69,7 @@ useEffect(() => {
 
              {!loading && !error && resources.length === 0 && (
                <div className="text-center text-gray-600">
-                 <p>No resources available.</p>
+                 <p>Recursos</p>
                </div>
              )}
 
