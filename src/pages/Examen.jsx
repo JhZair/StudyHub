@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
-
+import Navbar from "../components/Navbar";
 export default function Examen() {
   const { cursoSlug } = useParams();
   const [preguntas, setPreguntas] = useState([]);
@@ -35,18 +35,7 @@ export default function Examen() {
 
   return (
     <div className="min-h-screen bg-gray-100 text-white">
-      <header className="bg-slate-900 p-6 flex items-center justify-between shadow-md">
-        <div className="flex items-center gap-10 ml-2">
-          <Link to="/" className="text-2xl font-bold cursor-pointer">
-            <span className="bg-white text-slate-900 px-2 py-1 rounded">StudyHub</span>
-          </Link>
-          <nav className="flex gap-4 text-white font-medium">
-            <Link to="/simulacros" className="hover:underline">Simulacros</Link>
-            <a href="/Recursos.html" className="hover:underline">Recursos</a>
-          </nav>
-        </div>
-      </header>
-
+      <Navbar />
       <main className="p-4 max-w-4xl mx-auto">
         {error && <p className="text-red-500">{error}</p>}
 

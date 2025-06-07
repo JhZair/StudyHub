@@ -1,40 +1,48 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import { UserOutlined } from '@ant-design/icons';
+import React from "react";
+import { Link } from "react-router-dom";
+import { useAuth } from "../context/AuthContext";
+import Auth from "./Auth";
 
-const Navbar = () => {
-  // Check if user is logged in (you can replace this with your actual auth check)
-  const isAuthenticated = false; // Change this based on your auth state
+export default function Navbar() {
+  const { currentUser, logout } = useAuth();
 
   return (
-    <nav className="bg-[#07171D] flex items-center justify-between px-6 py-4">
-      <Link to="/" className="text-white font-bold text-2xl">StudyHub</Link>
-      <div className="flex space-x-6 text-white">
-        <Link to="/simulacros" className="hover:text-gray-400">Exámenes</Link>
-        <a href="#" className="hover:text-gray-400">Recursos</a>
-        <a href="#" className="hover:text-gray-400">Ranking</a>
-      </div>
-      <div className="flex items-center space-x-4">
-        {isAuthenticated ? (
-          <Link 
-            to="/profile" 
-            className="text-white hover:text-gray-400 flex items-center"
-          >
-            <UserOutlined className="mr-1" /> Mi Perfil
+    <header className="bg-slate-900 p-6 shadow-md">
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+        {/* Logo + navegación */}
+        <div className="flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-10 ml-2">
+          <Link to="/" className="text-2xl font-bold cursor-pointer">
+            <span className="bg-white text-slate-900 px-2 py-1 rounded">StudyHub</span>
           </Link>
-        ) : (
-          <>
-            <Link to="/login" className="bg-white text-black px-4 py-1 rounded hover:bg-gray-200">
-              Iniciar sesión
-            </Link>
-            <Link to="/signup" className="bg-blue-600 text-white px-4 py-1 rounded hover:bg-blue-700">
-              Registrarse
-            </Link>
-          </>
-        )}
-      </div>
-    </nav>
-  );
-};
+          <nav className="flex gap-4 text-white font-medium">
+            <Link to="/simulacros" className="hover:underline">Simulacros</Link>
+            <Link to="/recursos" className="hover:underline">Recursos1</Link>
+            <a href="/Recursos.html" className="hover:underline">Recursos2</a>
+          </nav>
+        </div>
 
-export default Navbar;
+        {/* Perfil o login/signup */}
+        <div className="flex gap-3 justify-center sm:justify-end mr-2">
+          {currentUser ? (
+            <div className="flex gap-2">
+              <Link
+                to="/perfil"
+                className="bg-white text-slate-900 px-3 py-2 rounded font-medium hover:bg-gray-300 flex items-center"
+              >
+                {currentUser.nombre || "Perfil"}
+              </Link>
+              <button
+                className="bg-red-600 text-white px-3 py-2 rounded font-medium hover:bg-red-700"
+                onClick={logout}
+              >
+                Cerrar sesión
+              </button>
+            </div>
+          ) : (
+            <Auth />
+          )}
+        </div>
+      </div>
+    </header>
+  );
+}

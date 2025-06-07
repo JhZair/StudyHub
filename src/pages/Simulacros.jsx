@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
-
+import Navbar from "../components/Navbar";
 const cursosPorSemestre = {
-  I:["Matematica I","Introduccion a la Vida Universitaria","Comunicacion","Estructuras Discretas I","Programacion de VideoJuegos","Metodologia del Estudio"],
-  II:["Matematica II","Estructuras Discretas II","I a Ciencias de la Computacion","Ciencia de la Computacion I","Introduccion a la Filosofia","Persona Matrimonio y Familia"],
-  III: ["Cálculo I","Ciencia de la computación II","Álgebra abstracta","Desarrollo basado en plataformas"],
+  I: ["Matematica I", "Introduccion a la Vida Universitaria", "Comunicacion", "Estructuras Discretas I", "Programacion de VideoJuegos", "Metodologia del Estudio"],
+  II: ["Matematica II", "Estructuras Discretas II", "I a Ciencias de la Computacion", "Ciencia de la Computacion I", "Introduccion a la Filosofia", "Persona Matrimonio y Familia"],
+  III: ["Cálculo I", "Ciencia de la computación II", "Álgebra abstracta", "Desarrollo basado en plataformas"],
 };
 
 export default function Simulacros() {
@@ -19,26 +19,16 @@ export default function Simulacros() {
   };
 
   const slugify = (str) =>
-  str
-    .normalize("NFD") // elimina tildes
-    .replace(/[\u0300-\u036f]/g, "")
-    .toLowerCase()
-    .replace(/\s+/g, "-")
-    .replace(/[^a-z0-9-]/g, "");
+    str
+      .normalize("NFD") // elimina tildes
+      .replace(/[\u0300-\u036f]/g, "")
+      .toLowerCase()
+      .replace(/\s+/g, "-")
+      .replace(/[^a-z0-9-]/g, "");
 
   return (
     <div className="min-h-screen bg-gray-300">
-      <header className="bg-slate-900 p-7 flex items-center justify-between shadow-md">
-        <div className="flex items-center gap-10 ml-1">
-          <Link to="/" className="text-2xl font-bold cursor-pointer">
-            <span className="bg-white text-slate-900 px-2 py-1 rounded">StudyHub</span>
-          </Link>
-          <nav className="flex gap-4 text-white font-medium">
-            <a href="/Recursos.html" className="hover:underline">Recursos</a>
-          </nav>
-        </div>
-      </header>
-
+      <Navbar />
       <main className="flex flex-col items-center justify-start py-10 px-4">
         <div className="bg-white p-6 rounded shadow-md w-full max-w-6xl">
           {["I", "II", "III"].map((semestre) => (
