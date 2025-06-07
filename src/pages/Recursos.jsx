@@ -7,10 +7,11 @@ import React, { useEffect, useState } from 'react';
      const [loading, setLoading] = useState(true);
      const [error, setError] = useState(null);
 
-     useEffect(() => {
+useEffect(() => {
        const fetchResources = async () => {
          try {
-           const response = await fetch('https://studyhubbackend-vdyi.onrender.com/api/recursos', {
+          // const response = await fetch('https://studyhubbackend-vdyi.onrender.com/api/recursos', {
+           const response = await fetch('http://localhost:3000/api/recursos', {
              headers: {
                'Content-Type': 'application/json',
              },
@@ -30,6 +31,7 @@ import React, { useEffect, useState } from 'react';
 
        fetchResources();
      }, []);
+
 
      return (
        <div className="bg-gray-100 font-sans relative overflow-x-hidden before:content-[''] before:absolute before:inset-0 before:bg-[linear-gradient(45deg,rgba(255,255,255,0.05),rgba(255,255,255,0.05)_10px,transparent_10px,transparent_20px)] before:z-[-1]">
