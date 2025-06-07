@@ -10,8 +10,8 @@ import React, { useEffect, useState } from 'react';
 useEffect(() => {
        const fetchResources = async () => {
          try {
-          // const response = await fetch('https://studyhubbackend-vdyi.onrender.com/api/recursos', {
-           const response = await fetch('http://localhost:3000/api/recursos', {
+          // const response = await fetch('http://localhost:3000/api/recursos', {
+          const response = await fetch('https://studyhubbackend-vdyi.onrender.com/api/recursos', {
              headers: {
                'Content-Type': 'application/json',
              },
