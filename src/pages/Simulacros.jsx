@@ -58,6 +58,14 @@ export default function Simulacros() {
           ))}
         </div>
       </main>
+      <div className="flex items-center justify-center bg-gray-300">
+        <button
+          onClick={() => navigate("/simulacros/trivia")}
+          className="mt-7 bg-blue-600 font-semibold text-xl text-white px-5 py-4 rounded hover:bg-blue-500"
+        >
+          Examen de Trivia
+        </button>
+      </div>
     </div>
   );
 }

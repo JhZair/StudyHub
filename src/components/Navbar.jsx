@@ -16,8 +16,10 @@ export default function Navbar() {
           </Link>
           <nav className="flex gap-4 text-white font-medium">
             <Link to="/simulacros" className="hover:underline">Simulacros</Link>
-            <Link to="/recursos" className="hover:underline">Recursos1</Link>
-            <a href="/Recursos.html" className="hover:underline">Recursos2</a>
+            <Link to="/recursos" className="hover:underline">Recursos</Link>
+            <a href="/metadata.rdf" className="hover:underline">Archivo RDF</a>
+            <Link to="/grafo" className="hover:underline">Grafo RDF</Link>
+            {/* <a href="/Recursos.html" className="hover:underline">Recursos2</a> */}
           </nav>
         </div>
 

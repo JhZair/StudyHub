@@ -8,6 +8,8 @@ import Simulacros from "./pages/Simulacros";
 import Examen from "./pages/Examen";
 import Recursos from "./pages/Recursos";
 import Profile from "./pages/Profile";
+import Graph from "./pages/Graph";
+import ExamenTrivia from "./pages/ExamenTrivia";
 
 export default function App() {
   return (
@@ -51,6 +53,13 @@ export default function App() {
                 <Recursos />
             } 
           />
+            <Route 
+            path="/grafo" 
+            element={
+                <Graph />
+            } 
+          />
+          <Route path="/simulacros/trivia" element={<ExamenTrivia />} />
         </Routes>
       </Router>
     </AuthProvider>
