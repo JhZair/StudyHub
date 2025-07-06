@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useAuth } from '../context/AuthContext';
+import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import '../css/style.css';
 
@@ -57,11 +58,7 @@ const Login = () => {
       <div className="form-container">
         <div className="form-box">
           <h1 className="welcome-title">Bienvenido a StudyHub</h1>
-          <button type="button" className="google-login-btn">
-            <i className="fab fa-google"></i>
-            Continuar con Google
-          </button>
-          <div className="divider"><span>o</span></div>
+          <div className="divider"></div>
           <div className="form-toggle">
             <button className="toggle-btn active">Iniciar Sesión</button>
             <a href="/signup" className="toggle-btn">Registrarse</a>

@@ -51,11 +51,7 @@ const Signup = () => {
       <div className="form-container">
         <div className="form-box">
           <h1 className="welcome-title">Bienvenido a StudyHub</h1>
-          <button type="button" className="google-login-btn">
-            <i className="fab fa-google"></i>
-            Continuar con Google
-          </button>
-          <div className="divider"><span>o</span></div>
+          <div className="divider"></div>
           <div className="form-toggle">
             <a href="/login" className="toggle-btn">Iniciar Sesión</a>
             <button className="toggle-btn active">Registrarse</button>
