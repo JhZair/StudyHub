@@ -150,8 +150,8 @@ const handleUpload = async (e) => {
                   <p className="text-sm text-gray-500 mt-1">
                     Publicado: <span className="font-medium">{new Date(resource.fecha_publicacion).toLocaleDateString()}</span>
                   </p>
-                  <a
-                    href={`${BACKEND_URL}/uploads/${resource.archivo}`}
+                 <a
+                    href={`${BACKEND_URL}${resource.archivo.startsWith('/uploads/') ? '' : '/uploads/'}${resource.archivo}`}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="mt-3 inline-block bg-slate-900 text-white px-4 py-2 rounded hover:bg-slate-800 transition-colors"
