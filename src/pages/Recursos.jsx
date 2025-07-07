@@ -9,6 +9,36 @@ export default function Recursos() {
   const [resources, setResources] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [titulo, setTitulo] = useState('');
+  const [descripcion, setDescripcion] = useState('');
+  const [archivo, setArchivo] = useState(null);
+
+const handleUpload = async (e) => {
+  e.preventDefault();
+  const formData = new FormData();
+  formData.append('titulo', titulo);
+  formData.append('descripcion', descripcion);
+  formData.append('archivo', archivo);
+  formData.append('id_curso', 1);    
+  formData.append('id_usuario', 1);  
+
+  try {
+    const response = await fetch('https://studyhubbackend-vdyi.onrender.com/api/recursos/upload', {
+      method: 'POST',
+      body: formData
+    });
+    if (!response.ok) throw new Error('Error al subir el recurso');
+
+    alert('Recurso subido correctamente');
+    setTitulo('');
+    setDescripcion('');
+    setArchivo(null);
+    window.location.reload(); // refrescar lista
+  } catch (error) {
+    console.error(error);
+    alert('Error subiendo recurso');
+  }
+};
 
   useEffect(() => {
     const fetchResources = async () => {
@@ -96,6 +126,43 @@ export default function Recursos() {
               ))}
             </div>
           )}
+          <form
+            onSubmit={handleUpload}
+            className="mb-5 p-4 bg-white rounded shadow-md flex flex-col gap-2"
+            encType="multipart/form-data"
+          >
+            <h3 className="font-semibold text-slate-900">Subir recurso</h3>
+            <input
+              type="text"
+              placeholder="Título"
+              value={titulo}
+              onChange={(e) => setTitulo(e.target.value)}
+              className="border p-2 rounded text-black"
+              required
+            />
+            <textarea
+              placeholder="Descripción"
+              value={descripcion}
+              onChange={(e) => setDescripcion(e.target.value)}
+              className="border p-2 rounded text-black"
+              required
+            ></textarea>
+            <input
+              type="file"
+              accept="application/pdf"
+              onChange={(e) => setArchivo(e.target.files[0])}
+              className="border p-2 rounded"
+              required
+            />
+            <input type="hidden" value="1" name="id_curso" />
+            <input type="hidden" value="1" name="id_usuario" />
+            <button
+              type="submit"
+              className="bg-slate-900 text-white px-4 py-2 rounded hover:bg-slate-800"
+            >
+              Subir
+            </button>
+          </form>
         </section>
       </main>
 

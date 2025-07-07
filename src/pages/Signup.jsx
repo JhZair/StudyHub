@@ -28,7 +28,7 @@ const Signup = () => {
       return;
     }
     try {
-      const res = await fetch('/api/usuarios', {
+    const res = await fetch('https://studyhubbackend-vdyi.onrender.com/api/usuarios', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ nombre, email, universidad: 'ucsp', password }),

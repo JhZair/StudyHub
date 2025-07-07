@@ -1,4 +1,3 @@
-DROP TABLE IF EXISTS ranking;
 DROP TABLE IF EXISTS simulacros_examenes;
 DROP TABLE IF EXISTS recursos;
 DROP TABLE IF EXISTS curso;
@@ -45,15 +44,6 @@ CREATE TABLE simulacros_examenes (
     FOREIGN KEY (id_usuario) REFERENCES usuario(id_usuario) ON DELETE CASCADE
 );
 
-CREATE TABLE ranking (
-    id_ranking INT AUTO_INCREMENT PRIMARY KEY,
-    id_usuario INT NOT NULL,
-    nivel ENUM('Bronce', 'Plata', 'Oro', 'Platino', 'Diamante'),
-    fecha_actualizacion DATETIME DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (id_usuario) REFERENCES usuario(id_usuario) ON DELETE CASCADE,
-    UNIQUE (id_usuario)
-);
-
 -- Insertar cursos
 INSERT INTO curso (nombre, area) VALUES 
     ('Matemáticas I', 'Ciencias Básicas'),
@@ -85,11 +75,5 @@ INSERT INTO simulacros_examenes (duracion, preguntas, puntaje, fecha_realizacion
     (90, 30, 85, STR_TO_DATE('2023-03-01', '%Y-%m-%d'), 1, 1),
     (120, 40, 92, STR_TO_DATE('2023-03-02', '%Y-%m-%d'), 2, 2),
     (60, 20, 78, STR_TO_DATE('2023-03-03', '%Y-%m-%d'), 3, 3);
-
--- Insertar ranking
-INSERT INTO ranking (id_usuario, nivel) VALUES 
-    (1, 'Oro'),
-    (2, 'Platino'),
-    (3, 'Plata');
 
 ALTER TABLE usuario ADD password VARCHAR(100) NOT NULL DEFAULT '1234';

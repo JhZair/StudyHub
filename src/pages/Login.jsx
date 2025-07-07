@@ -19,27 +19,38 @@ const Login = () => {
     return () => { document.body.removeChild(script); }
   }, []);
 
-  const handleSubmit = async (e) => {
+ const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await fetch('https://backend-studyhub.onrender.com/api/auth/login', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ email, password }),
+      const res = await fetch('https://studyhubbackend-vdyi.onrender.com/api/auth/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, password }),
+        credentials: 'include'
       });
-      const data = await res.json();
-      console.log(data); // 👈 aquí debería tener nombre, correo y universidad
+      const text = await res.text(); // Intenta primero leer como texto
+      let data;
+
+      try {
+        data = JSON.parse(text); // Intenta convertir a JSON
+      } catch (parseError) {
+        console.error('No se pudo parsear respuesta como JSON:', text);
+        setError('Respuesta inválida del servidor');
+        return;
+      }
+
+      console.log(data); // Verifica estructura
 
       if (res.ok) {
         const userData = data.usuario;
-        
+
         const user = {
           id_usuario: userData.id_usuario,
-          nombre: userData.nombre || 'Usuario sin nombre',
-          correo: userData.email || email,
-          universidad: userData.universidad || 'No especifica',
-          fecha_registro: userData.fecha_registro || 'No especifica',
-          ultimo_acceso: userData.ultimo_acceso|| 'No especifica'
+          nombre: userData.nombre,
+          correo: userData.email ,
+          universidad: userData.universidad,
+          fecha_registro: userData.fecha_registro,
+          ultimo_acceso: userData.ultimo_acceso
         };
 
         login(user);
@@ -48,7 +59,7 @@ const Login = () => {
         setError(data.error || 'Error al iniciar sesión');
       }
     } catch (err) {
-      console.error(err);
+      console.error('Error de red:', err);
       setError('Error de red');
     }
   };
