@@ -12,6 +12,8 @@ export default function Recursos() {
   const [titulo, setTitulo] = useState('');
   const [descripcion, setDescripcion] = useState('');
   const [archivo, setArchivo] = useState(null);
+
+  const BACKEND_URL = 'https://studyhubbackend-vdyi.onrender.com';
   
 
 const fetchResources = async () => {
@@ -149,7 +151,7 @@ const handleUpload = async (e) => {
                     Publicado: <span className="font-medium">{new Date(resource.fecha_publicacion).toLocaleDateString()}</span>
                   </p>
                   <a
-                    href={resource.archivo}
+                    href={`${BACKEND_URL}/uploads/${resource.archivo}`}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="mt-3 inline-block bg-slate-900 text-white px-4 py-2 rounded hover:bg-slate-800 transition-colors"
