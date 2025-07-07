@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { useParams, Link } from "react-router-dom";
+import { useParams, useLocation  } from "react-router-dom";
 import Navbar from "../components/Navbar";
+import { useAuth } from '../context/AuthContext';
+import axios from 'axios';
+
 export default function Examen() {
   const { cursoSlug } = useParams();
   const [preguntas, setPreguntas] = useState([]);
@@ -8,6 +11,7 @@ export default function Examen() {
   const [finalizado, setFinalizado] = useState(false);
   const [puntaje, setPuntaje] = useState(0);
   const [error, setError] = useState(null);
+  const { currentUser } = useAuth();
 
   useEffect(() => {
     import(`../data/preguntas/${cursoSlug}.json`)
@@ -21,17 +25,30 @@ export default function Examen() {
     }
   };
 
-  const finalizarExamen = () => {
-    let puntos = 0;
-    preguntas.forEach((pregunta) => {
-      const respuestaSeleccionada = respuestas[pregunta.id];
-      if (respuestaSeleccionada === pregunta.respuestaCorrecta) {
-        puntos++;
-      }
+  const finalizarExamen = async () => {
+  let puntos = 0;
+  preguntas.forEach((pregunta) => {
+    const respuestaSeleccionada = respuestas[pregunta.id];
+    if (respuestaSeleccionada === pregunta.respuestaCorrecta) {
+      puntos++;
+    }
+  });
+  setPuntaje(puntos);
+  setFinalizado(true);
+  try {
+    await axios.post('https://studyhubbackend-vdyi.onrender.com/api/puntajes/guardar', {
+      duracion: preguntas.length * 2,
+      preguntas: preguntas.length,
+      puntaje: puntos,
+      id_curso: 2,
+      id_usuario: currentUser.id_usuario
     });
-    setPuntaje(puntos);
-    setFinalizado(true);
-  };
+    console.log('Puntaje guardado');
+  } catch (error) {
+    console.error('Error guardando puntaje:', error);
+  }
+};
+
 
   return (
     <div className="min-h-screen bg-gray-100 text-white">

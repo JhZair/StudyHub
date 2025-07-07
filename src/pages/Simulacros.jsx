@@ -46,7 +46,11 @@ export default function Simulacros() {
                   {cursosPorSemestre[semestre].map((curso, idx) => (
                     <div
                       key={idx}
-                      onClick={() => navigate(`/simulacros/${slugify(curso)}`)}
+                      onClick={() =>
+                        navigate(`/simulacros/${slugify(curso)}`, {
+                          state: { nombreCurso: curso },
+                        })
+                      }
                       className="cursor-pointer bg-slate-800 text-white py-4 text-center rounded shadow hover:bg-slate-700 transition"
                     >
                       {curso}
