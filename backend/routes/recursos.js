@@ -33,7 +33,8 @@ router.post('/upload', upload.single('archivo'), async (req, res) => {
       fecha_publicacion: new Date()
     };
 
-    await req.db.query(
+    // Ejecutar query usando await (sin callback)
+    const [result] = await req.db.query(
       'INSERT INTO recursos (titulo, descripcion, archivo, tipo, id_curso, id_usuario, fecha_publicacion) VALUES (?,?,?,?,?,?,?)',
       [
         nuevoRecurso.titulo,
@@ -43,15 +44,11 @@ router.post('/upload', upload.single('archivo'), async (req, res) => {
         nuevoRecurso.id_curso,
         nuevoRecurso.id_usuario,
         nuevoRecurso.fecha_publicacion
-      ],
-      (err, result) => {
-        if (err) {
-          console.error(err);
-          return res.status(500).json({ error: 'Error al guardar recurso en la base de datos' });
-        }
-        res.json({ mensaje: 'Recurso subido correctamente', recurso: nuevoRecurso });
-      }
+      ]
     );
+
+    res.json({ success: true, mensaje: 'Recurso subido correctamente', recurso: nuevoRecurso });
+
   } catch (err) {
     console.error(err);
     res.status(500).json({ error: 'Error al subir recurso' });
@@ -59,24 +56,14 @@ router.post('/upload', upload.single('archivo'), async (req, res) => {
 });
 
 // Obtener todos los recursos
-router.get('/', (req, res) => {
-  req.db.query('SELECT * FROM recursos', (err, results) => {
-    if (err) return res.status(500).json({ error: err });
-    res.json(results);
-  });
-});
-
-// Agregar recurso sin archivo
-router.post('/', (req, res) => {
-  const { titulo, descripcion, tipo, archivo, id_curso, id_usuario } = req.body;
-  req.db.query(
-    'INSERT INTO recursos (titulo, descripcion, tipo, archivo, id_curso, id_usuario) VALUES (?, ?, ?, ?, ?, ?)',
-    [titulo, descripcion, tipo, archivo, id_curso, id_usuario],
-    (err, result) => {
-      if (err) return res.status(500).json({ error: err });
-      res.status(201).json({ id: result.insertId, titulo });
-    }
-  );
+router.get('/', async (req, res) => {
+  try {
+    const [rows] = await req.db.query('SELECT * FROM recursos');
+    res.json(rows);
+  } catch (err) {
+    console.error('Error al obtener recursos:', err);
+    res.status(500).json({ error: 'Error al obtener recursos' });
+  }
 });
 
 module.exports = router;

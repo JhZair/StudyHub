@@ -2,43 +2,77 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Link } from "react-router-dom";
 import Navbar from '../components/Navbar';
-
+import axios from 'axios';
 
 export default function Recursos() {
   const navigate = useNavigate();
   const [resources, setResources] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [titulo, setTitulo] = useState('');
   const [descripcion, setDescripcion] = useState('');
   const [archivo, setArchivo] = useState(null);
+  
+
+const fetchResources = async () => {
+    try {
+      const response = await fetch('https://studyhubbackend-vdyi.onrender.com/api/recursos', {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        credentials: 'include',
+      });
+      if (!response.ok) {
+        throw new Error('Failed to fetch recursos');
+      }
+      const data = await response.json();
+      setResources(data);
+    } catch (err) {
+      setError(err.message);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+    useEffect(() => {
+    fetchResources();
+  }, []);
 
 const handleUpload = async (e) => {
-  e.preventDefault();
-  const formData = new FormData();
-  formData.append('titulo', titulo);
-  formData.append('descripcion', descripcion);
-  formData.append('archivo', archivo);
-  formData.append('id_curso', 1);    
-  formData.append('id_usuario', 1);  
+    e.preventDefault();
+    if (!titulo.trim() || !descripcion.trim() || !archivo) {
+      alert('Por favor completa todos los campos y selecciona un archivo.');
+      return;
+    }
+    setLoading(true);
 
-  try {
-    const response = await fetch('https://studyhubbackend-vdyi.onrender.com/api/recursos/upload', {
-      method: 'POST',
-      body: formData
-    });
-    if (!response.ok) throw new Error('Error al subir el recurso');
+    const formData = new FormData();
+    formData.append('titulo', titulo);
+    formData.append('descripcion', descripcion);
+    formData.append('archivo', archivo);
+    formData.append('id_curso', 1);
+    formData.append('id_usuario', 1);
 
-    alert('Recurso subido correctamente');
-    setTitulo('');
-    setDescripcion('');
-    setArchivo(null);
-    window.location.reload(); // refrescar lista
-  } catch (error) {
-    console.error(error);
-    alert('Error subiendo recurso');
-  }
-};
+    try {
+      // const response = await axios.post('http://localhost:3000/api/recursos/upload', formData);
+      const response = await axios.post(`https://studyhubbackend-vdyi.onrender.com/api/recursos/upload`, formData);
+      console.log(response.data);
+      if (response.data.success) {
+        alert('Recurso subido con éxito');
+        await fetchResources(); // aquí antes era cargarRecursos()
+        setTitulo('');
+        setDescripcion('');
+        setArchivo(null);
+      } else {
+        alert('Error al subir recurso');
+      }
+    } catch (error) {
+      console.error('Error al subir el recurso', error);
+      alert('Error al subir recurso');
+    } finally {
+      setLoading(false);
+    }
+  };
 
   useEffect(() => {
     const fetchResources = async () => {
@@ -154,13 +188,15 @@ const handleUpload = async (e) => {
               className="border p-2 rounded"
               required
             />
+            {archivo && <p className="text-sm text-gray-600">Archivo seleccionado: {archivo.name}</p>}
             <input type="hidden" value="1" name="id_curso" />
             <input type="hidden" value="1" name="id_usuario" />
             <button
               type="submit"
-              className="bg-slate-900 text-white px-4 py-2 rounded hover:bg-slate-800"
+              disabled={loading}
+              className="bg-slate-900 text-white px-4 py-2 rounded hover:bg-slate-800 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
             >
-              Subir
+              {loading ? 'Subiendo...' : 'Subir recurso'}
             </button>
           </form>
         </section>
