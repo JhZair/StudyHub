@@ -60,7 +60,6 @@ const handleUpload = async (e) => {
       const response = await axios.post(`https://studyhubbackend-vdyi.onrender.com/api/recursos/upload`, formData);
       console.log(response.data);
       if (response.data.success) {
-        alert('Recurso subido con éxito');
         await fetchResources(); // aquí antes era cargarRecursos()
         setTitulo('');
         setDescripcion('');
