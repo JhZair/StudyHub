@@ -33,7 +33,7 @@ const Login = () => {
 
       try {
         data = JSON.parse(text); // Intenta convertir a JSON
-      } catch (parseError) {
+      } catch {
         console.error('No se pudo parsear respuesta como JSON:', text);
         setError('Respuesta inválida del servidor');
         return;

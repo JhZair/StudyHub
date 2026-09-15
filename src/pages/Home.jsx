@@ -1,6 +1,5 @@
 import React from "react";
 import imagenHome from "/images/studyhub3.5.JPG";
-import { useAuth } from "../context/AuthContext";
 import Navbar from "../components/Navbar";
 
 export default function Home() {
