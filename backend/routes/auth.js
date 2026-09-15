@@ -48,7 +48,7 @@ router.post('/signup', (req, res) => {
 
     const insertSql = 'INSERT INTO usuario (nombre, email, password, universidad, fecha_registro, ultimo_acceso) VALUES (?, ?, ?, ?, NOW(), NOW())';
 
-    req.db.query(insertSql, [nombre, email, password, universidad], (err, result) => {
+    req.db.query(insertSql, [nombre, email, password, universidad], (err, _result) => {
       if (err) {
         console.error('Error al insertar:', err);
         return res.status(500).json({ error: 'Error al registrar usuario' });

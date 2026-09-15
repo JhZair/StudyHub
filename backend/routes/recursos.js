@@ -1,7 +1,6 @@
 const express = require('express');
 const router = express.Router();
 const multer = require('multer');
-const path = require('path');
 
 // Configuración de almacenamiento local para multer
 const storage = multer.diskStorage({
@@ -34,7 +33,7 @@ router.post('/upload', upload.single('archivo'), async (req, res) => {
     };
 
     // Ejecutar query usando await (sin callback)
-    const [result] = await req.db.query(
+    const [_result] = await req.db.query(
       'INSERT INTO recursos (titulo, descripcion, archivo, tipo, id_curso, id_usuario, fecha_publicacion) VALUES (?,?,?,?,?,?,?)',
       [
         nuevoRecurso.titulo,

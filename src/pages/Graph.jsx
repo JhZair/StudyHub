@@ -1,11 +1,6 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import { useAuth } from '../context/AuthContext';
-import Auth from '../components/Auth';
 import Navbar from "../components/Navbar";
 
 const Graph = () => {
-  const { currentUser, logout } = useAuth();
 
   return (
         <div className="min-h-screen bg-gray-100 text-white flex flex-col">

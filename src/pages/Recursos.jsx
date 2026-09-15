@@ -1,11 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { Link } from "react-router-dom";
 import Navbar from '../components/Navbar';
 import axios from 'axios';
 
 export default function Recursos() {
-  const navigate = useNavigate();
   const [resources, setResources] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);

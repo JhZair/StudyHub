@@ -19,7 +19,7 @@ connection.connect((err) => {
   }
   console.log('Connected to DB.');
 
-  connection.query(sql, (err, result) => {
+  connection.query(sql, (err, _result) => {
     if (err) {
       console.error('Query execution error:', err.message);
       console.error(err);
