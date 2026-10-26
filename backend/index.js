@@ -4,7 +4,7 @@ const cors = require('cors');
 require('dotenv').config();
 const path = require('path');
 const fs = require('fs');
-const db = require('./routes/db'); // 👉 nuevo: importamos el pool
+const db = require('./src/config/database'); // 👉 nuevo: importamos el pool
 
 const app = express();
 
@@ -46,11 +46,11 @@ app.use((req, res, next) => {
 });
 
 // Rutas
-app.use('/api/cursos', require('./routes/cursos'));
-app.use('/api/usuarios', require('./routes/usuarios'));
-app.use('/api/recursos', require('./routes/recursos'));
-app.use('/api/simulacros', require('./routes/simulacros'));
-app.use('/api/auth', require('./routes/auth'));
+app.use('/api/cursos', require('./src/curso/CursoController'));
+app.use('/api/usuarios', require('./src/usuario/UsuarioController'));
+app.use('/api/recursos', require('./src/recurso/RecursoController'));
+app.use('/api/simulacros', require('./src/simulacro/SimulacroController'));
+app.use('/api/auth', require('./src/usuario/AuthController'));
 app.use('/uploads', express.static('uploads'));
 
 // Servir metadata.rdf
