@@ -5,7 +5,8 @@
   "scripts": {
     "start": "node index.js",
     "test": "jest",
-    "coverage": "jest --coverage"
+    "coverage": "jest --coverage",
+    "migrar:passwords": "node scripts/hashear-passwords.js"
   },
   "jest": {
     "testEnvironment": "node",
