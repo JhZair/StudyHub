@@ -2,26 +2,27 @@ const express = require('express');
 const router = express.Router();
 
 // Obtener todos los simulacros
-router.get('/', (req, res) => {
-  const db = req.db;
-  db.query('SELECT * FROM simulacros_examenes', (err, results) => {
-    if (err) return res.status(500).json({ error: err });
+router.get('/', async (req, res) => {
+  try {
+    const [results] = await req.db.query('SELECT * FROM simulacros_examenes');
     res.json(results);
-  });
+  } catch (err) {
+    res.status(500).json({ error: err });
+  }
 });
 
 // Agregar simulacro
-router.post('/', (req, res) => {
-  const db = req.db;
+router.post('/', async (req, res) => {
   const { duracion, preguntas, puntaje, id_curso, id_usuario } = req.body;
-  db.query(
-    'INSERT INTO simulacros_examenes (duracion, preguntas, puntaje, id_curso, id_usuario) VALUES (?, ?, ?, ?, ?)',
-    [duracion, preguntas, puntaje, id_curso, id_usuario],
-    (err, result) => {
-      if (err) return res.status(500).json({ error: err });
-      res.status(201).json({ id: result.insertId });
-    }
-  );
+  try {
+    const [result] = await req.db.query(
+      'INSERT INTO simulacros_examenes (duracion, preguntas, puntaje, id_curso, id_usuario) VALUES (?, ?, ?, ?, ?)',
+      [duracion, preguntas, puntaje, id_curso, id_usuario]
+    );
+    res.status(201).json({ id: result.insertId });
+  } catch (err) {
+    res.status(500).json({ error: err });
+  }
 });
 
 module.exports = router;

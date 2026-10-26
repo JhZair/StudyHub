@@ -4,7 +4,7 @@ const cors = require('cors');
 require('dotenv').config();
 const path = require('path');
 const fs = require('fs');
-const db = require('./db'); // 👉 nuevo: importamos el pool
+const db = require('./routes/db'); // 👉 nuevo: importamos el pool
 
 const app = express();
 
@@ -50,7 +50,6 @@ app.use('/api/cursos', require('./routes/cursos'));
 app.use('/api/usuarios', require('./routes/usuarios'));
 app.use('/api/recursos', require('./routes/recursos'));
 app.use('/api/simulacros', require('./routes/simulacros'));
-app.use('/api/ranking', require('./routes/ranking'));
 app.use('/api/auth', require('./routes/auth'));
 app.use('/uploads', express.static('uploads'));
 

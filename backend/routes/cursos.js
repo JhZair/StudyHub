@@ -2,22 +2,24 @@ const express = require('express');
 const router = express.Router();
 
 // Obtener todos los cursos
-router.get('/', (req, res) => {
-  const db = req.db;
-  db.query('SELECT * FROM curso', (err, results) => {
-    if (err) return res.status(500).json({ error: err });
+router.get('/', async (req, res) => {
+  try {
+    const [results] = await req.db.query('SELECT * FROM curso');
     res.json(results);
-  });
+  } catch (err) {
+    res.status(500).json({ error: err });
+  }
 });
 
 // Agregar un curso
-router.post('/', (req, res) => {
-  const db = req.db;
+router.post('/', async (req, res) => {
   const { nombre, area } = req.body;
-  db.query('INSERT INTO curso (nombre, area) VALUES (?, ?)', [nombre, area], (err, result) => {
-    if (err) return res.status(500).json({ error: err });
+  try {
+    const [result] = await req.db.query('INSERT INTO curso (nombre, area) VALUES (?, ?)', [nombre, area]);
     res.status(201).json({ id: result.insertId, nombre, area });
-  });
+  } catch (err) {
+    res.status(500).json({ error: err });
+  }
 });
 
 module.exports = router;

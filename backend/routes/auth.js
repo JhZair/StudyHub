@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 
 // LOGIN
-router.post('/login', (req, res) => {
+router.post('/login', async (req, res) => {
   const { email, password } = req.body;
 
   if (!email || !password) {
@@ -11,23 +11,24 @@ router.post('/login', (req, res) => {
 
   const sql = 'SELECT id_usuario, nombre, email, fecha_registro, ultimo_acceso, universidad FROM usuario WHERE email = ? AND password = ?';
 
-  req.db.query(sql, [email, password], (err, results) => {
-    if (err) {
-      console.error('Error al consultar:', err);
-      return res.status(500).json({ error: 'Error en el servidor' });
-    }
+  let results;
+  try {
+    [results] = await req.db.query(sql, [email, password]);
+  } catch (err) {
+    console.error('Error al consultar:', err);
+    return res.status(500).json({ error: 'Error en el servidor' });
+  }
 
-    if (results.length === 0) {
-      return res.status(401).json({ error: 'Credenciales inválidas' });
-    }
+  if (results.length === 0) {
+    return res.status(401).json({ error: 'Credenciales inválidas' });
+  }
 
-    req.session.usuario = results[0];
-    res.json({ mensaje: 'Login exitoso', usuario: results[0] });
-  });
+  req.session.usuario = results[0];
+  res.json({ mensaje: 'Login exitoso', usuario: results[0] });
 });
 
 // REGISTRO
-router.post('/signup', (req, res) => {
+router.post('/signup', async (req, res) => {
   const { nombre, email, password, universidad } = req.body;
 
   if (!nombre || !email || !password || !universidad) {
@@ -36,27 +37,28 @@ router.post('/signup', (req, res) => {
 
   const checkSql = 'SELECT * FROM usuario WHERE email = ?';
 
-  req.db.query(checkSql, [email], (err, existing) => {
-    if (err) {
-      console.error('Error al consultar:', err);
-      return res.status(500).json({ error: 'Error en el servidor' });
-    }
+  let existing;
+  try {
+    [existing] = await req.db.query(checkSql, [email]);
+  } catch (err) {
+    console.error('Error al consultar:', err);
+    return res.status(500).json({ error: 'Error en el servidor' });
+  }
 
-    if (existing.length > 0) {
-      return res.status(400).json({ error: 'Correo ya registrado' });
-    }
+  if (existing.length > 0) {
+    return res.status(400).json({ error: 'Correo ya registrado' });
+  }
 
-    const insertSql = 'INSERT INTO usuario (nombre, email, password, universidad, fecha_registro, ultimo_acceso) VALUES (?, ?, ?, ?, NOW(), NOW())';
+  const insertSql = 'INSERT INTO usuario (nombre, email, password, universidad, fecha_registro, ultimo_acceso) VALUES (?, ?, ?, ?, NOW(), NOW())';
 
-    req.db.query(insertSql, [nombre, email, password, universidad], (err, _result) => {
-      if (err) {
-        console.error('Error al insertar:', err);
-        return res.status(500).json({ error: 'Error al registrar usuario' });
-      }
+  try {
+    await req.db.query(insertSql, [nombre, email, password, universidad]);
+  } catch (err) {
+    console.error('Error al insertar:', err);
+    return res.status(500).json({ error: 'Error al registrar usuario' });
+  }
 
-      res.json({ mensaje: 'Registro exitoso' });
-    });
-  });
+  res.json({ mensaje: 'Registro exitoso' });
 });
 
 // PERFIL
