@@ -12,7 +12,7 @@ const Profile = () => {
 useEffect(() => {
   const obtenerPuntajes = async () => {
     try {
-      const response = await axios.get(`https://studyhubbackend-vdyi.onrender.com/api/puntajes/usuario/${currentUser.id_usuario}`);
+      const response = await axios.get(`${import.meta.env.VITE_API_URL}/api/puntajes/usuario/${currentUser.id_usuario}`);
       setPuntajes(response.data);
     } catch (error) {
       console.error('Error al obtener puntajes:', error);
