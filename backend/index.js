@@ -5,6 +5,10 @@ require('dotenv').config();
 const path = require('path');
 const fs = require('fs');
 const db = require('./src/config/database'); // 👉 nuevo: importamos el pool
+const UsuarioRepository = require('./src/usuario/UsuarioRepository');
+const UsuarioService = require('./src/usuario/UsuarioService');
+
+const usuarioService = new UsuarioService(new UsuarioRepository(db));
 
 const app = express();
 
@@ -47,10 +51,10 @@ app.use((req, res, next) => {
 
 // Rutas
 app.use('/api/cursos', require('./src/curso/CursoController'));
-app.use('/api/usuarios', require('./src/usuario/UsuarioController'));
+app.use('/api/usuarios', require('./src/usuario/UsuarioController')(usuarioService));
 app.use('/api/recursos', require('./src/recurso/RecursoController'));
 app.use('/api/simulacros', require('./src/simulacro/SimulacroController'));
-app.use('/api/auth', require('./src/usuario/AuthController'));
+app.use('/api/auth', require('./src/usuario/AuthController')(usuarioService));
 app.use('/uploads', express.static('uploads'));
 
 // Servir metadata.rdf

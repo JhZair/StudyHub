@@ -1,32 +1,32 @@
 const express = require('express');
-const router = express.Router();
 
-// Obtener todos los usuarios
-router.get('/', async (req, res) => {
-  try {
-    const [results] = await req.db.query('SELECT * FROM usuario');
-    res.json(results);
-  } catch (err) {
-    res.status(500).json({ error: err });
-  }
-});
+module.exports = (usuarioService) => {
+  const router = express.Router();
 
-// Registrar usuario
-router.post('/', async (req, res) => {
-  const { nombre, email, universidad, password } = req.body;
-
-  try {
-    const [result] = await req.db.query(
-      'INSERT INTO usuario (nombre, email, universidad, password) VALUES (?, ?, ?, ?)',
-      [nombre, email, universidad, password]
-    );
-    res.status(201).json({ id: result.insertId, nombre, email, universidad });
-  } catch (err) {
-    if (err.code === 'ER_DUP_ENTRY') {
-      return res.status(400).json({ error: 'Ya existe una cuenta con ese correo electrónico' });
+  // Obtener todos los usuarios
+  router.get('/', async (req, res) => {
+    try {
+      res.json(await usuarioService.listar());
+    } catch (err) {
+      res.status(500).json({ error: err });
     }
-    res.status(500).json({ error: 'Error al registrar usuario' });
-  }
-});
+  });
 
-module.exports = router;
+  // Registrar usuario
+  router.post('/', async (req, res) => {
+    try {
+      const { id_usuario, nombre, email, universidad } = await usuarioService.registrar(req.body);
+      res.status(201).json({ id: id_usuario, nombre, email, universidad });
+    } catch (err) {
+      if (err.codigo === 'EMAIL_DUPLICADO') {
+        return res.status(400).json({ error: 'Ya existe una cuenta con ese correo electrónico' });
+      }
+      if (err.codigo === 'VALIDACION') {
+        return res.status(400).json({ error: err.message });
+      }
+      res.status(500).json({ error: 'Error al registrar usuario' });
+    }
+  });
+
+  return router;
+};
