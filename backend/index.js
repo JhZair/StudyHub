@@ -4,7 +4,9 @@ const cors = require('cors');
 require('dotenv').config();
 const path = require('path');
 const fs = require('fs');
-const db = require('./db'); // 👉 nuevo: importamos el pool
+
+//actualizando ruta 
+const db = require('./src/config/database'); 
 
 const app = express();
 
@@ -48,7 +50,8 @@ app.use((req, res, next) => {
 // Rutas
 app.use('/api/cursos', require('./routes/cursos'));
 app.use('/api/usuarios', require('./routes/usuarios'));
-app.use('/api/recursos', require('./routes/recursos'));
+app.use('/api/recursos', require('./src/recurso/RecursoController'));
+
 app.use('/api/simulacros', require('./routes/simulacros'));
 app.use('/api/ranking', require('./routes/ranking'));
 app.use('/api/auth', require('./routes/auth'));
