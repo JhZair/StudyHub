@@ -1,28 +1,29 @@
 const express = require('express');
-const router = express.Router();
 
-// Obtener todos los simulacros
-router.get('/', async (req, res) => {
-  try {
-    const [results] = await req.db.query('SELECT * FROM simulacros_examenes');
-    res.json(results);
-  } catch (err) {
-    res.status(500).json({ error: err });
-  }
-});
+module.exports = (simulacroService) => {
+  const router = express.Router();
 
-// Agregar simulacro
-router.post('/', async (req, res) => {
-  const { duracion, preguntas, puntaje, id_curso, id_usuario } = req.body;
-  try {
-    const [result] = await req.db.query(
-      'INSERT INTO simulacros_examenes (duracion, preguntas, puntaje, id_curso, id_usuario) VALUES (?, ?, ?, ?, ?)',
-      [duracion, preguntas, puntaje, id_curso, id_usuario]
-    );
-    res.status(201).json({ id: result.insertId });
-  } catch (err) {
-    res.status(500).json({ error: err });
-  }
-});
+  // Obtener todos los simulacros
+  router.get('/', async (req, res) => {
+    try {
+      res.json(await simulacroService.listar());
+    } catch (err) {
+      res.status(500).json({ error: 'Error al obtener los simulacros' });
+    }
+  });
 
-module.exports = router;
+  // Agregar simulacro
+  router.post('/', async (req, res) => {
+    try {
+      const { id_examen } = await simulacroService.registrar(req.body);
+      res.status(201).json({ id: id_examen });
+    } catch (err) {
+      if (err.codigo === 'VALIDACION' || err.codigo === 'REFERENCIA_INVALIDA') {
+        return res.status(400).json({ error: err.message });
+      }
+      res.status(500).json({ error: 'Error al registrar el simulacro' });
+    }
+  });
+
+  return router;
+};
