@@ -83,6 +83,22 @@ describe('UsuarioService', () => {
       expect(repositorio.save).not.toHaveBeenCalled();
     });
 
+    test('rechaza un email mal formado con codigo VALIDACION usando el mensaje de la entidad', async () => {
+      // Arrange
+      const datos = { ...datosRegistro(), email: 'leo.example.com' };
+
+      // Act
+      const registro = servicio.registrar(datos);
+
+      // Assert
+      await expect(registro).rejects.toMatchObject({
+        codigo: 'VALIDACION',
+        message: 'El email no tiene un formato valido'
+      });
+      expect(repositorio.findByEmail).not.toHaveBeenCalled();
+      expect(repositorio.save).not.toHaveBeenCalled();
+    });
+
     test('guarda la password hasheada con bcrypt cuando los datos son validos', async () => {
       // Arrange
       repositorio.findByEmail.mockResolvedValue(null);
@@ -103,6 +119,30 @@ describe('UsuarioService', () => {
   });
 
   describe('login', () => {
+    test('rechaza un login sin email con codigo VALIDACION', async () => {
+      // Arrange
+      const credenciales = { password: 'secreta123' };
+
+      // Act
+      const login = servicio.login(credenciales);
+
+      // Assert
+      await expect(login).rejects.toMatchObject({ codigo: 'VALIDACION', message: 'Faltan campos' });
+      expect(repositorio.findByEmail).not.toHaveBeenCalled();
+    });
+
+    test('rechaza un login sin password con codigo VALIDACION', async () => {
+      // Arrange
+      const credenciales = { email: 'leo@example.com' };
+
+      // Act
+      const login = servicio.login(credenciales);
+
+      // Assert
+      await expect(login).rejects.toMatchObject({ codigo: 'VALIDACION', message: 'Faltan campos' });
+      expect(repositorio.findByEmail).not.toHaveBeenCalled();
+    });
+
     test('rechaza una password incorrecta con codigo CREDENCIALES_INVALIDAS', async () => {
       // Arrange
       repositorio.findByEmail.mockResolvedValue(usuarioGuardado());

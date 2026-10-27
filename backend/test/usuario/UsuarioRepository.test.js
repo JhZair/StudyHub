@@ -55,6 +55,30 @@ describe('UsuarioRepository', () => {
     expect(usuario).toBeNull();
   });
 
+  test('findById devuelve un Usuario cuando el id existe', async () => {
+    // Arrange
+    db.query.mockResolvedValue([[filaAna()], []]);
+
+    // Act
+    const usuario = await repositorio.findById(1);
+
+    // Assert
+    expect(db.query).toHaveBeenCalledWith('SELECT * FROM usuario WHERE id_usuario = ?', [1]);
+    expect(usuario).toBeInstanceOf(Usuario);
+    expect(usuario).toMatchObject(filaAna());
+  });
+
+  test('findById devuelve null cuando el id no existe', async () => {
+    // Arrange
+    db.query.mockResolvedValue([[], []]);
+
+    // Act
+    const usuario = await repositorio.findById(999);
+
+    // Assert
+    expect(usuario).toBeNull();
+  });
+
   test('save inserta el usuario y lo devuelve con el id generado', async () => {
     // Arrange
     const usuario = nuevoUsuario();
@@ -97,5 +121,18 @@ describe('UsuarioRepository', () => {
 
     // Assert
     await expect(guardar).rejects.toMatchObject({ codigo: 'EMAIL_DUPLICADO', message: 'Correo ya registrado' });
+  });
+
+  test('save propaga sin traducir un error de MySQL distinto de ER_DUP_ENTRY', async () => {
+    // Arrange
+    const errorMysql = Object.assign(new Error('Connection lost'), { code: 'PROTOCOL_CONNECTION_LOST' });
+    db.query.mockRejectedValue(errorMysql);
+
+    // Act
+    const guardar = repositorio.save(nuevoUsuario());
+
+    // Assert
+    await expect(guardar).rejects.toBe(errorMysql);
+    await expect(guardar).rejects.not.toHaveProperty('codigo');
   });
 });

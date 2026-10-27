@@ -24,6 +24,20 @@ describe('Usuario', () => {
     expect(usuario).toMatchObject({ ...datosValidos(), nombre: 'Ana García' });
   });
 
+  test('asigna la fecha actual a fecha_registro cuando no viene', () => {
+    // Arrange
+    const ahora = new Date('2026-10-27T12:00:00Z');
+    jest.useFakeTimers({ now: ahora });
+    const { fecha_registro: _omitida, ...datos } = { ...datosValidos(), ultimo_acceso: null };
+
+    // Act
+    const usuario = new Usuario(datos);
+    jest.useRealTimers();
+
+    // Assert
+    expect(usuario.fecha_registro).toEqual(ahora);
+  });
+
   test('rechaza un id_usuario que no es entero positivo', () => {
     // Arrange
     const datos = { ...datosValidos(), id_usuario: 0 };
