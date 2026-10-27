@@ -1,25 +1,29 @@
 const express = require('express');
-const router = express.Router();
 
-// Obtener todos los cursos
-router.get('/', async (req, res) => {
-  try {
-    const [results] = await req.db.query('SELECT * FROM curso');
-    res.json(results);
-  } catch (err) {
-    res.status(500).json({ error: err });
-  }
-});
+module.exports = (cursoService) => {
+  const router = express.Router();
 
-// Agregar un curso
-router.post('/', async (req, res) => {
-  const { nombre, area } = req.body;
-  try {
-    const [result] = await req.db.query('INSERT INTO curso (nombre, area) VALUES (?, ?)', [nombre, area]);
-    res.status(201).json({ id: result.insertId, nombre, area });
-  } catch (err) {
-    res.status(500).json({ error: err });
-  }
-});
+  // Obtener todos los cursos
+  router.get('/', async (req, res) => {
+    try {
+      res.json(await cursoService.listar());
+    } catch (err) {
+      res.status(500).json({ error: 'Error al obtener los cursos' });
+    }
+  });
 
-module.exports = router;
+  // Agregar un curso
+  router.post('/', async (req, res) => {
+    try {
+      const { id_curso, nombre, area } = await cursoService.registrar(req.body);
+      res.status(201).json({ id: id_curso, nombre, area });
+    } catch (err) {
+      if (err.codigo === 'VALIDACION' || err.codigo === 'CURSO_DUPLICADO') {
+        return res.status(400).json({ error: err.message });
+      }
+      res.status(500).json({ error: 'Error al registrar el curso' });
+    }
+  });
+
+  return router;
+};
