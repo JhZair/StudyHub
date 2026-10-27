@@ -2,10 +2,13 @@ const express = require('express');
 const router = express.Router();
 const multer = require('multer');
 
+const RecursoRepository = require('./RecursoRepository');
+const RecursoService = require('./RecursoService');
+
 // Configuración de almacenamiento local para multer
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
-    cb(null, 'uploads/'); // Carpeta donde se guardan los archivos
+    cb(null, 'uploads/');
   },
   filename: (req, file, cb) => {
     const uniqueName = Date.now() + '-' + file.originalname;
@@ -15,53 +18,30 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage });
 
-// Subir recurso con archivo local
+const inicializarServicio = (req) => {
+  const repository = new RecursoRepository(req.db);
+  return new RecursoService(repository);
+};
+
 router.post('/upload', upload.single('archivo'), async (req, res) => {
   try {
-    if (!req.file) return res.status(400).json({ error: 'No se subió ningún archivo' });
-
-    const archivoUrl = `/uploads/${req.file.filename}`; // URL relativa
-
-    const nuevoRecurso = {
-      titulo: req.body.titulo,
-      descripcion: req.body.descripcion,
-      archivo: archivoUrl,
-      tipo: 'PDF',
-      id_curso: req.body.id_curso,
-      id_usuario: req.body.id_usuario,
-      fecha_publicacion: new Date()
-    };
-
-    // Ejecutar query usando await (sin callback)
-    const [_result] = await req.db.query(
-      'INSERT INTO recursos (titulo, descripcion, archivo, tipo, id_curso, id_usuario, fecha_publicacion) VALUES (?,?,?,?,?,?,?)',
-      [
-        nuevoRecurso.titulo,
-        nuevoRecurso.descripcion,
-        nuevoRecurso.archivo,
-        nuevoRecurso.tipo,
-        nuevoRecurso.id_curso,
-        nuevoRecurso.id_usuario,
-        nuevoRecurso.fecha_publicacion
-      ]
-    );
-
-    res.json({ success: true, mensaje: 'Recurso subido correctamente', recurso: nuevoRecurso });
-
+    const servicio = inicializarServicio(req);
+    await servicio.subirRecurso(req.body, req.file);
+    res.json({ success: true, mensaje: 'Recurso subido correctamente' });
   } catch (err) {
     console.error(err);
-    res.status(500).json({ error: 'Error al subir recurso' });
+    res.status(400).json({ error: err.message || 'Error al subir recurso' });
   }
 });
 
-// Obtener todos los recursos
 router.get('/', async (req, res) => {
   try {
-    const [rows] = await req.db.query('SELECT * FROM recursos');
+    const servicio = inicializarServicio(req);
+    const rows = await servicio.obtenerTodos();
     res.json(rows);
   } catch (err) {
     console.error('Error al obtener recursos:', err);
-    res.status(500).json({ error: 'Error al obtener recursos' });
+    res.status(500).json({ error: 'Error interno al obtener recursos' });
   }
 });
 

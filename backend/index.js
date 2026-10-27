@@ -4,7 +4,7 @@ const cors = require('cors');
 require('dotenv').config();
 const path = require('path');
 const fs = require('fs');
-const db = require('./src/config/database'); // 👉 nuevo: importamos el pool
+const db = require('./src/config/database');
 const UsuarioRepository = require('./src/usuario/UsuarioRepository');
 const UsuarioService = require('./src/usuario/UsuarioService');
 const CursoRepository = require('./src/curso/CursoRepository');
