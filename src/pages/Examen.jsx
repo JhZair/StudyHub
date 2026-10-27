@@ -36,7 +36,7 @@ export default function Examen() {
   setPuntaje(puntos);
   setFinalizado(true);
   try {
-    await axios.post('https://studyhubbackend-vdyi.onrender.com/api/puntajes/guardar', {
+    await axios.post(`${import.meta.env.VITE_API_URL}/api/puntajes/guardar`, {
       duracion: preguntas.length * 2,
       preguntas: preguntas.length,
       puntaje: puntos,

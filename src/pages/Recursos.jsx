@@ -10,12 +10,12 @@ export default function Recursos() {
   const [descripcion, setDescripcion] = useState('');
   const [archivo, setArchivo] = useState(null);
 
-  const BACKEND_URL = 'https://studyhubbackend-vdyi.onrender.com';
+  const BACKEND_URL = import.meta.env.VITE_API_URL;
   
 
 const fetchResources = async () => {
     try {
-      const response = await fetch('https://studyhubbackend-vdyi.onrender.com/api/recursos', {
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/api/recursos`, {
         headers: {
           'Content-Type': 'application/json',
         },
@@ -54,7 +54,7 @@ const handleUpload = async (e) => {
 
     try {
       // const response = await axios.post('http://localhost:3000/api/recursos/upload', formData);
-      const response = await axios.post(`https://studyhubbackend-vdyi.onrender.com/api/recursos/upload`, formData);
+      const response = await axios.post(`${import.meta.env.VITE_API_URL}/api/recursos/upload`, formData);
       console.log(response.data);
       if (response.data.success) {
         await fetchResources(); // aquí antes era cargarRecursos()
@@ -76,7 +76,7 @@ const handleUpload = async (e) => {
     const fetchResources = async () => {
       try {
         // const response = await fetch('http://localhost:3000/api/recursos', {
-        const response = await fetch('https://studyhubbackend-vdyi.onrender.com/api/recursos', {
+        const response = await fetch(`${import.meta.env.VITE_API_URL}/api/recursos`, {
           headers: {
             'Content-Type': 'application/json',
           },

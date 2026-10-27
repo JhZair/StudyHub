@@ -16,7 +16,8 @@ CREATE TABLE usuario (
     email VARCHAR(100) UNIQUE NOT NULL,
     fecha_registro DATETIME DEFAULT CURRENT_TIMESTAMP,
     ultimo_acceso DATETIME,
-    universidad VARCHAR(100)
+    universidad VARCHAR(100),
+    password VARCHAR(100) NOT NULL
 );
 
 CREATE TABLE recursos (
@@ -53,11 +54,11 @@ INSERT INTO curso (nombre, area) VALUES
     ('Teoria de la computacion', 'Ciencia de la Computacion'),
     ('Calculo 1', 'Ciencias Basicas');
 
--- Insertar usuarios
-INSERT INTO usuario (nombre, email, fecha_registro, ultimo_acceso, universidad) VALUES 
-    ('Ana García', 'ana.garcia@example.com', STR_TO_DATE('2023-01-15', '%Y-%m-%d'), STR_TO_DATE('2023-06-20', '%Y-%m-%d'), 'Universidad Nacional'),
-    ('Carlos Méndez', 'carlos.mendez@example.com', STR_TO_DATE('2023-03-10', '%Y-%m-%d'), STR_TO_DATE('2023-06-18', '%Y-%m-%d'), 'Universidad Tecnológica'),
-    ('Luisa Fernández', 'luisa.fernandez@example.com', STR_TO_DATE('2022-11-05', '%Y-%m-%d'), STR_TO_DATE('2023-06-19', '%Y-%m-%d'), 'Universidad Privada');
+-- Insertar usuarios (password de ejemplo: '1234', hasheada con bcrypt de 10 rondas)
+INSERT INTO usuario (nombre, email, fecha_registro, ultimo_acceso, universidad, password) VALUES
+    ('Ana García', 'ana.garcia@example.com', STR_TO_DATE('2023-01-15', '%Y-%m-%d'), STR_TO_DATE('2023-06-20', '%Y-%m-%d'), 'Universidad Nacional', '$2b$10$aCzSkPPNWn7.FIa8JXqX9ejxPXxSe5meEVWtTIWOr36YyQko4FlrK'),
+    ('Carlos Méndez', 'carlos.mendez@example.com', STR_TO_DATE('2023-03-10', '%Y-%m-%d'), STR_TO_DATE('2023-06-18', '%Y-%m-%d'), 'Universidad Tecnológica', '$2b$10$I4qY42Pe88X.rStFdDM1ceWjUxKOKWT2f.sepw6PHXG3sTUl71AKG'),
+    ('Luisa Fernández', 'luisa.fernandez@example.com', STR_TO_DATE('2022-11-05', '%Y-%m-%d'), STR_TO_DATE('2023-06-19', '%Y-%m-%d'), 'Universidad Privada', '$2b$10$ZC.6CrCCbA5roavxxvXmeuvXUIuGTwoSbhlXQnFG/NxKcXOT7Gjwe');
 
 -- Insertar recursos
 INSERT INTO recursos (titulo, descripcion, tipo, archivo, id_curso, id_usuario) VALUES 
@@ -75,5 +76,3 @@ INSERT INTO simulacros_examenes (duracion, preguntas, puntaje, fecha_realizacion
     (90, 30, 85, STR_TO_DATE('2023-03-01', '%Y-%m-%d'), 1, 1),
     (120, 40, 92, STR_TO_DATE('2023-03-02', '%Y-%m-%d'), 2, 2),
     (60, 20, 78, STR_TO_DATE('2023-03-03', '%Y-%m-%d'), 3, 3);
-
-ALTER TABLE usuario ADD password VARCHAR(100) NOT NULL DEFAULT '1234';

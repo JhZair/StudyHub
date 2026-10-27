@@ -4,9 +4,17 @@ const cors = require('cors');
 require('dotenv').config();
 const path = require('path');
 const fs = require('fs');
+const db = require('./src/config/database');
+const UsuarioRepository = require('./src/usuario/UsuarioRepository');
+const UsuarioService = require('./src/usuario/UsuarioService');
+const CursoRepository = require('./src/curso/CursoRepository');
+const CursoService = require('./src/curso/CursoService');
+const SimulacroRepository = require('./src/simulacro/SimulacroRepository');
+const SimulacroService = require('./src/simulacro/SimulacroService');
 
-//actualizando ruta 
-const db = require('./src/config/database'); 
+const usuarioService = new UsuarioService(new UsuarioRepository(db));
+const cursoService = new CursoService(new CursoRepository(db));
+const simulacroService = new SimulacroService(new SimulacroRepository(db));
 
 const app = express();
 
@@ -48,13 +56,11 @@ app.use((req, res, next) => {
 });
 
 // Rutas
-app.use('/api/cursos', require('./routes/cursos'));
-app.use('/api/usuarios', require('./routes/usuarios'));
+app.use('/api/cursos', require('./src/curso/CursoController')(cursoService));
+app.use('/api/usuarios', require('./src/usuario/UsuarioController')(usuarioService));
 app.use('/api/recursos', require('./src/recurso/RecursoController'));
-
-app.use('/api/simulacros', require('./routes/simulacros'));
-app.use('/api/ranking', require('./routes/ranking'));
-app.use('/api/auth', require('./routes/auth'));
+app.use('/api/simulacros', require('./src/simulacro/SimulacroController')(simulacroService));
+app.use('/api/auth', require('./src/usuario/AuthController')(usuarioService));
 app.use('/uploads', express.static('uploads'));
 
 // Servir metadata.rdf
