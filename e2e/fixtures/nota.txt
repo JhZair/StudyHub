@@ -1,0 +1,1 @@
+Archivo de texto para probar el rechazo de tipos no permitidos.
