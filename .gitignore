@@ -26,3 +26,6 @@ dist-ssr
 *.png
 *.jpg
 *.JPG
+
+# Pruebas funcionales
+e2e/node_modules

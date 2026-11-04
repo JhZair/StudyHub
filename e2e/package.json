@@ -1,0 +1,14 @@
+{
+  "name": "studyhub-e2e",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Pruebas funcionales de StudyHub con Selenium WebDriver y Jest",
+  "scripts": {
+    "test": "jest --runInBand --verbose",
+    "test:ver": "HEADLESS=false jest --runInBand --verbose"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0",
+    "selenium-webdriver": "^4.46.0"
+  }
+}
