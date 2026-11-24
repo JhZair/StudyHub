@@ -93,6 +93,39 @@ describe('Usuario', () => {
     expect(crear).toThrow('El email no tiene un formato valido');
   });
 
+  test.each([
+    'ana@example.com',
+    'ana.garcia@sub.example.pe',
+    'a@b.c'
+  ])('acepta el email con formato valido %s', (email) => {
+    // Arrange
+    const datos = { ...datosValidos(), email };
+
+    // Act
+    const usuario = new Usuario(datos);
+
+    // Assert
+    expect(usuario.email).toBe(email);
+  });
+
+  test.each([
+    'ana@example',
+    'ana@@example.com',
+    'ana garcia@example.com',
+    '@example.com',
+    'ana@.com',
+    'ana@example.'
+  ])('rechaza el email con formato invalido %s', (email) => {
+    // Arrange
+    const datos = { ...datosValidos(), email };
+
+    // Act
+    const crear = () => new Usuario(datos);
+
+    // Assert
+    expect(crear).toThrow('El email no tiene un formato valido');
+  });
+
   test('rechaza un email de mas de 100 caracteres', () => {
     // Arrange
     const datos = { ...datosValidos(), email: `${'a'.repeat(90)}@example.com` };
