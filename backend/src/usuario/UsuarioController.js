@@ -3,29 +3,21 @@ const express = require('express');
 module.exports = function crearUsuarioRouter(usuarioService) {
   const router = express.Router();
 
+  // Los errores de los handlers async llegan a manejadorErrores (Express 5 llama a next(err))
+
   // Obtener todos los usuarios
   router.get('/', async (req, res) => {
-    try {
-      res.json(await usuarioService.listar());
-    } catch (err) {
-      res.status(500).json({ error: err });
-    }
+    res.json(await usuarioService.listar());
   });
 
   // Registrar usuario
   router.post('/', async (req, res) => {
-    try {
-      const { id_usuario, nombre, email, universidad } = await usuarioService.registrar(req.body);
-      res.status(201).json({ id: id_usuario, nombre, email, universidad });
-    } catch (err) {
-      if (err.codigo === 'EMAIL_DUPLICADO') {
-        return res.status(400).json({ error: 'Ya existe una cuenta con ese correo electrónico' });
-      }
-      if (err.codigo === 'VALIDACION') {
-        return res.status(400).json({ error: err.message });
-      }
-      res.status(500).json({ error: 'Error al registrar usuario' });
-    }
+    res.locals.mensajesError = {
+      EMAIL_DUPLICADO: 'Ya existe una cuenta con ese correo electrónico',
+      INTERNO: 'Error al registrar usuario'
+    };
+    const { id_usuario, nombre, email, universidad } = await usuarioService.registrar(req.body);
+    res.status(201).json({ id: id_usuario, nombre, email, universidad });
   });
 
   return router;

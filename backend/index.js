@@ -11,6 +11,7 @@ const CursoRepository = require('./src/curso/CursoRepository');
 const CursoService = require('./src/curso/CursoService');
 const SimulacroRepository = require('./src/simulacro/SimulacroRepository');
 const SimulacroService = require('./src/simulacro/SimulacroService');
+const manejadorErrores = require('./src/shared/manejadorErrores');
 
 const usuarioService = new UsuarioService(new UsuarioRepository(db));
 const cursoService = new CursoService(new CursoRepository(db));
@@ -72,6 +73,9 @@ app.get('/rdf', (req, res) => {
     }
   });
 });
+
+// Manejo de errores: despues de todas las rutas
+app.use(manejadorErrores);
 
 // Puerto
 const PORT = process.env.PORT || 3000;

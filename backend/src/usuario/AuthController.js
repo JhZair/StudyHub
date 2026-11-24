@@ -3,36 +3,20 @@ const express = require('express');
 module.exports = function crearAuthRouter(usuarioService) {
   const router = express.Router();
 
+  // Los errores de los handlers async llegan a manejadorErrores (Express 5 llama a next(err))
+
   // LOGIN
   router.post('/login', async (req, res) => {
-    try {
-      const usuario = await usuarioService.login(req.body);
-      req.session.usuario = usuario;
-      res.json({ mensaje: 'Login exitoso', usuario });
-    } catch (err) {
-      if (err.codigo === 'VALIDACION') {
-        return res.status(400).json({ error: err.message });
-      }
-      if (err.codigo === 'CREDENCIALES_INVALIDAS') {
-        return res.status(401).json({ error: err.message });
-      }
-      console.error('Error al consultar:', err);
-      res.status(500).json({ error: 'Error en el servidor' });
-    }
+    const usuario = await usuarioService.login(req.body);
+    req.session.usuario = usuario;
+    res.json({ mensaje: 'Login exitoso', usuario });
   });
 
   // REGISTRO
   router.post('/signup', async (req, res) => {
-    try {
-      await usuarioService.registrar(req.body);
-      res.json({ mensaje: 'Registro exitoso' });
-    } catch (err) {
-      if (err.codigo === 'VALIDACION' || err.codigo === 'EMAIL_DUPLICADO') {
-        return res.status(400).json({ error: err.message });
-      }
-      console.error('Error al registrar:', err);
-      res.status(500).json({ error: 'Error al registrar usuario' });
-    }
+    res.locals.mensajesError = { INTERNO: 'Error al registrar usuario' };
+    await usuarioService.registrar(req.body);
+    res.json({ mensaje: 'Registro exitoso' });
   });
 
   // PERFIL
