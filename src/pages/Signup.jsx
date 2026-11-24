@@ -65,15 +65,25 @@ const Signup = () => {
             </div>
             <div className="input-group">
               <input type={showPassword ? 'text' : 'password'} value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Contraseña" required />
-              <span className="toggle-password" onClick={() => setShowPassword(!showPassword)}>
+              <button
+                type="button"
+                className="toggle-password"
+                aria-label={showPassword ? 'Ocultar contraseña' : 'Mostrar contraseña'}
+                onClick={() => setShowPassword(!showPassword)}
+              >
                 <i className={`fas ${showPassword ? 'fa-eye-slash' : 'fa-eye'}`}></i>
-              </span>
+              </button>
             </div>
             <div className="input-group">
               <input type={showConfirmPassword ? 'text' : 'password'} value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} placeholder="Confirmar Contraseña" required />
-              <span className="toggle-password" onClick={() => setShowConfirmPassword(!showConfirmPassword)}>
+              <button
+                type="button"
+                className="toggle-password"
+                aria-label={showConfirmPassword ? 'Ocultar confirmación de contraseña' : 'Mostrar confirmación de contraseña'}
+                onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+              >
                 <i className={`fas ${showConfirmPassword ? 'fa-eye-slash' : 'fa-eye'}`}></i>
-              </span>
+              </button>
             </div>
             <button type="submit" className="submit-btn">Registrarse</button>
             {error && <p style={{ color: 'red' }}>{error}</p>}
