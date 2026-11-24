@@ -29,3 +29,6 @@ dist-ssr
 
 # Pruebas funcionales
 e2e/node_modules
+
+.scannerwork
+sonar-project.properties
