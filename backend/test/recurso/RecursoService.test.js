@@ -16,41 +16,50 @@ describe('Servicio de Aplicación: RecursoService', () => {
     });
 
     test('debe listar todos los recursos llamando al repositorio', async () => {
-        // Arrange
-        const recursosEsperados = [{ id: 1, titulo: 'Guía', tipo: 'pdf' }];
+        // // Arrange
+        const recursosEsperados = [{ id: 1, titulo: 'Guía', id_curso: 1, id_usuario: 1, url: '/uploads/guia.pdf' }];
         mockRepository.findAll.mockResolvedValue(recursosEsperados);
 
-        // Act
+        // // Act
         const resultado = await servicio.obtenerTodos();
 
-        // Assert
+        // // Assert
         expect(mockRepository.findAll).toHaveBeenCalled();
         expect(resultado).toEqual(recursosEsperados);
     });
 
     test('debe subir un recurso válido correctamente', async () => {
-        // Arrange
-        const datosFormulario = { titulo: 'Proyecto final' };
+        // // Arrange
+        const datosFormulario = { 
+            titulo: 'Proyecto final',
+            descripcion: 'Material de laboratorio',
+            id_curso: 1,
+            id_usuario: 2
+        };
         const datosArchivo = { originalname: 'proyecto.pdf', size: 2048, path: '/uploads/proyecto.pdf' };
         const respuestaGuardado = { insertId: 5 };
         
         mockRepository.save.mockResolvedValue(respuestaGuardado);
 
-        // Act
+        // // Act
         const resultado = await servicio.subirRecurso(datosFormulario, datosArchivo);
 
-        // Assert
+        // // Assert
         expect(mockRepository.save).toHaveBeenCalled();
         expect(resultado).toEqual(respuestaGuardado);
     });
 
     test('debe fallar si se rompe un invariante de dominio y NO llamar al repositorio', async () => {
-        // Arrange
-        const datosFormulario = { titulo: '   ' }; // Título vacío (invariante inválido)
+        // // Arrange
+        const datosFormulario = { 
+            titulo: '   ', 
+            id_curso: 1, 
+            id_usuario: 2 
+        }; // Título vacío (invariante inválido)
         const datosArchivo = { originalname: 'proyecto.pdf', size: 2048, path: '/uploads/proyecto.pdf' };
         const mensajeEsperado = 'El título no puede estar vacío';
 
-        // Act & Assert
+        // // Act & Assert
         // Verificamos que la promesa sea rechazada con el error del dominio
         await expect(servicio.subirRecurso(datosFormulario, datosArchivo)).rejects.toThrow(mensajeEsperado);
         

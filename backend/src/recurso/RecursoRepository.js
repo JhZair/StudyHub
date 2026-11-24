@@ -12,13 +12,19 @@ class RecursoRepository extends IRecursoRepository {
     }
 
     async save(recurso) {
-        const query = 'INSERT INTO recursos (titulo, tipo, tamaño, ruta) VALUES (?, ?, ?, ?)';
-        const [result] = await this.db.query(query, [
+        const query = `
+            INSERT INTO recursos (titulo, descripcion, id_curso, id_usuario, url) 
+            VALUES (?, ?, ?, ?, ?)
+        `;
+        const params = [
             recurso.titulo, 
-            recurso.tipo, 
-            recurso.tamaño, 
-            recurso.ruta
-        ]);
+            recurso.descripcion || '', 
+            recurso.id_curso, 
+            recurso.id_usuario, 
+            recurso.url
+        ];
+
+        const [result] = await this.db.query(query, params);
         return result;
     }
 }

@@ -1,65 +1,35 @@
 const Recurso = require('../../src/recurso/model/Recurso');
 
 describe('Entidad de Dominio: Recurso', () => {
-    let datosValidos;
-    // la creacion/config va aca en vez de en cada arrange para cada caso 
-    beforeEach(() => {
-        datosValidos = {
-            titulo: 'Apuntes de BD',
-            tipo: 'pdf',
-            tamaño: 1024,
-            ruta: '/uploads/apuntes.pdf'
-        };
-    });
-
     test('debe crear un recurso válido cuando se cumplen todos los invariantes', () => {
-        // Arrange
-        const tituloEsperado = 'Apuntes de BD';
+        const recurso = new Recurso({
+            titulo: 'Ejemplo de Documento',
+            descripcion: 'Un resumen del tema',
+            id_curso: 1,
+            id_usuario: 2,
+            url: '/uploads/doc.pdf'
+        });
 
-        // Act
-        const resultado = new Recurso(
-            datosValidos.titulo, 
-            datosValidos.tipo, 
-            datosValidos.tamaño, 
-            datosValidos.ruta
-        );
-
-        // Assert
-        expect(resultado.titulo).toEqual(tituloEsperado);
-        expect(resultado.tipo).toEqual('pdf');
+        expect(recurso.titulo).toBe('Ejemplo de Documento');
+        expect(recurso.id_curso).toBe(1);
+        expect(recurso.id_usuario).toBe(2);
     });
 
     test('debe lanzar error cuando el título está vacío', () => {
-        datosValidos.titulo = '   '; // Dato inválido
-        const esperado = 'El título no puede estar vacío';
-
-        const creacionInvalida = () => {
-            new Recurso(datosValidos.titulo, datosValidos.tipo, datosValidos.tamaño, datosValidos.ruta);
-        };
-
-        expect(creacionInvalida).toThrow(esperado);
+        expect(() => {
+            new Recurso({ titulo: '', id_curso: 1, id_usuario: 1 });
+        }).toThrow('El título no puede estar vacío');
     });
 
-    test('debe lanzar error cuando el tipo no está permitido', () => {
-        datosValidos.tipo = 'exe'; // Dato inválido
-        const esperado = 'Tipo de recurso no permitido';
-
-        const creacionInvalida = () => {
-            new Recurso(datosValidos.titulo, datosValidos.tipo, datosValidos.tamaño, datosValidos.ruta);
-        };
-
-        expect(creacionInvalida).toThrow(esperado);
+    test('debe lanzar error cuando falta el id_curso', () => {
+        expect(() => {
+            new Recurso({ titulo: 'Prueba sin curso', id_usuario: 1 });
+        }).toThrow('El id_curso es obligatorio');
     });
 
-    test('debe lanzar error cuando el tamaño es 0 o menor', () => {
-        // Dato inválido
-        datosValidos.tamaño = 0;
-        const esperado = 'El tamaño del archivo debe ser mayor a cero';
-
-        const creacionInvalida = () => {
-            new Recurso(datosValidos.titulo, datosValidos.tipo, datosValidos.tamaño, datosValidos.ruta);
-        };
-
-        expect(creacionInvalida).toThrow(esperado);
+    test('debe lanzar error cuando falta el id_usuario', () => {
+        expect(() => {
+            new Recurso({ titulo: 'Prueba sin usuario', id_curso: 1 });
+        }).toThrow('El id_usuario es obligatorio');
     });
 });

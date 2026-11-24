@@ -10,16 +10,17 @@ class RecursoService {
     }
 
     async subirRecurso(datosFormulario, datosArchivo) {
-        const tipoArchivo = datosArchivo.originalname.split('.').pop();
+        const url = datosArchivo ? (datosArchivo.filename ? `/uploads/${datosArchivo.filename}` : datosArchivo.path) : '';
         
-        const nuevoRecurso = new Recurso(
-            datosFormulario.titulo, 
-            tipoArchivo, 
-            datosArchivo.size, 
-            datosArchivo.path
-        );
+        const recurso = new Recurso({
+            titulo: datosFormulario.titulo,
+            descripcion: datosFormulario.descripcion || '',
+            id_curso: datosFormulario.id_curso,
+            id_usuario: datosFormulario.id_usuario,
+            url: url
+        });
 
-        return await this.recursoRepository.save(nuevoRecurso);
+        return await this.recursoRepository.save(recurso);
     }
 }
 
