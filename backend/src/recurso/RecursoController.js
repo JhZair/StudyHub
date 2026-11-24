@@ -1,11 +1,7 @@
 const express = require('express');
-const router = express.Router();
 const multer = require('multer');
 
-const RecursoRepository = require('./RecursoRepository');
-const RecursoService = require('./RecursoService');
-
-// Configuración de almacenamiento local para multer
+// Configuración de almacenamiento local para multer (o import desde uploadConfig)
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
     cb(null, 'uploads/');
@@ -18,31 +14,30 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage });
 
-const inicializarServicio = (req) => {
-  const repository = new RecursoRepository(req.db);
-  return new RecursoService(repository);
-};
+function crearRecursoRouter(recursoService) {
+    const router = express.Router();
 
-router.post('/upload', upload.single('archivo'), async (req, res) => {
-  try {
-    const servicio = inicializarServicio(req);
-    await servicio.subirRecurso(req.body, req.file);
-    res.json({ success: true, mensaje: 'Recurso subido correctamente' });
-  } catch (err) {
-    console.error(err);
-    res.status(400).json({ error: err.message || 'Error al subir recurso' });
-  }
-});
+    // GET /api/recursos - Listar recursos
+    router.get('/', async (req, res, next) => {
+        try {
+            const recursos = await recursoService.obtenerTodos();
+            res.json(recursos);
+        } catch (error) {
+            next(error);
+        }
+    });
 
-router.get('/', async (req, res) => {
-  try {
-    const servicio = inicializarServicio(req);
-    const rows = await servicio.obtenerTodos();
-    res.json(rows);
-  } catch (err) {
-    console.error('Error al obtener recursos:', err);
-    res.status(500).json({ error: 'Error interno al obtener recursos' });
-  }
-});
+    // POST /api/recursos - Subir un recurso
+    router.post('/', upload.single('archivo'), async (req, res, next) => {
+        try {
+            const nuevoRecurso = await recursoService.subirRecurso(req.body, req.file);
+            res.status(201).json(nuevoRecurso);
+        } catch (error) {
+            next(error);
+        }
+    });
 
-module.exports = router;
+    return router;
+}
+
+module.exports = crearRecursoRouter;

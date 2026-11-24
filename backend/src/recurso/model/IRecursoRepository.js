@@ -1,10 +1,10 @@
 class IRecursoRepository {
     async findAll() {
-        throw new Error("No implementado");
+        throw new Error('Método no implementado');
     }
 
-    async save(recurso) {
-        throw new Error("No implementado");
+    async save() {
+        throw new Error('Método no implementado');
     }
 }
 

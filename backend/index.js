@@ -17,6 +17,10 @@ const usuarioService = new UsuarioService(new UsuarioRepository(db));
 const cursoService = new CursoService(new CursoRepository(db));
 const simulacroService = new SimulacroService(new SimulacroRepository(db));
 
+const RecursoRepository = require('./src/recurso/RecursoRepository');
+const RecursoService = require('./src/recurso/RecursoService');
+const crearRecursoRouter = require('./src/recurso/RecursoController');
+
 const app = express();
 
 const allowedOrigins = [
@@ -50,16 +54,14 @@ app.use(session({
   saveUninitialized: false,
 }));
 
-// Middleware para inyectar la db en cada request
-app.use((req, res, next) => {
-  req.db = db;
-  next();
-});
+const recursoRepository = new RecursoRepository(db);
+const recursoService = new RecursoService(recursoRepository);
 
 // Rutas
 app.use('/api/cursos', require('./src/curso/CursoController')(cursoService));
 app.use('/api/usuarios', require('./src/usuario/UsuarioController')(usuarioService));
-app.use('/api/recursos', require('./src/recurso/RecursoController'));
+app.use('/api/recursos', crearRecursoRouter(recursoService));
+// app.use('/api/recursos', require('./src/recurso/RecursoController'));
 app.use('/api/simulacros', require('./src/simulacro/SimulacroController')(simulacroService));
 app.use('/api/auth', require('./src/usuario/AuthController')(usuarioService));
 app.use('/uploads', express.static('uploads'));
