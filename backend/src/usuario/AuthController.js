@@ -1,6 +1,6 @@
 const express = require('express');
 
-module.exports = (usuarioService) => {
+module.exports = function crearAuthRouter(usuarioService) {
   const router = express.Router();
 
   // LOGIN

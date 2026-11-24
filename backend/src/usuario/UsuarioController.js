@@ -1,6 +1,6 @@
 const express = require('express');
 
-module.exports = (usuarioService) => {
+module.exports = function crearUsuarioRouter(usuarioService) {
   const router = express.Router();
 
   // Obtener todos los usuarios

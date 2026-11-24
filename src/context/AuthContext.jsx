@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useEffect, useState } from 'react';
+import React, { createContext, useCallback, useContext, useEffect, useMemo, useState } from 'react';
 
 const AuthContext = createContext();
 
@@ -16,19 +16,21 @@ export function AuthProvider({ children }) {
     }
   }, []);
 
-  const login = (user) => {
+  const login = useCallback((user) => {
     localStorage.setItem('currentUser', JSON.stringify(user));
     setCurrentUser(user);
-  };
+  }, []);
 
-  const logout = () => {
+  const logout = useCallback(() => {
     localStorage.removeItem('currentUser');
     setCurrentUser(null);
     window.location.href = '/';  // redirige al home al cerrar sesión
-  };
+  }, []);
+
+  const value = useMemo(() => ({ currentUser, login, logout }), [currentUser, login, logout]);
 
   return (
-    <AuthContext.Provider value={{ currentUser, login, logout }}>
+    <AuthContext.Provider value={value}>
       {children}
     </AuthContext.Provider>
   );
