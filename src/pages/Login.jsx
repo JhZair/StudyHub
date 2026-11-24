@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { useAuth } from '../context/AuthContext';
-import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import '../css/style.css';
 
@@ -16,7 +15,7 @@ const Login = () => {
     script.src = '/js/three-scene.js';
     script.async = true;
     document.body.appendChild(script);
-    return () => { document.body.removeChild(script); }
+    return () => { script.remove(); }
   }, []);
 
  const handleSubmit = async (e) => {
@@ -38,8 +37,6 @@ const Login = () => {
         setError('Respuesta inválida del servidor');
         return;
       }
-
-      console.log(data); // Verifica estructura
 
       if (res.ok) {
         const userData = data.usuario;
@@ -71,7 +68,7 @@ const Login = () => {
           <h1 className="welcome-title">Bienvenido a StudyHub</h1>
           <div className="divider"></div>
           <div className="form-toggle">
-            <button className="toggle-btn active">Iniciar Sesión</button>
+            <button type="button" className="toggle-btn active">Iniciar Sesión</button>
             <a href="/signup" className="toggle-btn">Registrarse</a>
           </div>
           <form className="form" onSubmit={handleSubmit}>

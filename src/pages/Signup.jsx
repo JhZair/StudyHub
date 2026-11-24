@@ -18,7 +18,7 @@ const Signup = () => {
     script.src = '/js/three-scene.js';
     script.async = true;
     document.body.appendChild(script);
-    return () => { document.body.removeChild(script); }
+    return () => { script.remove(); }
   }, []);
 
   const handleSubmit = async (e) => {
@@ -54,7 +54,7 @@ const Signup = () => {
           <div className="divider"></div>
           <div className="form-toggle">
             <a href="/login" className="toggle-btn">Iniciar Sesión</a>
-            <button className="toggle-btn active">Registrarse</button>
+            <button type="button" className="toggle-btn active">Registrarse</button>
           </div>
           <form className="form" onSubmit={handleSubmit}>
             <div className="input-group">
