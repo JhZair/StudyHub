@@ -48,9 +48,9 @@ const handleUpload = async (e) => {
     const formData = new FormData();
     formData.append('titulo', titulo);
     formData.append('descripcion', descripcion);
+    formData.append('id_curso', idCurso);
+    formData.append('id_usuario', usuario.id);
     formData.append('archivo', archivo);
-    formData.append('id_curso', 1);
-    formData.append('id_usuario', 1);
 
     try {
       // const response = await axios.post('http://localhost:3000/api/recursos/upload', formData);
