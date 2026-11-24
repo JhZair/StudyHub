@@ -5,7 +5,7 @@
 const path = require('path');
 require('dotenv').config({ path: path.join(__dirname, '..', '.env') });
 
-const bcrypt = require('bcryptjs');
+const bcrypt = require('bcrypt');
 const db = require('../src/config/database');
 
 const SALT_ROUNDS = 10;

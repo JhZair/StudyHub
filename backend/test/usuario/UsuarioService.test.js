@@ -1,6 +1,6 @@
 jest.mock('../../src/config/database', () => ({ query: jest.fn() }));
 
-const bcrypt = require('bcryptjs');
+const bcrypt = require('bcrypt');
 const UsuarioService = require('../../src/usuario/UsuarioService');
 const IUsuarioRepository = require('../../src/usuario/model/IUsuarioRepository');
 const Usuario = require('../../src/usuario/model/Usuario');
@@ -119,6 +119,20 @@ describe('UsuarioService', () => {
   });
 
   describe('login', () => {
+    test.each([
+      ['$2b$', '$2b$10$aCzSkPPNWn7.FIa8JXqX9ejxPXxSe5meEVWtTIWOr36YyQko4FlrK'],
+      ['$2a$', '$2a$10$aCzSkPPNWn7.FIa8JXqX9ejxPXxSe5meEVWtTIWOr36YyQko4FlrK']
+    ])('acepta un hash %s generado antes con bcryptjs', async (_prefijo, hashExistente) => {
+      // Arrange
+      repositorio.findByEmail.mockResolvedValue(new Usuario({ ...usuarioGuardado(), password: hashExistente }));
+
+      // Act
+      const usuario = await servicio.login({ email: 'leo@example.com', password: '1234' });
+
+      // Assert
+      expect(usuario).toMatchObject({ id_usuario: 1, email: 'leo@example.com' });
+    });
+
     test('rechaza un login sin email con codigo VALIDACION', async () => {
       // Arrange
       const credenciales = { password: 'secreta123' };
