@@ -1,5 +1,6 @@
 const express = require('express');
 const multer = require('multer');
+const uploadConfig = require('./uploadConfig');
 
 // Configuración de almacenamiento local para multer (o import desde uploadConfig)
 const storage = multer.diskStorage({
@@ -28,7 +29,7 @@ function crearRecursoRouter(recursoService) {
     });
 
     // POST /api/recursos - Subir un recurso
-    router.post('/', upload.single('archivo'), async (req, res, next) => {
+    router.post('/', uploadConfig.single('archivo'), async (req, res, next) => {
         try {
             const nuevoRecurso = await recursoService.subirRecurso(req.body, req.file);
             res.status(201).json(nuevoRecurso);
