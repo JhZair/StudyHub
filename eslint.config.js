@@ -9,7 +9,7 @@ export default [
 
   {
     files: ['**/*.{js,jsx}'],
-    ignores: ['backend/**', 'tailwind.config.js'],
+    ignores: ['backend/**', 'e2e/**', 'tailwind.config.js'],
     languageOptions: {
       ecmaVersion: 2020,
       globals: { ...globals.browser },
@@ -35,7 +35,7 @@ export default [
   },
 
   {
-    files: ['backend/**/*.js', 'tailwind.config.js'],
+    files: ['backend/**/*.js', 'e2e/**/*.js', 'tailwind.config.js'],
     languageOptions: {
       ecmaVersion: 2022,
       globals: { ...globals.node },
@@ -44,6 +44,14 @@ export default [
     rules: {
       ...js.configs.recommended.rules,
       'no-unused-vars': ['error', { varsIgnorePattern: '^[A-Z_]', argsIgnorePattern: '^_' }],
+    },
+  },
+
+  // Pruebas con Jest: backend y funcionales
+  {
+    files: ['backend/test/**/*.js', 'e2e/tests/**/*.js'],
+    languageOptions: {
+      globals: { ...globals.jest },
     },
   },
 ]
