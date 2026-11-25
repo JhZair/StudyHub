@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from "react";
-import { useParams  } from "react-router-dom";
-import Navbar from "../components/Navbar";
+import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
+import Navbar from '../components/Navbar';
+import PreguntaExamen from '../components/PreguntaExamen';
 import { useAuth } from '../context/AuthContext';
 import axios from 'axios';
 
@@ -16,79 +17,60 @@ export default function Examen() {
   useEffect(() => {
     import(`../data/preguntas/${cursoSlug}.json`)
       .then((mod) => setPreguntas(mod.default))
-      .catch(() => setError("No se pudieron cargar las preguntas."));
+      .catch(() => setError('No se pudieron cargar las preguntas.'));
   }, [cursoSlug]);
 
   const manejarRespuesta = (preguntaId, opcion) => {
     if (!finalizado) {
-      setRespuestas({ ...respuestas, [preguntaId]: opcion });
+      setRespuestas((prev) => ({ ...prev, [preguntaId]: opcion }));
     }
   };
 
   const finalizarExamen = async () => {
-  let puntos = 0;
-  preguntas.forEach((pregunta) => {
-    const respuestaSeleccionada = respuestas[pregunta.id];
-    if (respuestaSeleccionada === pregunta.respuestaCorrecta) {
-      puntos++;
-    }
-  });
-  setPuntaje(puntos);
-  setFinalizado(true);
-  try {
-    await axios.post(`${import.meta.env.VITE_API_URL}/api/puntajes/guardar`, {
-      duracion: preguntas.length * 2,
-      preguntas: preguntas.length,
-      puntaje: puntos,
-      id_curso: 2,
-      id_usuario: currentUser.id_usuario
+    let puntos = 0;
+    preguntas.forEach((pregunta) => {
+      const respuestaSeleccionada = respuestas[pregunta.id];
+      if (respuestaSeleccionada === pregunta.respuestaCorrecta) {
+        puntos++;
+      }
     });
-    console.log('Puntaje guardado');
-  } catch (error) {
-    console.error('Error guardando puntaje:', error);
-  }
-};
 
+    setPuntaje(puntos);
+    setFinalizado(true);
+
+    try {
+      await axios.post(`${import.meta.env.VITE_API_URL || ''}/api/simulacros/puntajes/guardar`, {
+        duracion: preguntas.length * 2,
+        preguntas: preguntas.length,
+        puntaje: puntos,
+        id_curso: 2,
+        id_usuario: currentUser?.id_usuario || currentUser?.id
+      });
+    } catch (err) {
+      console.error('Error guardando puntaje:', err);
+    }
+  };
 
   return (
     <div className="min-h-screen bg-gray-100 text-white">
       <Navbar />
       <main className="p-4 max-w-4xl mx-auto">
-        {error && <p className="text-red-500">{error}</p>}
+        {error && <p className="text-red-500 mb-4">{error}</p>}
 
         {preguntas.map((pregunta) => (
-          <div key={pregunta.id} className="mb-6 p-6 border rounded bg-black shadow">
-            <p className="font-semibold text-xl mb-4">{pregunta.enunciado}</p>
-            <ul className="space-y-2">
-              {pregunta.opciones.map((opcion, index) => (
-                <li
-                  key={index}
-                  onClick={() => manejarRespuesta(pregunta.id, opcion)}
-                  className={`cursor-pointer p-2 rounded ${
-                    respuestas[pregunta.id] === opcion
-                      ? "bg-blue-700 text-white"
-                      : "bg-gray-800 text-white"
-                  } ${finalizado ? "pointer-events-none" : "hover:bg-blue-600"}`}
-                >
-                  {opcion}
-                </li>
-              ))}
-            </ul>
-            {finalizado && (
-              <p className="mt-2">
-                {respuestas[pregunta.id] === pregunta.respuestaCorrecta
-                  ? <span className="text-green-400">✔ Correcta</span>
-                  : respuestas[pregunta.id]
-                  ? <span className="text-red-400">✘ Incorrecta. Respuesta correcta: <strong>{pregunta.respuestaCorrecta}</strong></span>
-                  : <span className="text-yellow-300">⚠ Sin responder. Respuesta correcta: <strong>{pregunta.respuestaCorrecta}</strong></span>}
-              </p>
-            )}
-          </div>
+          <PreguntaExamen
+            key={pregunta.id}
+            pregunta={pregunta}
+            respuestaSeleccionada={respuestas[pregunta.id]}
+            finalizado={finalizado}
+            onSeleccionar={manejarRespuesta}
+          />
         ))}
 
         {!finalizado && preguntas.length > 0 && (
           <div className="text-center mt-10">
             <button
+              type="button"
               onClick={finalizarExamen}
               className="bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded text-lg font-bold"
             >

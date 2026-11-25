@@ -1,8 +1,13 @@
 import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 import Navbar from '../components/Navbar';
+import { useAuth } from '../context/AuthContext';
 import axios from 'axios';
 
 export default function Recursos() {
+  const { currentUser } = useAuth();
+  const { idCurso } = useParams();
+
   const [resources, setResources] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -10,12 +15,12 @@ export default function Recursos() {
   const [descripcion, setDescripcion] = useState('');
   const [archivo, setArchivo] = useState(null);
 
-  const BACKEND_URL = import.meta.env.VITE_API_URL;
-  
+  const BACKEND_URL = import.meta.env.VITE_API_URL || '';
 
-const fetchResources = async () => {
+  const fetchResources = async () => {
     try {
-      const response = await fetch(`${import.meta.env.VITE_API_URL}/api/recursos`, {
+      setLoading(true);
+      const response = await fetch(`${BACKEND_URL}/api/recursos`, {
         headers: {
           'Content-Type': 'application/json',
         },
@@ -33,11 +38,11 @@ const fetchResources = async () => {
     }
   };
 
-    useEffect(() => {
+  useEffect(() => {
     fetchResources();
   }, []);
 
-const handleUpload = async (e) => {
+  const handleUpload = async (e) => {
     e.preventDefault();
     if (!titulo.trim() || !descripcion.trim() || !archivo) {
       alert('Por favor completa todos los campos y selecciona un archivo.');
@@ -48,16 +53,20 @@ const handleUpload = async (e) => {
     const formData = new FormData();
     formData.append('titulo', titulo);
     formData.append('descripcion', descripcion);
-    formData.append('id_curso', idCurso);
-    formData.append('id_usuario', usuario.id);
+    formData.append('id_curso', idCurso || 1);
+    formData.append('id_usuario', currentUser?.id_usuario || currentUser?.id || 1);
     formData.append('archivo', archivo);
 
     try {
-      // const response = await axios.post('http://localhost:3000/api/recursos/upload', formData);
-      const response = await axios.post(`${import.meta.env.VITE_API_URL}/api/recursos/upload`, formData);
-      console.log(response.data);
-      if (response.data.success) {
-        await fetchResources(); // aquí antes era cargarRecursos()
+      const response = await axios.post(`${BACKEND_URL}/api/recursos`, formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+        withCredentials: true,
+      });
+
+      if (response.status === 201 || response.data) {
+        await fetchResources();
         setTitulo('');
         setDescripcion('');
         setArchivo(null);
@@ -71,32 +80,6 @@ const handleUpload = async (e) => {
       setLoading(false);
     }
   };
-
-  useEffect(() => {
-    const fetchResources = async () => {
-      try {
-        // const response = await fetch('http://localhost:3000/api/recursos', {
-        const response = await fetch(`${import.meta.env.VITE_API_URL}/api/recursos`, {
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          credentials: 'include', // Include cookies for session authentication
-        });
-        if (!response.ok) {
-          throw new Error('Failed to fetch resourceeeeeees');
-        }
-        const data = await response.json();
-        setResources(data);
-      } catch (err) {
-        setError(err.message);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchResources();
-  }, []);
-
 
   return (
     <div className="bg-gray-100 font-sans relative overflow-x-hidden before:content-[''] before:absolute before:inset-0 before:bg-[linear-gradient(45deg,rgba(255,255,255,0.05),rgba(255,255,255,0.05)_10px,transparent_10px,transparent_20px)] before:z-[-1]">
@@ -127,7 +110,7 @@ const handleUpload = async (e) => {
 
           {!loading && !error && resources.length === 0 && (
             <div className="text-center text-gray-600">
-              <p>Recursos</p>
+              <p>No hay recursos disponibles.</p>
             </div>
           )}
 
@@ -135,32 +118,37 @@ const handleUpload = async (e) => {
             <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3 px-4">
               {resources.map((resource) => (
                 <div
-                  key={resource.id_recurso}
+                  key={resource.id_recurso || resource.id}
                   className="bg-white p-4 rounded-lg shadow-md hover:shadow-lg transition-shadow"
                 >
                   <h3 className="text-lg font-semibold text-slate-900">{resource.titulo}</h3>
                   <p className="text-sm text-gray-600 mt-1">{resource.descripcion}</p>
                   <p className="text-sm text-gray-500 mt-1">
-                    Tipo: <span className="font-medium">{resource.tipo}</span>
+                    Tipo: <span className="font-medium">{resource.tipo || 'General'}</span>
                   </p>
-                  <p className="text-sm text-gray-500 mt-1">
-                    Publicado: <span className="font-medium">{new Date(resource.fecha_publicacion).toLocaleDateString()}</span>
-                  </p>
-                 <a
-                    href={`${BACKEND_URL}${resource.archivo.startsWith('/uploads/') ? '' : '/uploads/'}${resource.archivo}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="mt-3 inline-block bg-slate-900 text-white px-4 py-2 rounded hover:bg-slate-800 transition-colors"
-                  >
-                    Ver Recurso
-                  </a>
+                  {resource.fecha_publicacion && (
+                    <p className="text-sm text-gray-500 mt-1">
+                      Publicado: <span className="font-medium">{new Date(resource.fecha_publicacion).toLocaleDateString()}</span>
+                    </p>
+                  )}
+                  {resource.archivo && (
+                    <a
+                      href={`${BACKEND_URL}${resource.archivo.startsWith('/uploads/') ? '' : '/uploads/'}${resource.archivo}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="mt-3 inline-block bg-slate-900 text-white px-4 py-2 rounded hover:bg-slate-800 transition-colors"
+                    >
+                      Ver Recurso
+                    </a>
+                  )}
                 </div>
               ))}
             </div>
           )}
+
           <form
             onSubmit={handleUpload}
-            className="mb-5 p-4 bg-white rounded shadow-md flex flex-col gap-2"
+            className="mb-5 p-4 bg-white rounded shadow-md flex flex-col gap-2 max-w-xl mx-auto mt-6"
             encType="multipart/form-data"
           >
             <h3 className="font-semibold text-slate-900">Subir recurso</h3>
@@ -181,14 +169,12 @@ const handleUpload = async (e) => {
             ></textarea>
             <input
               type="file"
-              accept="application/pdf"
+              accept="application/pdf,image/*,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document"
               onChange={(e) => setArchivo(e.target.files[0])}
               className="border p-2 rounded"
               required
             />
             {archivo && <p className="text-sm text-gray-600">Archivo seleccionado: {archivo.name}</p>}
-            <input type="hidden" value="1" name="id_curso" />
-            <input type="hidden" value="1" name="id_usuario" />
             <button
               type="submit"
               disabled={loading}
@@ -200,7 +186,7 @@ const handleUpload = async (e) => {
         </section>
       </main>
 
-      <footer className="bg-slate-900 text-white p-3 flex justify-between items-center shadow-[0_-2px_5px_rgba(0,0,0,0.3)] relative overflow-hidden before:content-[''] before:absolute before:top-0 before:-left-full before:w-[200%] before:h-full before:bg-[linear-gradient(90deg,transparent,rgba(255,255,255,0.1),transparent)] before:animate-wave">
+      <footer className="bg-slate-900 text-white p-3 flex justify-between items-center shadow-[0_-2px_5px_rgba(0,0,0,0.3)] relative overflow-hidden">
         <div className="flex justify-between w-full z-[1]">
           <div className="p-1 hover:text-gray-200 transition-colors">ACERCA DE | CONTACTO</div>
         </div>

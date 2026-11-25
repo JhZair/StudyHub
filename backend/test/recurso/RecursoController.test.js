@@ -1,4 +1,3 @@
-const express = require('express');
 const crearRecursoRouter = require('../../src/recurso/RecursoController');
 
 describe('RecursoController', () => {
