@@ -31,6 +31,26 @@ class SimulacroRepository extends ISimulacroRepository {
       throw err;
     }
   }
+
+  async guardarPuntaje(idPuntaje, idUsuario, idSimulacro, puntaje, fecha = new Date()) {
+    const fechaSql = fecha instanceof Date ? fecha.toISOString().slice(0, 19).replace('T', ' ') : fecha;
+    const query = `
+      INSERT INTO simulacros_examenes (id_usuario, id_simulacro, puntaje, fecha)
+      VALUES (?, ?, ?, ?)
+    `;
+    const [result] = await this.db.query(query, [idUsuario, idSimulacro, puntaje, fechaSql]);
+    return result;
+  }
+
+  async obtenerPuntajesPorUsuario(idUsuario) {
+    const query = `
+      SELECT * FROM simulacros_examenes 
+      WHERE id_usuario = ? 
+      ORDER BY fecha DESC
+    `;
+    const [rows] = await this.db.query(query, [idUsuario]);
+    return rows;
+  }
 }
 
 module.exports = SimulacroRepository;

@@ -1,29 +1,34 @@
 const express = require('express');
+const manejadorErrores = require('../shared/manejadorErrores');
 
-module.exports = (simulacroService) => {
+function crearSimulacroRouter(simulacroService) {
   const router = express.Router();
 
-  // Obtener todos los simulacros
-  router.get('/', async (req, res) => {
-    try {
-      res.json(await simulacroService.listar());
-    } catch (err) {
-      res.status(500).json({ error: 'Error al obtener los simulacros' });
-    }
-  });
+  // GET /api/simulacros - Obtener todos los simulacros
+  router.get('/', manejadorErrores(async (req, res) => {
+    const simulacros = await simulacroService.listar();
+    res.json(simulacros);
+  }));
 
-  // Agregar simulacro
-  router.post('/', async (req, res) => {
-    try {
-      const { id_examen } = await simulacroService.registrar(req.body);
-      res.status(201).json({ id: id_examen });
-    } catch (err) {
-      if (err.codigo === 'VALIDACION' || err.codigo === 'REFERENCIA_INVALIDA') {
-        return res.status(400).json({ error: err.message });
-      }
-      res.status(500).json({ error: 'Error al registrar el simulacro' });
-    }
-  });
+  // POST /api/simulacros - Agregar simulacro
+  router.post('/', manejadorErrores(async (req, res) => {
+    const { id_examen } = await simulacroService.registrar(req.body);
+    res.status(201).json({ id: id_examen });
+  }));
+
+  // POST /api/simulacros/puntajes/guardar - Guardar puntaje de simulacro/examen (Fix #41)
+  router.post('/puntajes/guardar', manejadorErrores(async (req, res) => {
+    const resultado = await simulacroService.guardarPuntaje(req.body);
+    res.status(201).json(resultado);
+  }));
+
+  // GET /api/simulacros/puntajes/usuario/:id - Obtener puntajes por usuario (Fix #41)
+  router.get('/puntajes/usuario/:id', manejadorErrores(async (req, res) => {
+    const puntajes = await simulacroService.obtenerPuntajesPorUsuario(req.params.id);
+    res.json(puntajes);
+  }));
 
   return router;
-};
+}
+
+module.exports = crearSimulacroRouter;

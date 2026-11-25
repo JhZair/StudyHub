@@ -31,6 +31,7 @@ function crearRecursoRouter(recursoService) {
     // POST /api/recursos - Subir un recurso
     router.post('/', uploadConfig.single('archivo'), async (req, res, next) => {
         try {
+          
             const nuevoRecurso = await recursoService.subirRecurso(req.body, req.file);
             res.status(201).json(nuevoRecurso);
         } catch (error) {
