@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
 import Navbar from "../components/Navbar";
+import { mezclar } from "../utils/mezclar";
 
 export default function ExamenTrivia() {
   const [preguntas, setPreguntas] = useState([]);
@@ -21,9 +21,9 @@ export default function ExamenTrivia() {
         const formateadas = data.results.map((item, index) => ({
             id: index + 1,
             enunciado: decodeHTMLEntities(item.question),
-            opciones: [...item.incorrect_answers, item.correct_answer]
-            .map(decodeHTMLEntities)
-            .sort(() => Math.random() - 0.5),
+            opciones: mezclar(
+              [...item.incorrect_answers, item.correct_answer].map(decodeHTMLEntities)
+            ),
             respuestaCorrecta: decodeHTMLEntities(item.correct_answer),
         }));
         setPreguntas(formateadas);
