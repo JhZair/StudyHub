@@ -1,7 +1,7 @@
 const PUNTAJE_MAXIMO = 100;
 
 const esEnteroPositivo = (valor) => Number.isInteger(valor) && valor > 0;
-const esFechaValida = (valor) => valor instanceof Date && !isNaN(valor.getTime());
+const esFechaValida = (valor) => valor instanceof Date && !Number.isNaN(valor.getTime());
 
 class Simulacro {
   constructor({ id_examen = null, duracion, preguntas, puntaje = null, fecha_realizacion = null, id_curso, id_usuario }) {
