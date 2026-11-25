@@ -3,8 +3,11 @@ const session = require('express-session');
 const cors = require('cors');
 const helmet = require('helmet');
 require('dotenv').config();
-const path = require('path');
-const fs = require('fs');
+
+// 1. Usar prefijo node: en módulos nativos (SonarQube S7772)
+const path = require('node:path');
+const fs = require('node:fs');
+
 const db = require('./src/config/database');
 
 const UsuarioRepository = require('./src/usuario/UsuarioRepository');
@@ -20,28 +23,27 @@ const manejadorErrores = require('./src/shared/manejadorErrores');
 
 const app = express();
 
-// 1. Ocultar la cabecera X-Powered-By y aplicar cabeceras de seguridad
 app.disable('x-powered-by');
 app.use(helmet({
-  crossOriginResourcePolicy: { policy: "cross-origin" } // Permite servir imágenes/archivos a frontend en otro dominio
+  crossOriginResourcePolicy: { policy: "cross-origin" }
 }));
 
-const allowedOrigins = [
+// 2. Usar Set para optimizar la verificación de orígenes (SonarQube S7776)
+const allowedOrigins = new Set([
   'http://localhost:5173',
   'https://studyhubfrontend-5pmm.onrender.com'
-];
+]);
 
 if (!fs.existsSync('uploads')) {
   fs.mkdirSync('uploads');
 }
 
-// 2. Mover express.static antes de las sesiones (SonarQube S8441)
 app.use('/uploads', express.static('uploads'));
 
-// 3. Configuración segura de CORS
+// 3. Verificación O(1) con Set.has()
 app.use(cors({
   origin: (origin, callback) => {
-    if (!origin || allowedOrigins.includes(origin)) {
+    if (!origin || allowedOrigins.has(origin)) {
       callback(null, true);
     } else {
       callback(new Error('Not allowed by CORS'));
@@ -55,7 +57,6 @@ app.use(cors({
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// 4. Configuración segura de sesión (Secreto en .env + SameSite Lax + HttpOnly)
 app.use(session({
   secret: process.env.SESSION_SECRET || 'secreto_por_defecto_desarrollo',
   resave: false,
@@ -80,7 +81,6 @@ app.use('/api/recursos', crearRecursoRouter(recursoService));
 app.use('/api/simulacros', require('./src/simulacro/SimulacroController')(simulacroService));
 app.use('/api/auth', require('./src/usuario/AuthController')(usuarioService));
 
-// Servir metadata.rdf
 app.get('/rdf', (req, res) => {
   const filePath = path.join(__dirname, 'static', 'metadata.rdf');
   res.sendFile(filePath, {
@@ -90,7 +90,6 @@ app.get('/rdf', (req, res) => {
   });
 });
 
-// Manejo de errores
 app.use(manejadorErrores);
 
 const PORT = process.env.PORT || 3000;
