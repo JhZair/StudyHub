@@ -33,11 +33,13 @@ pipeline {
     stage('Gestion de issues') { steps { echo 'Commits vinculados a issues con Fix #N en GitHub Projects' } }
     stage('Despliegue (Docker)') {
       steps {
-        script {
-          if (fileExists('docker-compose.yml')) {
-            sh 'docker compose up -d --build'
-          } else {
-            echo 'Pendiente: docker-compose.yml aun no existe'
+        catchError(buildResult: 'UNSTABLE', stageResult: 'FAILURE') {
+          script {
+            if (fileExists('docker-compose.yml')) {
+              sh 'docker compose up -d --build'
+            } else {
+              echo 'Pendiente: docker-compose.yml aun no existe'
+            }
           }
         }
       }
