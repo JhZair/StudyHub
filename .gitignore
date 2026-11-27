@@ -31,4 +31,3 @@ dist-ssr
 e2e/node_modules
 
 .scannerwork
-sonar-project.properties
