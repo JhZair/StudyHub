@@ -1,5 +1,4 @@
 const express = require('express');
-const manejadorErrores = require('../shared/manejadorErrores');
 
 function crearCursoRouter(cursoService) {
   const router = express.Router();
@@ -15,10 +14,10 @@ function crearCursoRouter(cursoService) {
   }
 
   // GET /api/cursos - Obtener todos los cursos
-  router.get('/', manejadorErrores(listarCursos));
+  router.get('/', listarCursos);
 
   // POST /api/cursos - Registrar un nuevo curso
-  router.post('/', manejadorErrores(registrarCurso));
+  router.post('/', registrarCurso);
 
   return router;
 }
