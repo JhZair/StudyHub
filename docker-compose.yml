@@ -1,3 +1,4 @@
+
 services:
   db:
     image: mysql:8
@@ -10,6 +11,7 @@ services:
       test: ["CMD", "mysqladmin", "ping", "-h", "127.0.0.1", "-pstudyhub"]
       interval: 5s
       retries: 20
+
   backend:
     build: ./backend
     environment:
@@ -20,16 +22,17 @@ services:
       PORT: 3000
       SESSION_SECRET: secreto_docker
     ports:
-      - "3000:3000"
+      - "3001:3000"
     depends_on:
       db:
         condition: service_healthy
+
   frontend:
     build:
       context: .
       args:
-        VITE_API_URL: http://localhost:3000
+        VITE_API_URL: http://localhost:3001
     ports:
-      - "5173:80"
+      - "5174:80"
     depends_on:
       - backend
