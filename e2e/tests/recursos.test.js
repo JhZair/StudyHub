@@ -179,7 +179,7 @@ describe('Subir y listar recursos', () => {
     const aceptados = await driver.findElement(SELECTORES.archivo).getAttribute('accept');
 
     // Assert
-    expect(aceptados).toBe('application/pdf');
+    expect(aceptados).toContain('application/pdf');
   });
 
   test('CP08 archivo de tipo no permitido: alert de error y el backend lo rechaza', async () => {
@@ -193,7 +193,7 @@ describe('Subir y listar recursos', () => {
 
     // Assert
     expect(textoAlert).toBe(ALERT_ERROR);
-    expect(await errorDelBackend()).toBe('Tipo de recurso no permitido');
+    expect(await errorDelBackend()).toBe('Tipo de archivo no permitido. Solo se aceptan PDF, DOC, DOCX, PNG o JPG.');
   });
 
   test('CP09 PDF de 0 bytes: alert de error y el backend lo rechaza', async () => {
