@@ -1,0 +1,35 @@
+services:
+  db:
+    image: mysql:8
+    environment:
+      MYSQL_ROOT_PASSWORD: studyhub
+      MYSQL_DATABASE: studyhub
+    volumes:
+      - ./backend/database_setup.sql:/docker-entrypoint-initdb.d/01-schema.sql:ro
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "127.0.0.1", "-pstudyhub"]
+      interval: 5s
+      retries: 20
+  backend:
+    build: ./backend
+    environment:
+      DB_HOST: db
+      DB_USERNAME: root
+      DB_PASSWORD: studyhub
+      DB_NAME: studyhub
+      PORT: 3000
+      SESSION_SECRET: secreto_docker
+    ports:
+      - "3000:3000"
+    depends_on:
+      db:
+        condition: service_healthy
+  frontend:
+    build:
+      context: .
+      args:
+        VITE_API_URL: http://localhost:3000
+    ports:
+      - "5173:80"
+    depends_on:
+      - backend
