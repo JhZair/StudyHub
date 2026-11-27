@@ -1,7 +1,11 @@
 pipeline {
   agent any
   triggers { pollSCM('H/2 * * * *') }
-  environment { CI = 'true' }
+  environment {
+    CI = 'true'
+    SONAR_HOST = credentials('sonar-host')
+    SONAR_TOKEN = credentials('sonar-token')
+   }
   stages {
     stage('Construccion automatica') {
       steps {
