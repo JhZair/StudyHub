@@ -1,5 +1,4 @@
 const express = require('express');
-const manejadorErrores = require('../shared/manejadorErrores');
 
 function crearSimulacroRouter(simulacroService) {
   const router = express.Router();
@@ -25,16 +24,16 @@ function crearSimulacroRouter(simulacroService) {
   }
 
   // GET /api/simulacros - Obtener todos los simulacros
-  router.get('/', manejadorErrores(listarSimulacros));
+  router.get('/', listarSimulacros);
 
   // POST /api/simulacros - Agregar simulacro
-  router.post('/', manejadorErrores(registrarSimulacro));
+  router.post('/', registrarSimulacro);
 
   // POST /api/simulacros/puntajes/guardar - Guardar puntaje de simulacro/examen (Fix #41)
-  router.post('/puntajes/guardar', manejadorErrores(guardarPuntaje));
+  router.post('/puntajes/guardar', guardarPuntaje);
 
   // GET /api/simulacros/puntajes/usuario/:id - Obtener puntajes por usuario (Fix #41)
-  router.get('/puntajes/usuario/:id', manejadorErrores(obtenerPuntajesPorUsuario));
+  router.get('/puntajes/usuario/:id', obtenerPuntajesPorUsuario);
 
   return router;
 }

@@ -22,7 +22,9 @@ const fileFilter = (req, file, cb) => {
     if (extName && mimeType) {
         return cb(null, true);
     }
-    cb(new Error('Tipo de archivo no permitido. Solo se aceptan PDF, DOC, DOCX, PNG o JPG.'));
+    const error = new Error('Tipo de archivo no permitido. Solo se aceptan PDF, DOC, DOCX, PNG o JPG.');
+    error.codigo = 'VALIDACION';
+    cb(error);
 };
 
 // 3. Instancia de multer con límite de tamaño (10 MB)

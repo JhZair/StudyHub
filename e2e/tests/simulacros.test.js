@@ -11,7 +11,7 @@ const TOTAL = preguntas.length;
 
 const SELECTORES = {
   pregunta: By.css('main div.mb-6'),
-  opcion: By.css('li'),
+  opcion: By.css('button'),
   finalizar: By.xpath("//button[normalize-space()='Finalizar examen']"),
   puntaje: By.xpath("//main//div[contains(text(), 'Tu puntaje final')]"),
   correcta: By.css('span.text-green-400'),
@@ -192,7 +192,7 @@ describe('Rendir un simulacro', () => {
       ESPERA
     );
     await semestre.click();
-    const curso = await driver.wait(until.elementLocated(By.xpath("//div[normalize-space()='Cálculo I']")), ESPERA);
+    const curso = await driver.wait(until.elementLocated(By.xpath("//button[normalize-space()='Cálculo I']")), ESPERA);
 
     // Act
     await curso.click();
